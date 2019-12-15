@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": []
+  },
+  "packageFolders": {
+    "C:\\Users\\Charlie\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Desiccation\\Desiccation.csproj",
+      "projectName": "Desiccation",
+      "projectPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Desiccation\\Desiccation.csproj",
+      "packagesPath": "C:\\Users\\Charlie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Desiccation\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Charlie\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net45": {
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+author = GoodPro712, Lemmy, Weirdhat and the Desiccation Developer Team
+version = 0.0.297
+displayName = Desiccation
+hideCode = false
+hideResources = true
+includePDB = true
+buildIgnore = *.user, obj\*, bin\*, .vs\*
+homepage = https://forums.terraria.org/index.php?conversations/84525/

@@ -19,6 +19,7 @@ namespace Desiccation.Commands
 
 		public override void Action(CommandCaller caller, string input, string[] args)
 		{
+			Main.dayTime = true;
 			Main.time = 0;
 		}
 	}

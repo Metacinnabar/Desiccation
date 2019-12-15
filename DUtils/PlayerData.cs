@@ -1,31 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using static Terraria.Main;
-using static Terraria.Player;
 
 namespace Desiccation.DUtils
 {
 	/// <summary>
 	/// Contains information to alter or read information related to the player.
 	/// </summary>
-	internal static partial class PlayerData
+	internal static class PlayerData
 	{
-
 		/// <summary>
 		/// Reference to the current player, yourself.
 		/// </summary>
 		public static Player MyPlayer
-			=> LocalPlayer;
+			=> Main.LocalPlayer;
 
+		#region Player Gender
 		/// <summary>
-		/// Whether you have a diddley or a doodle.
+		/// The player's gender.
 		/// </summary>
 		public enum Gender
 		{
 			Male,
 			Female
 		}
+
 		/// <summary>
 		/// Gets the gender of the player.
 		/// </summary>
@@ -35,30 +34,9 @@ namespace Desiccation.DUtils
 		{
 			return Player.Male ? Gender.Male : Gender.Female;
 		}
-
-
-
-		//NOTICE: If used in pre update vs post update you may
-		// return different results.
-
-
-		///------------------
-		///Held Item Related
-		///------------------
-
-		#region PlayerInfo HeldItem
-
-
-
-
 		#endregion
 
-		///---------------------------------
-		/// Player and LocalPlayer Position
-		///---------------------------------
-
-		#region PlayerInfo PlayerPos
-
+		#region Player Position
 		/// <summary>
 		/// Direction of the player, -1 for left, 1 for right.
 		/// </summary>
@@ -74,15 +52,9 @@ namespace Desiccation.DUtils
 		/// </summary>
 		public static Vector2 MyPosition
 			=> MyPlayer.position;
-
 		#endregion
 
-		///------------------------------
-		/// Player Frame Drawing Related
-		///------------------------------
-
-		#region PlayerInfo PlayerFrame
-
+		#region Player Frames
 		/// <summary>
 		/// Gets the ID of the player's skin.
 		/// </summary>
@@ -99,9 +71,9 @@ namespace Desiccation.DUtils
 		/// <param name="Player">The player.</param>
 		/// <param name="Frame">Frame of the player's head.</param>
 		/// <returns>Texture of the player's head.</returns>
-		public static Texture2D Head(Player Player, int Frame = 0)
+		public static Texture2D Head(Player P, int Frame = 0)
 		{
-			return playerTextures[SkinVariant(Player), Frame];
+			return Main.playerTextures[SkinVariant(P), Frame];
 		}
 
 		/// <summary>
@@ -131,7 +103,7 @@ namespace Desiccation.DUtils
 		/// <returns>Texture2d of the player's hair.</returns>
 		public static Texture2D PlayerHair(Player Player)
 		{
-			return playerHairTexture[HairID(Player)];
+			return Main.playerHairTexture[HairID(Player)];
 		}
 
 		/// <summary>
@@ -164,8 +136,8 @@ namespace Desiccation.DUtils
 		/// <returns>A texture2d reference to the player's body.</returns>
 		public static Texture2D FemalePlayerBody(Player Player, bool IsFemale = false)
 		{
-			return IsFemale ? armorBodyTexture[BodyID(Player)]
-						   : femaleBodyTexture[BodyID(Player)];
+			return IsFemale ? Main.armorBodyTexture[BodyID(Player)]
+						   : Main.femaleBodyTexture[BodyID(Player)];
 		}
 
 		/// <summary>
@@ -173,9 +145,9 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="Player">The player.</param>
 		/// <returns>The player's arm texture2d.</returns>
-		public static Texture2D PlayerArm(Player Player)
+		public static Texture2D PlayerArm(Player P)
 		{
-			return armorArmTexture[BodyID(Player)];
+			return Main.armorArmTexture[BodyID(P)];
 		}
 
 		/// <summary>
@@ -195,16 +167,11 @@ namespace Desiccation.DUtils
 		/// <returns>The texture2d of the player's legs.</returns>
 		public static Texture2D PlayerLegs(Player Player)
 		{
-			return armorLegTexture[LegID(Player)];
+			return Main.armorLegTexture[LegID(Player)];
 		}
-
 		#endregion
 
-		///-----------------
-		/// Player Inventory
-		///-----------------
-
-		#region PlayerInfo PlayerInventory
+		#region Player Inventory
 
 		/// <summary>
 		/// Gets the type id of an item in one of the main player's slots.
@@ -213,7 +180,7 @@ namespace Desiccation.DUtils
 		/// <returns>The int id of the item in that slot.</returns>
 		public static int GetInventoryType(int Slot)
 		{
-			return LocalPlayer.inventory[Slot].type;
+			return MyPlayer.inventory[Slot].type;
 		}
 
 		/// <summary>
@@ -234,17 +201,11 @@ namespace Desiccation.DUtils
 		/// <returns></returns>
 		public static Texture2D GetInventoryItemSlotTexture(int Slot)
 		{
-			return itemTexture[LocalPlayer.inventory[Slot].type];
+			return Main.itemTexture[MyPlayer.inventory[Slot].type];
 		}
-
 		#endregion
 
-
-		///--------------
-		/// Player Stats
-		///--------------
-
-		#region PlayerStats
+		#region Player Stats
 
 		/// <summary>
 		/// Local player's current health.
@@ -331,13 +292,62 @@ namespace Desiccation.DUtils
 		}
 		#endregion
 
+		#region Player Name
+		/// <summary>
+		/// Gets the local player's name.
+		/// </summary>
+		public static string MyName
+			=> MyPlayer.name;
 
+		/// <summary>
+		/// Gets the width and height of the local player's name.
+		/// This information may be useful for user interface elements.
+		/// </summary>
+		public static Vector2 MyNameSize
+			=> Main.fontMouseText.MeasureString(MyName);
+
+		/// <summary>
+		/// Gets the width of the local player's name in pixels.
+		/// This information may be useful for user interface elements.
+		/// </summary>
+		public static int MyNameWidth
+			=> (int)MyNameSize.X;
+
+		/// <summary>
+		/// Gets the height of the local player's name in pixels.
+		/// This information may be useful for user interface elements.
+		/// </summary>
+		public static int MyNameHeight
+			=> (int)MyNameSize.Y;
+
+		/// <summary>
+		/// Gets the name of a player.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <returns>Players name in String format.</returns>
+		public static string PlayerName(Player P)
+		{
+			return P.name;
+		}
+
+		/// <summary>
+		/// Gets the size ofa player's name.
+		/// </summary>
+		/// <param name="P">The Player</param>
+		/// <returns>A vector2 containing the width and height of the player's name in pixels.</returns>
+		public static Vector2 PlayerNameSize(Player P)
+		{
+			return Main.fontMouseText.MeasureString(P.name);
+		}
+		#endregion
+
+		#region Player Movement
 		public static float DefaultGravity
-			=> defaultGravity;
+			=> Player.defaultGravity;
 
 		public static void SetDefaultGravity(float Gravity)
 		{
-			defaultGravity = Gravity;
+			Player.defaultGravity = Gravity;
 		}
 
 		public static void SetPlayerGravity(Player P, float Gravity)
@@ -347,12 +357,12 @@ namespace Desiccation.DUtils
 
 		public static void SetJumpHeight(int Height)
 		{
-			jumpHeight = Height;
+			Player.jumpHeight = Height;
 		}
 
 		public static void SetJumpSpeed(float Speed)
 		{
-			jumpSpeed = Speed;
+			Player.jumpSpeed = Speed;
 		}
 
 		public static void SetMaxRunSpeed(Player P, float Speed)
@@ -374,8 +384,97 @@ namespace Desiccation.DUtils
 		{
 			P.accRunSpeed = Speed;
 		}
+		#endregion
 
-		#region PlayerInfo MountRelated
+		#region Player States
+		/// <summary>
+		/// Checks if the player is colliding with a liquid.
+		/// </summary>
+		/// <param name="P">The Player</param>
+		/// <returns>True if the specified player is in a liquid, false if not.</returns>
+		public static bool IsPlayerWet(Player P)
+		{
+			return P.wet;
+		}
+
+		/// <summary>
+		/// Allows you to set the wet state of the player.
+		/// </summary>
+		/// <param name="P">The player</param>
+		/// <param name="IsWet">If you want the player to be wet.</param>
+		public static void SetPlayerWet(Player P, bool IsWet)
+		{
+			P.wet = IsWet;
+		}
+
+		/// <summary>
+		/// Checks if the player is colliding with liquid honey.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <returns>True if the player is in liquid honey, false if not.</returns>
+		public static bool IsPlayerHoneyWet(Player P)
+		{
+			return P.honeyWet;
+		}
+
+		/// <summary>
+		/// Allows you to set if the player is flagged for being in liquid honey.
+		/// </summary>
+		/// <param name="P">The Player</param>
+		/// <param name="IsHoneyWet">If the player is in liquid honey.</param>
+		public static void SetPlayerHoneyWet(Player P, bool IsHoneyWet)
+		{
+			P.honeyWet = IsHoneyWet;
+		}
+
+		/// <summary>
+		/// Checks to see if the player is colliding with lava.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <returns>True if the player is colliding with lava, otherwise false.</returns>
+		public static bool IsPlayerLavaWet(Player P)
+		{
+			return P.lavaWet;
+		}
+
+		/// <summary>
+		/// Lets you flag the player for being in lava.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <param name="IsLavaWet">If the player is flagged for lava collision.</param>
+		public static void SetPlayerLavaWet(Player P, bool IsLavaWet)
+		{
+			P.lavaWet = IsLavaWet;
+		}
+
+		public static bool IsPlayerHoneyWetAndWet(Player P)
+		{
+			return P.wet && P.honeyWet;
+		}
+
+		/// <summary>
+		/// Checks if the specified player has the merman buff.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <returns>True if the player is a Merman, false if not.</returns>
+		public static bool IsPlayerIsMerman(Player P)
+		{
+			return P.merman;
+		}
+
+		/// <summary>
+		/// Lets you toggle the flag for being a merman on a specified player.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <param name="IsMerman"></param>
+		/// <returns></returns>
+		public static bool SetPlayerMerman(Player P, bool IsMerman)
+		{
+			return P.merman = IsMerman;
+		}
+		#endregion
+
+		#region Mount Related
 
 		public static bool ActiveMount(Player P)
 		{
@@ -399,6 +498,7 @@ namespace Desiccation.DUtils
 
 		#endregion
 
+		#region Projectile Related
 		public static int HeldProjectile(Player P)
 		{
 			return P.heldProj;
@@ -408,11 +508,30 @@ namespace Desiccation.DUtils
 		{
 			P.heldProj = Type;
 		}
+		#endregion
 
+		#region Item Related
+		/// <summary>
+		/// Gets the bool value of Player.PortalPhysicsEnabled
+		/// </summary>
+		/// <param name="P">The player</param>
+		/// <returns>Returns the bool value of Player.PortalPhysicsEnabled</returns>
 		public static bool PortalPhysics(Player P)
 		{
 			return P.PortalPhysicsEnabled;
 		}
-	}
+		#endregion
 
+		#region Biome Related
+		/// <summary>
+		/// Checks if the player is on the surface and not in any biome. Thanks Aqua.
+		/// </summary>
+		/// <param name="P">The player.</param>
+		/// <returns>Returns true if player isn't in any biome and on the surface.</returns>
+		public static bool IsPlayerInForest(Player P)
+		{
+			return !P.ZoneJungle && !P.ZoneDungeon && !P.ZoneCorrupt && !P.ZoneCrimson && !P.ZoneHoly && !P.ZoneSnow && !P.ZoneUndergroundDesert && !P.ZoneGlowshroom && !P.ZoneMeteor && P.ZoneOverworldHeight;
+		}
+		#endregion
+	}
 }

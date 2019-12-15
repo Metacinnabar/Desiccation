@@ -5,7 +5,7 @@ namespace Desiccation.DUtils
 	/// <summary>
 	/// This partial class contains information getters related to differant mods on the mod browser.
 	/// </summary>
-	internal static partial class Mods
+	internal static class Mods
 	{
 		/// <summary>
 		/// Gets Thorium's instance.

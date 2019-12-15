@@ -121,13 +121,29 @@ namespace Desiccation.DUtils
 		{
 			switch (Main.netMode)
 			{
-				case 1:
+				case NetmodeID.SinglePlayer:
 					Main.NewText(message, r, g, b);
 					break;
-				default:
-					if (multiplayer && Main.netMode != NetmodeID.SinglePlayer)
+				case NetmodeID.MultiplayerClient:
+					switch (multiplayer)
 					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
+						case true:
+							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
+							break;
+						case false:
+							Main.NewText(message, r, g, b);
+							break;
+					}
+					break;
+				case NetmodeID.Server:
+					switch (multiplayer)
+					{
+						case true:
+							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
+							break;
+						case false:
+							Main.NewText(message, r, g, b);
+							break;
 					}
 					break;
 			}

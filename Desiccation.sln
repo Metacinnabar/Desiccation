@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desiccation", "Desiccation.csproj", "{51E9B233-E1BC-41E6-97C5-B25D4E675413}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51E9B233-E1BC-41E6-97C5-B25D4E675413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E9B233-E1BC-41E6-97C5-B25D4E675413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E9B233-E1BC-41E6-97C5-B25D4E675413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E9B233-E1BC-41E6-97C5-B25D4E675413}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EE6DD6B-DA95-4CCA-8824-D38E224D115D}
+	EndGlobalSection
+EndGlobal

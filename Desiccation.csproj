@@ -10,11 +10,6 @@
   <ItemGroup>
     <Folder Include="UI\Menu\" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="HamstarHelpers">
-      <HintPath>lib\HamstarHelpers_v5.3.3.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>

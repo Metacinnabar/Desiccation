@@ -1,4 +1,5 @@
 #region Usings
+using Desiccation.DUtils;
 using Desiccation.NPCs.TownNPCs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,6 +22,9 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
+		//TODO: Rewrite Eerie Messages
+		//TODO: Credit menu
+
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
 		{
@@ -47,6 +51,7 @@ namespace Desiccation
 		public float fadePercent = 0;
 		#endregion
 
+		#region tModLoader Hooks
 		public override void Load()
 		{
 			#region Main Menu Changes
@@ -66,12 +71,12 @@ namespace Desiccation
 				Main.backgroundTexture[0] = GetTexture("UI/Sky");
 				Main.logoTexture = Main.logo2Texture = GetTexture("UI/DesiccationLogo");
 				MinerUserInterface = new UserInterface();
-			} 
+			}
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
 		}
-		 
+
 		public override void Unload()
 		{
 			#region Main Menu Changes
@@ -152,29 +157,7 @@ namespace Desiccation
 		{
 			WorldGen.setBG(0, 6);
 		}
-
-		public override object Call(params object[] args)
-		{
-			try
-			{
-				string type = args[0] as string;
-				if (type == "PickupResource")
-				{
-					int itemid = Convert.ToInt32(args[1]);
-					return "Success";
-				}
-				else
-				{
-					Logger.Error($"Desiccation Mod.Call Error: No such type as {type}.");
-				}
-			}
-			catch (Exception e)
-			{
-				Logger.Error("Desiccation Mod.Call Error:", e);
-			}
-
-			return null;
-		}
+		#endregion
 
 		#region Events
 		public void OnTickEvent()
@@ -188,12 +171,14 @@ namespace Desiccation
 					Main.dayTime = true;
 					Main.time = 40000;
 					Main.sunModY = 5;
-					RemoveClouds();
-					LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
-					MainMenuBackgroundSwap(20, 21, 22);
+					for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
+					{
+						Main.cloudTexture[vanillaCloudTextureID] = GetTexture("UI/Blank");
+					}
+					Misc.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
+					Misc.MainMenuBackgroundSwap(20, 21, 22);
 					return;
 				}
-
 				if (Main.menuMode == 10006 && !unloadCalled)
 				{
 					Unload();
@@ -228,48 +213,6 @@ namespace Desiccation
 		}
 		#endregion
 
-		#region Main Menu Backgrounds
-		/// <summary>
-		/// Loads specifc backgrounds
-		/// </summary>
-		/// <param name="loadbgNumbers">The backgrounds to load.</param>
-		public void LoadBackgrounds(List<int> loadbgNumbers)
-		{
-			if (!Main.dedServ)
-			{
-				foreach (int loadbgNumber in loadbgNumbers)
-				{
-					Main.instance.LoadBackground(loadbgNumber);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Call to remove cloud textures
-		/// </summary>
-		public void RemoveClouds()
-		{
-			for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
-			{
-				Main.cloudTexture[vanillaCloudTextureID] = GetTexture("UI/Blank");
-			}
-		}
-
-		/// <summary>
-		/// Call with the provided params to swap the main menu backgrounds.
-		/// </summary>
-		/// <param name="newFrontBackgroudID"></param>
-		/// <param name="newMiddleBackgroundID"></param>
-		/// <param name="newBackBackgroundID"></param>
-		public void MainMenuBackgroundSwap(int newFrontBackgroudID, int newMiddleBackgroundID, int newBackBackgroundID)
-		{
-			Main.backgroundTexture[173] = Main.backgroundTexture[newFrontBackgroudID];
-			Main.backgroundTexture[172] = Main.backgroundTexture[newMiddleBackgroundID];
-			Main.backgroundTexture[171] = Main.backgroundTexture[newBackBackgroundID];
-		}
-		#endregion
-
-		//TODO: Credit menu
 		#region Credits
 		private void Credits()
 		{

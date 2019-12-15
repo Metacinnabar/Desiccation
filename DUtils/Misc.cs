@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -129,6 +130,34 @@ namespace Desiccation.DUtils
 						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
 					}
 					break;
+			}
+		}
+
+		/// <summary>
+		/// Call with the provided params to swap the main menu backgrounds.
+		/// </summary>
+		/// <param name="newFrontBackgroudID"></param>
+		/// <param name="newMiddleBackgroundID"></param>
+		/// <param name="newBackBackgroundID"></param>
+		public static void MainMenuBackgroundSwap(int newFrontBackgroudID, int newMiddleBackgroundID, int newBackBackgroundID)
+		{
+			Main.backgroundTexture[173] = Main.backgroundTexture[newFrontBackgroudID];
+			Main.backgroundTexture[172] = Main.backgroundTexture[newMiddleBackgroundID];
+			Main.backgroundTexture[171] = Main.backgroundTexture[newBackBackgroundID];
+		}
+
+		/// <summary>
+		/// Loads specifc backgrounds
+		/// </summary>
+		/// <param name="loadbgNumbers">The backgrounds to load.</param>
+		public static void LoadBackgrounds(List<int> loadbgNumbers)
+		{
+			if (!Main.dedServ)
+			{
+				foreach (int loadbgNumber in loadbgNumbers)
+				{
+					Main.instance.LoadBackground(loadbgNumber);
+				}
 			}
 		}
 	}

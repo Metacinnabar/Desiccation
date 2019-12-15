@@ -11,23 +11,14 @@ namespace Desiccation
 	{
 		public override void PreUpdate()
 		{
-			if (Main.anglerQuestFinished)
-			{
-				Main.AnglerQuestSwap();
-			}
-
-			//Eerie Messages
 			if (Misc.RandomInt(1, 100000) == 1)
 			{
 				const int messageCount = 50;
 				Color color = Color.White;
-				if (Main.netMode == NetmodeID.SinglePlayer)
+				if (Misc.Singleplayer())
 				{
-					switch (Main.rand.Next(messageCount))
+					switch (Main.rand.Next(1, messageCount))
 					{
-						case 0:
-							Main.NewText("You are short of time...");
-							break;
 						case 1:
 							Main.NewText("The shadows grow...");
 							break;
@@ -172,18 +163,18 @@ namespace Desiccation
 						case 48:
 							Main.NewText("When held up to the sky, the lens will bring terror to all, and take life away from everything.");
 							break;
-						default:
+						case 49:
 							Main.NewText("The shard holds the power, the death, and...    ...the Desiccation.");
+							break;
+						case 50:
+							Main.NewText("You are short of time...");
 							break;
 					}
 				}
-				else if (Main.netMode != NetmodeID.SinglePlayer)
+				else if (Misc.Multiplayer())
 				{
-					switch (Main.rand.Next(messageCount))
+					switch (Main.rand.Next(1, messageCount))
 					{
-						case 0:
-							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("You are short of time..."), color);
-							break;
 						case 1:
 							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The shadows grow..."), color);
 							break;
@@ -328,8 +319,11 @@ namespace Desiccation
 						case 48:
 							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("When held up to the sky, the lens will bring terror to all, and take life away from everything."), color);
 							break;
-						default:
+						case 49:
 							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The shard holds the power, the death, and...    ...the Desiccation."), color);
+							break;
+						case 50:
+							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("You are short of time..."), color);
 							break;
 					}
 				}

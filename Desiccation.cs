@@ -39,7 +39,6 @@ namespace Desiccation
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
 		{
-			tmlAssembly = typeof(ModLoader).Assembly;
 		}
 
 		#region Fields

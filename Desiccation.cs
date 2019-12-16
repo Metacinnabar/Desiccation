@@ -28,7 +28,7 @@ namespace Desiccation
 		//TODO: Creat desiccation email, youtube and twitter
 		//TODO: Add mechanics to readme
 		//TODO: Overequipping
-		//TODO: Fix config
+		//TODO: Add server owner for global config.
 		//TODO: Add config for most things
 		//TODO: Remove fav tooltip
 

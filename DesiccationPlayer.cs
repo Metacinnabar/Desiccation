@@ -93,7 +93,7 @@ namespace Desiccation
 
 		private void GetTeamValues()
 		{
-			teamString = ClientSideConfig.MechanicMenu.PvPTeam;
+			teamString = DesiccationClientsideConfig.PvPTeam;
 			switch (teamString)
 			{
 				case "None":
@@ -145,7 +145,7 @@ namespace Desiccation
 
 		public override void PostUpdateMiscEffects()
 		{
-			if (ClientSideConfig.MechanicMenu.WeightedInventoryBool)
+			if (DesiccationGlobalConfig.WeightedInventory)
 			{
 				int emptySlots = MyPlayer.inventory.Count(x => !x.IsAir);
 				float speedAdd = 0.33f * (emptySlots - 29f) / 29f;

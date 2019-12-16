@@ -8,13 +8,17 @@ namespace Desiccation
 	{
 		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
 		{
-			if (projectile.type == ProjectileID.EbonsandBallGun || projectile.type == ProjectileID.CrimsandBallGun)
+			switch (projectile.type)
 			{
-				target.AddBuff(BuffID.Weak, 420);
-			}
-			if (projectile.type == ProjectileID.PearlSandBallGun)
-			{
-				target.AddBuff(BuffID.Slow, 420);
+				case ProjectileID.EbonsandBallGun:
+					target.AddBuff(BuffID.Weak, 420);
+					break;
+				case ProjectileID.CrimsandBallGun:
+					target.AddBuff(BuffID.Bleeding, 420);
+					break;
+				case ProjectileID.PearlSandBallGun:
+					target.AddBuff(BuffID.Slow, 420);
+					break;
 			}
 		}
 	}

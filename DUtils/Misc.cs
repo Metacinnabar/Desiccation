@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Desiccation.DUtils
 {
@@ -48,6 +50,11 @@ namespace Desiccation.DUtils
 		/// The menuMode for your mods config.
 		/// </summary>
 		public const int UIModConfig = 10024;
+
+		/// <summary>
+		/// The menuMode for a blank menu.
+		/// </summary>
+		public const int BlankMenu = 666;
 
 		/// <summary>
 		/// Checks if the date of the user's computer is the 25th of December.
@@ -119,33 +126,20 @@ namespace Desiccation.DUtils
 		/// <param name="b"></param>
 		public static void Chat(string message, bool multiplayer = true, byte r = 255, byte g = 255, byte b = 255)
 		{
-			switch (Main.netMode)
+			if (Singleplayer())
 			{
-				case NetmodeID.SinglePlayer:
+				Main.NewText(message, r, g, b);
+			}
+			else if (Multiplayer())
+			{
+				if (multiplayer)
+				{
+					NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
+				}
+				else
+				{
 					Main.NewText(message, r, g, b);
-					break;
-				case NetmodeID.MultiplayerClient:
-					switch (multiplayer)
-					{
-						case true:
-							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
-							break;
-						case false:
-							Main.NewText(message, r, g, b);
-							break;
-					}
-					break;
-				case NetmodeID.Server:
-					switch (multiplayer)
-					{
-						case true:
-							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(r, g, b));
-							break;
-						case false:
-							Main.NewText(message, r, g, b);
-							break;
-					}
-					break;
+				}
 			}
 		}
 
@@ -176,6 +170,9 @@ namespace Desiccation.DUtils
 				}
 			}
 		}
+
+		public static Texture2D BlankTexture
+			=> ModContent.GetTexture("UI/Blank");
 	}
 }
 

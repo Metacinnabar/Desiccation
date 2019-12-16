@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Reflection;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Desiccation.DUtils
 {
@@ -14,6 +16,12 @@ namespace Desiccation.DUtils
 		/// </summary>
 		public static Player MyPlayer
 			=> Main.LocalPlayer;
+
+		/// <summary>
+		/// Reference to Thorium's ModPlayer class.
+		/// </summary>
+		public static ModPlayer ThoriumPlayer
+			=> Mods.Thorium.GetPlayer("ThoriumPlayer");
 
 		#region Player Gender
 		/// <summary>
@@ -236,7 +244,7 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="P">The player.</param>
 		/// <returns>Int value of current life.</returns>
-		public static int PlayerHealth(Player P)
+		public static int Health(Player P)
 		{
 			return P.statLife;
 		}
@@ -246,7 +254,7 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="P">The player.</param>
 		/// <returns>Int value of the player's maximum health./returns>
-		public static int PlayerMaxHealth(Player P)
+		public static int MaxHealth(Player P)
 		{
 			return P.statLifeMax2;
 		}
@@ -256,7 +264,7 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="P">The player.</param>
 		/// <returns>Int value of the player's mana.</returns>
-		public static int PlayerMana(Player P)
+		public static int Mana(Player P)
 		{
 			return P.statMana;
 		}
@@ -266,9 +274,39 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="P">The player.</param>
 		/// <returns></returns>
-		public static int PlayerMaxMana(Player P)
+		public static int MaxMana(Player P)
 		{
 			return P.statManaMax2;
+		}
+
+		/// <summary>
+		/// Gets the value of bardResource from ThoriumPlayer.
+		/// </summary>
+		/// <returns>returns the bardResource value if Thorium is enabled, otherwise returns 0.</returns>
+		public static int Music()
+		{
+			if (Mods.Thorium != null)
+			{
+				FieldInfo MusicReflection = ThoriumPlayer.GetType().GetField("bardResource", BindingFlags.Public | BindingFlags.Instance);
+				int Music = (int)MusicReflection.GetValue(ThoriumPlayer);
+				return Music;
+			}
+			return 0;
+		}
+
+		/// <summary>
+		/// Gets the value of bardResourceMax from ThoriumPlayer.
+		/// </summary>
+		/// <returns>returns the bardResourceMax value if Thorium is enabled, otherwise returns 0.</returns>
+		public static int MaxMusic()
+		{
+			if (Mods.Thorium != null)
+			{
+				FieldInfo MaxMusicReflection = ThoriumPlayer.GetType().GetField("bardResourceMax", BindingFlags.Public | BindingFlags.Instance);
+				int MaxMusic = (int)MaxMusicReflection.GetValue(ThoriumPlayer);
+				return MaxMusic;
+			}
+			return 0;
 		}
 
 		/// <summary>

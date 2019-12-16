@@ -22,13 +22,21 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Rewrite Eerie Messages
 		//TODO: Credit menu
+		//TODO: Config for main menu changes
+		//TODO: Switch for Vanity Music Boxes
+		//TODO: Creat desiccation email, youtube and twitter
+		//TODO: Add mechanics to readme
+		//TODO: Overequipping
+		//TODO: Fix config
+		//TODO: Add config for most things
+		//TODO: Remove fav tooltip
 
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
 		{
 		}
+
 		#region Fields
 		private Texture2D vanillaLogoDay;
 		private Texture2D vanillaLogoNight;
@@ -160,7 +168,7 @@ namespace Desiccation
 		#endregion
 
 		#region Events
-		public void OnTickEvent()
+		private void OnTickEvent()
 		{
 			if (Main.gameMenu)
 			{
@@ -173,7 +181,7 @@ namespace Desiccation
 					Main.sunModY = 5;
 					for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
 					{
-						Main.cloudTexture[vanillaCloudTextureID] = GetTexture("UI/Blank");
+						Main.cloudTexture[vanillaCloudTextureID] = Misc.BlankTexture;
 					}
 					Misc.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
 					Misc.MainMenuBackgroundSwap(20, 21, 22);
@@ -187,7 +195,7 @@ namespace Desiccation
 			}
 		}
 
-		public void OnPostDrawEvent(GameTime gametime)
+		private void OnPostDrawEvent(GameTime gametime)
 		{
 			if (Main.gameMenu)
 			{

@@ -17,7 +17,7 @@ namespace Desiccation.NPCs
 			{
 				if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneBeach)
 				{
-					if (RandomInt(0, 99) == 0)
+					if (RandomInt(1, 100) == 1)
 					{
 						Item.NewItem(npc.getRect(), ItemType<SeaHeart>());
 					}
@@ -32,14 +32,11 @@ namespace Desiccation.NPCs
 			}
 			if (npc.type == NPCID.Werewolf)
 			{
-				if (RandomInt(0, 1) == 0)
+				if (RandomInt(1, 3) == 1)
 				{
-					Item.NewItem(npc.getRect(), ItemType<WerewolfFur>(), RandomInt(0, 3));
+					Item.NewItem(npc.getRect(), ItemType<WerewolfFur>(), RandomInt(1, 3));
 				}
-			}
-			if (npc.type == NPCID.Werewolf)
-			{
-				if (RandomInt(0, 299) == 0)
+				if (RandomInt(1, 300) == 1)
 				{
 					Item.NewItem(npc.getRect(), ItemType<Items.Werewolf.MoonStaff>());
 				}

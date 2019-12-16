@@ -1,7 +1,7 @@
 author = GoodPro712, Lemmy, Weirdhat and the Desiccation Developer Team
 version = 0.0.297
 displayName = Desiccation
-hideCode = false
+hideCode = true
 hideResources = true
 includePDB = true
 buildIgnore = *.user, obj\*, bin\*, .vs\*

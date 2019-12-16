@@ -1,10 +1,9 @@
+using Desiccation.DUtils;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Desiccation.DUtils.Mods;
 using static Desiccation.DUtils.PlayerData;
 
 namespace Desiccation.Items
@@ -95,17 +94,18 @@ namespace Desiccation.Items
 						return false;
 					}
 					break;
+				case ItemID.SugarPlum:
+					if (MyMana == MyMaxMana)
+					{
+						return false;
+					}
+					break;
 			}
-			if (Thorium != null)
+			if (Mods.Thorium != null)
 			{
-				ModPlayer thoriumPlayer = Thorium.GetPlayer("ThoriumPlayer");
-				FieldInfo bardResourceField = thoriumPlayer.GetType().GetField("bardResource", BindingFlags.Public | BindingFlags.Instance);
-				FieldInfo bardResourceMax2Field = thoriumPlayer.GetType().GetField("bardResourceMax", BindingFlags.Public | BindingFlags.Instance);
-				int bardResource = (int)bardResourceField.GetValue(thoriumPlayer);
-				int bardResourceMax = (int)bardResourceMax2Field.GetValue(thoriumPlayer);
-				if (item.type == Thorium.ItemType("MusicReplenish") || item.type == Thorium.ItemType("MusicReplenish3") || item.type == Thorium.ItemType("MusicReplenish4") || item.type == Thorium.ItemType("MusicReplenishNoble"))
+				if (item.type == Mods.Thorium.ItemType("MusicReplenish") || item.type == Mods.Thorium.ItemType("MusicReplenish3") || item.type == Mods.Thorium.ItemType("MusicReplenish4") || item.type == Mods.Thorium.ItemType("MusicReplenishNoble"))
 				{
-					if (bardResource == bardResourceMax)
+					if (Music() == MaxMusic())
 					{
 						return false;
 					}

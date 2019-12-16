@@ -61,7 +61,6 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
-		public static Assembly tmlAssembly;
 		#endregion
 
 		#region tModLoader Hooks

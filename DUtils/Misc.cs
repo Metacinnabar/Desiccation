@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -172,7 +173,6 @@ namespace Desiccation.DUtils
 		}
 
 		public static Texture2D BlankTexture
-			=> ModContent.GetTexture("UI/Blank");
+			=> ModContent.GetTexture("Desiccation/UI/Blank");
 	}
 }
-

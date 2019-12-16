@@ -1,6 +1,7 @@
 #region Usings
 using Desiccation.DUtils;
 using Desiccation.NPCs.TownNPCs;
+using Desiccation.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -8,7 +9,9 @@ using ReLogic.OS;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using Terraria;
+using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
@@ -31,10 +34,12 @@ namespace Desiccation
 		//TODO: Add server owner for global config.
 		//TODO: Add config for most things
 		//TODO: Remove fav tooltip
+		//TODO: Main menu bg config 
 
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
 		{
+			tmlAssembly = typeof(ModLoader).Assembly;
 		}
 
 		#region Fields
@@ -57,6 +62,7 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
+		public static Assembly tmlAssembly;
 		#endregion
 
 		#region tModLoader Hooks
@@ -221,13 +227,6 @@ namespace Desiccation
 		}
 		#endregion
 
-		#region Credits
-		private void Credits()
-		{
-
-		}
-		#endregion
-
 		#region Main Menu Text
 		private void MainMenuLinkDraw(string text, float Y, string process, int offset, ref bool IsIn, string type)
 		{
@@ -275,7 +274,7 @@ namespace Desiccation
 				{
 					Main.PlaySound(SoundID.MenuOpen);
 					//	Main.menuMode = 666;
-					Credits();
+					ModContent.GetInstance<CreditMenu>().Credits();
 				}
 				else if (type == "Useful Links")
 				{

@@ -191,9 +191,9 @@ namespace Desiccation.NPCs.TownNPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(ItemType<Chisel>());
+			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Chisel>());
 			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemType<Pan>());
+			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Pan>());
 			nextSlot++;
 			shop.item[nextSlot].SetDefaults(88);
 			nextSlot++;
@@ -209,7 +209,7 @@ namespace Desiccation.NPCs.TownNPCs
 			nextSlot++;
 			if (!Main.dayTime)
 			{
-				shop.item[nextSlot].SetDefaults(ItemType<OverbrightTorch>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<OverbrightTorch>());
 				nextSlot++;
 			}
 			if (Main.bloodMoon)
@@ -259,7 +259,5 @@ namespace Desiccation.NPCs.TownNPCs
 			multiplier = 12f;
 			randomOffset = 2f;
 		}
-
-		public
 	}
 }

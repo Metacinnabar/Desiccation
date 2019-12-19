@@ -205,7 +205,7 @@ namespace Desiccation
 			{
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 				MainMenuLinkDraw("Desiccation v" + Version + " - " + releaseSuffix, 8, "https://forums.terraria.org/index.php?threads/84525/", 10, ref isInVersionRectangle, "Forum");
-				MainMenuLinkDraw("Desiccation Credits (In Development)", 36, "", -18, ref isInCreditRectangle, "Credits");
+				MainMenuLinkDraw("Desiccation Credits ", 36, "", -18, ref isInCreditRectangle, "Credits");
 				if (!linksOpen)
 				{
 					MainMenuLinkDraw("Useful Links", 64, "", -46, ref isInLinkMenuRectangle, "Useful Links");

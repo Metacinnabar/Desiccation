@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace Desiccation.DUtils
 {
@@ -173,6 +174,24 @@ namespace Desiccation.DUtils
 		}
 
 		public static Texture2D BlankTexture
-			=> ModContent.GetTexture("Desiccation/UI/Blank");
+			=> ModContent.GetTexture("Desiccation/UI/Textures/Blank");
+
+		public static void ShowInfoMessage(string text, int gotoMenu)
+		{
+			//Thanks Overhaul for *some* code
+			Type Interface = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.Interface");
+			Type UIInfoMessage = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInfoMessage");
+			FieldInfo infoMessage = Interface.GetField("infoMessage", BindingFlags.Static | BindingFlags.NonPublic);
+			object infoMessageValue = (UIElement)infoMessage.GetValue(null);
+			MethodInfo Show = UIInfoMessage.GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
+			if (Show != null)
+			{
+				Show.Invoke(infoMessageValue, new object[5]
+				{
+					text, gotoMenu, null, "", null
+				});
+			}
+			Main.menuMode = 10013;
+		}
 	}
 }

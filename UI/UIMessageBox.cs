@@ -12,13 +12,9 @@ namespace Desiccation.UI
 	internal class UIMessageBox : UIPanel
 	{
 		protected UIScrollbar Scrollbar;
-
 		private string _text;
-
 		private float _height;
-
 		private bool _heightNeedsRecalculating;
-
 		private readonly List<Tuple<string, float>> _drawTexts = new List<Tuple<string, float>>();
 
 		public UIMessageBox(string text)
@@ -145,28 +141,6 @@ namespace Desiccation.UI
 			{
 				scrollbar.SetView(GetInnerDimensions().Height, _height);
 			}
-		}
-	}
-
-	internal class CreditMenu : UIElement
-	{
-		internal void Credits()
-		{
-			string text = "Bruh";
-
-			UIMessageBox message = new UIMessageBox(text)
-			{
-				Width =
-				{
-					Percent = 1f
-				},
-				Height =
-				{
-					Pixels = 400f,
-					Percent = 0f
-				}
-			};
-			message.SetScrollbar(new UIScrollbar());
 		}
 	}
 }

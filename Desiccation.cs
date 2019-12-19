@@ -25,16 +25,15 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Credit menu
 		//TODO: Config for main menu changes
 		//TODO: Switch for Vanity Music Boxes
-		//TODO: Creat desiccation email, youtube and twitter
+		//TODO: Create desiccation email, youtube and twitter
 		//TODO: Add mechanics to readme
 		//TODO: Overequipping
 		//TODO: Add server owner for global config.
 		//TODO: Add config for most things
 		//TODO: Remove fav tooltip
-		//TODO: Main menu bg config 
+		//TODO: discord tags for credits
 
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
@@ -50,6 +49,7 @@ namespace Desiccation
 		public Texture2D vanillaBackMainMenuBackground;
 		public Texture2D[] vanillaCloud = new Texture2D[22];
 		internal UserInterface MinerUserInterface;
+		internal static CreditMenu creditMenuUI;
 		private bool unloadCalled;
 		private bool titleReplaced;
 		private bool isInVersionRectangle;
@@ -80,8 +80,8 @@ namespace Desiccation
 			#endregion
 			if (!Main.dedServ)
 			{
-				Main.backgroundTexture[0] = GetTexture("UI/Sky");
-				Main.logoTexture = Main.logo2Texture = GetTexture("UI/DesiccationLogo");
+				Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
+				Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationLogo");
 				MinerUserInterface = new UserInterface();
 			}
 			unloadCalled = false;
@@ -270,9 +270,12 @@ namespace Desiccation
 			{
 				if (type == "Credits")
 				{
-					Main.PlaySound(SoundID.MenuOpen);
-					//	Main.menuMode = 666;
-					ModContent.GetInstance<CreditMenu>().Credits();
+					if (Main.menuMode == 0)
+					{
+						Main.PlaySound(SoundID.MenuOpen);
+						creditMenuUI = new CreditMenu();
+						UserInterface.ActiveInstance.SetState(creditMenuUI);
+					}
 				}
 				else if (type == "Useful Links")
 				{

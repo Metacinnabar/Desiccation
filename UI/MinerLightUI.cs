@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Desiccation.DUtils;
+using Desiccation.NPCs.TownNPCs;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameInput;
@@ -10,7 +12,6 @@ using Terraria.UI.Chat;
 
 namespace Desiccation.UI
 {
-	// This class represents the UIState for our Miner Awesomeify chat function. It is similar to the Goblin Tinkerer's Reforge function, except it only gives Awesome and ReallyAwesome prefixes. 
 	internal class MinerLightUI : UIState
 	{
 		private VanillaItemSlotWrapper _vanillaItemSlot;
@@ -50,7 +51,7 @@ namespace Desiccation.UI
 			base.Update(gameTime);
 
 			// talkNPC is the index of the NPC the player is currently talking to. By checking talkNPC, we can tell when the player switches to another NPC or closes the NPC chat dialog.
-			if (Main.LocalPlayer.talkNPC == -1 || Main.npc[Main.LocalPlayer.talkNPC].type != ModContent.GetInstance<Desiccation>().NPCType("Miner"))
+			if (Main.LocalPlayer.talkNPC == -1 || Main.npc[Main.LocalPlayer.talkNPC].type != ModContent.NPCType<Miner>());
 			{
 				// When that happens, we can set the state of our UserInterface to null, thereby closing this UIState. This will trigger OnDeactivate above.
 				ModContent.GetInstance<Desiccation>().MinerUserInterface.SetState(null);
@@ -112,7 +113,7 @@ namespace Desiccation.UI
 					}
 					tickPlayed = true;
 					Main.LocalPlayer.mouseInterface = true;
-					if (Main.mouseLeftRelease && Main.mouseLeft && Main.LocalPlayer.CanBuyItem(lightPrice, -1) && ItemLoader.PreReforge(_vanillaItemSlot.Item))
+					if (Main.mouseLeftRelease && Main.mouseLeft && PlayerData.MyPlayer.CanBuyItem(lightPrice, -1) && ItemLoader.PreReforge(_vanillaItemSlot.Item))
 					{
 						Main.LocalPlayer.BuyItem(lightPrice, -1);
 						bool favorited = _vanillaItemSlot.Item.favorited;
@@ -148,8 +149,6 @@ namespace Desiccation.UI
 				{
 					string message = "Place a pickaxe here to reforge it to 'Light'";
 					ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, Main.fontMouseText, message, new Vector2(slotX + 56, slotY + 5), new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, Vector2.Zero, Vector2.One, -1f, 2f);
-					//const int slotX = 50; //from left
-					//const int slotY = 270; //from top
 				}
 			}
 		}

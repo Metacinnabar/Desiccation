@@ -33,7 +33,7 @@ namespace Desiccation.UI
 				"Direwolf420 - Help with several code problems. Thx!\n" +
 				"AbsoluteAquarian - Varius help with code problems. Thx alot!\n\n" +
 				"- Small Helpers\n" +
-				"Overhaul for the catergiritation of configuration and unload errors\n" +
+				"Overhaul for the categorisation of config, and unload errors\n" +
 				"Darthmoth - Desiccation logo generator (without edits)\n" +
 				"Itorius - Help with weighted inventory\n\n" +
 				"- Patrons\n" +

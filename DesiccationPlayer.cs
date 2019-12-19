@@ -14,7 +14,7 @@ namespace Desiccation
 	public class DesiccationPlayer : ModPlayer
 	{
 		#region Fields
-		private Dictionary<int, int> itemToMusicReference;
+		private Dictionary<int, int> itemToMusicValue;
 		private bool teamLoaded;
 		private bool teamChanged;
 		private int teamInt;
@@ -24,7 +24,7 @@ namespace Desiccation
 		public override void Initialize()
 		{
 			FieldInfo itemToMusicField = typeof(SoundLoader).GetField("itemToMusic", BindingFlags.Static | BindingFlags.NonPublic);
-			itemToMusicReference = (Dictionary<int, int>)itemToMusicField.GetValue(null);
+			itemToMusicValue = (Dictionary<int, int>)itemToMusicField.GetValue(null);
 		}
 
 		public override void UpdateVanityAccessories()
@@ -40,21 +40,9 @@ namespace Desiccation
 				{
 					Main.musicBox2 = item.type - ItemID.MusicBoxSnow + 13;
 				}
-				if (item.type == ItemID.MusicBoxMushrooms)
-				{
-					Main.musicBox2 = 27;
-				}
 				if (item.type >= ItemID.MusicBoxPumpkinMoon && item.type <= ItemID.MusicBoxFrostMoon)
 				{
 					Main.musicBox2 = item.type - ItemID.MusicBoxPumpkinMoon + 28;
-				}
-				if (item.type == ItemID.MusicBoxUndergroundCrimson)
-				{
-					Main.musicBox2 = 31;
-				}
-				if (item.type == ItemID.MusicBoxLunarBoss)
-				{
-					Main.musicBox2 = 32;
 				}
 				if (item.type >= ItemID.MusicBoxMartians && item.type <= ItemID.MusicBoxHell)
 				{
@@ -64,17 +52,27 @@ namespace Desiccation
 				{
 					Main.musicBox2 = item.type - ItemID.MusicBoxTowers + 36;
 				}
-				if (item.type == ItemID.MusicBoxSandstorm)
+				switch (item.type)
 				{
-					Main.musicBox2 = 38;
+					case ItemID.MusicBoxMushrooms:
+						Main.musicBox2 = 27;
+						break;
+					case ItemID.MusicBoxUndergroundCrimson:
+						Main.musicBox2 = 31;
+						break;
+					case ItemID.MusicBoxLunarBoss:
+						Main.musicBox2 = 32;
+						break;
+					case ItemID.MusicBoxSandstorm:
+						Main.musicBox2 = 38;
+						break;
+					case ItemID.MusicBoxDD2:
+						Main.musicBox2 = 39;
+						break;
 				}
-				if (item.type == ItemID.MusicBoxDD2)
+				if (itemToMusicValue.ContainsKey(item.type))
 				{
-					Main.musicBox2 = 39;
-				}
-				if (itemToMusicReference.ContainsKey(item.type))
-				{
-					Main.musicBox2 = itemToMusicReference[item.type];
+					Main.musicBox2 = itemToMusicValue[item.type];
 				}
 			}
 		}

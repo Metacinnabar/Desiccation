@@ -56,6 +56,18 @@ namespace Desiccation.Items
 					}
 				}
 			}
+
+			if (ModContent.GetInstance<DesiccationClientsideConfig>().NoFavoriteTooltips)
+			{
+				tooltips.RemoveAll(delegate (TooltipLine tt)
+				{
+					if (tt.mod == "Terraria")
+					{
+						return tt.Name.StartsWith("Favorite");
+					}
+					return false;
+				});
+			}
 		}
 
 		public override bool CanPickup(Item item, Player player)

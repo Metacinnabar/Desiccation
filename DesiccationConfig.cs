@@ -67,6 +67,11 @@ namespace Desiccation
 		[Tooltip("If true, tools with have tool damage, not melee, and they wont have a '%' in their tool power. True by default")]
 		[DefaultValue(true)]
 		public bool ToolTooltipRework;
+
+		[Label("No Favorite Tooltips")]
+		[Tooltip("If true, favorite tooltips wont be displayed. True by default")]
+		[DefaultValue(true)]
+		public bool NoFavoriteTooltips;
 	}
 
 	[Label("Global Config")]

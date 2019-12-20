@@ -25,11 +25,13 @@ namespace Desiccation
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan
+		//TODO: Squirels from trees
 		//TODO: Add mechanics to readme & desc.
+		//TODO: Shift z shows extra stats
 		//TODO: Overequipping
 		//TODO: Name change in player select menu
 		//TODO: Fix multitool sprites
-		//TODO: Create desiccation email, youtube and twitter
+		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 
 		private const string releaseSuffix = "Beta Release!";
 

@@ -1,4 +1,5 @@
 ﻿using Desiccation.DUtils;
+using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;

@@ -39,6 +39,20 @@ namespace Desiccation
 		[Increment(1)]
 		[DefaultValue(2)]
 		public int RespawnTimerDecimal;
+
+		[Header("Accessories Slots")]
+
+		[Label("Vanity Music Boxes")]
+		[Tooltip("Making music boxes work in the vanity slots. False to keep them the same, true to be able to have music boxes play in vanity slots. True by default")]
+		[DefaultValue(true)]
+		public bool VanityMusicBoxes;
+
+		[Header("World Entry")]
+
+		[Label("Welcome Message")]
+		[Tooltip("Having a welcome message on world entery. False for no message, true for message. True by default")]
+		[DefaultValue(true)]
+		public bool WelcomeMessage;
 	}
 
 	[Label("Global Config")]

@@ -20,7 +20,6 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Skip notice on elder crystal via reflection
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan
@@ -83,6 +82,12 @@ namespace Desiccation
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
+			Main.OnPreDraw += OnPreDrawEvent;
+		}
+
+		private void OnPreDrawEvent(GameTime gameTime)
+		{
+			
 		}
 
 		public override void Unload()

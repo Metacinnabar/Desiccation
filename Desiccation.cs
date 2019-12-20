@@ -26,6 +26,7 @@ namespace Desiccation
 		//TODO: Add mechanics to readme & desc.
 		//TODO: Overequipping
 		//TODO: Remove fav tooltip
+		//TODO: SKip notice on elder crystal via reflection
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan

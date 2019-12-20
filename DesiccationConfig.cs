@@ -71,5 +71,12 @@ namespace Desiccation
 		[Tooltip("If true, you will go slower with a full inventory, and faster with an empty inventory.")]
 		[DefaultValue(true)]
 		public bool WeightedInventory;
+
+		[Header("Events")]
+
+		[Label("OOA Skip Waiting Time")]
+		[Tooltip("If true, you will be able to skip the waiting time between waves of the OOA. True by default.")]
+		[DefaultValue(true)]
+		public bool OOAWaitingTimeSkip;
 	}
 }

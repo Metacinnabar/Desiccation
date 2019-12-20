@@ -283,30 +283,36 @@ namespace Desiccation.DUtils
 		/// Gets the value of bardResource from ThoriumPlayer.
 		/// </summary>
 		/// <returns>returns the bardResource value if Thorium is enabled, otherwise returns 0.</returns>
-		public static int Music()
+		public static int MyMusic
 		{
-			if (Mods.Thorium != null)
+			get
 			{
-				FieldInfo MusicReflection = ThoriumPlayer.GetType().GetField("bardResource", BindingFlags.Public | BindingFlags.Instance);
-				int Music = (int)MusicReflection.GetValue(ThoriumPlayer);
-				return Music;
+				if (Mods.Thorium != null)
+				{
+					FieldInfo MusicReflection = ThoriumPlayer.GetType().GetField("bardResource", BindingFlags.Public | BindingFlags.Instance);
+					int Music = (int)MusicReflection.GetValue(ThoriumPlayer);
+					return Music;
+				}
+				return 0;
 			}
-			return 0;
 		}
 
 		/// <summary>
 		/// Gets the value of bardResourceMax from ThoriumPlayer.
 		/// </summary>
 		/// <returns>returns the bardResourceMax value if Thorium is enabled, otherwise returns 0.</returns>
-		public static int MaxMusic()
+		public static int MyMaxMusic
 		{
-			if (Mods.Thorium != null)
+			get
 			{
-				FieldInfo MaxMusicReflection = ThoriumPlayer.GetType().GetField("bardResourceMax", BindingFlags.Public | BindingFlags.Instance);
-				int MaxMusic = (int)MaxMusicReflection.GetValue(ThoriumPlayer);
-				return MaxMusic;
+				if (Mods.Thorium != null)
+				{
+					FieldInfo MaxMusicReflection = ThoriumPlayer.GetType().GetField("bardResourceMax", BindingFlags.Public | BindingFlags.Instance);
+					int MaxMusic = (int)MaxMusicReflection.GetValue(ThoriumPlayer);
+					return MaxMusic;
+				}
+				return 0;
 			}
-			return 0;
 		}
 
 		/// <summary>

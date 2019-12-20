@@ -58,6 +58,13 @@ namespace Desiccation
 		[Tooltip("Having eerie message appear in chat and random times. False for no messages, true for messages. True by default")]
 		[DefaultValue(true)]
 		public bool EerieMessages;
+
+		[Header("Tooltips")]
+
+		[Label("Tool Tooltip Changes")]
+		[Tooltip("If true, tools with have tool damage, not melee, and they wont have a '%' in their tool power. True by default")]
+		[DefaultValue(true)]
+		public bool ToolTooltipRework;
 	}
 
 	[Label("Global Config")]
@@ -85,6 +92,11 @@ namespace Desiccation
 		[Tooltip("If true, ebonsand, crimsand and pearlsand balls from a sandgun will give debuff to enemies. True by default.")]
 		[DefaultValue(true)]
 		public bool SandgunProjectileChanges;
+
+		[Label("Resource Pickup")]
+		[Tooltip("If true, resources will not pick up if they are not needed. True by default")]
+		[DefaultValue(true)]
+		public bool ResourcePickup;
 
 		[Header("Town NPC Shop Additions")]
 

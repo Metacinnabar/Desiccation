@@ -63,17 +63,6 @@ namespace Desiccation.DUtils
 	=> ModContent.GetTexture("Desiccation/UI/Textures/Blank");
 
 		/// <summary>
-		/// Used for generating random numbers.
-		/// </summary>
-		/// <param name="MinNumber"></param>
-		/// <param name="MaxNumber"></param>
-		/// <returns>Returns an random integer from >= min to < max.</returns>
-		public static int RandomInt(int MinNumber, int MaxNumber)
-		{
-			return Main.rand.Next(MinNumber, MaxNumber);
-		}
-
-		/// <summary>
 		/// Blends the two colors with the given bias towards "toColor". Made by direwolf420
 		/// </summary>
 		/// <param name="fromColor">The original color.</param>
@@ -181,6 +170,18 @@ namespace Desiccation.DUtils
 		public static bool IsPlayerName(string name)
 		{
 			if (PlayerData.MyName == name)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool RandomFrom1OutOf(int number)
+		{
+			if (Main.rand.Next(1, number) == number)
 			{
 				return true;
 			}

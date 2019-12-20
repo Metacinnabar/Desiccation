@@ -85,5 +85,24 @@ namespace Desiccation
 		[Tooltip("If true, ebonsand, crimsand and pearlsand balls from a sandgun will give debuff to enemies. True by default.")]
 		[DefaultValue(true)]
 		public bool SandgunProjectileChanges;
+
+		[Header("Town NPC Shop Additions")]
+
+		[Label("Merchant - Target Dummy")]
+		[Tooltip("If true, the merchant will sell target dummies when EoC has been defeated. True by default.")]
+		[DefaultValue(true)]
+		public bool Merchant_TargetDummy;
+
+		[Label("Wizard - Ancient Manipulator")]
+		[Tooltip("If true, the wizard will sell ancient manipulators when the Lunatic Cultist has been defeated. True by default.")]
+		[DefaultValue(true)]
+		public bool Wizard_AncientManipulator;
+
+		[Header("NPC Drop Additions")]
+
+		[Label("Bunny - FuzzyCarrot")]
+		[Tooltip("If true, bunnies will have 1/150 chance of dropping a fuzzy carrot. True by default.")]
+		[DefaultValue(true)]
+		public bool Bunny_FuzzyCarrot;
 	}
 }

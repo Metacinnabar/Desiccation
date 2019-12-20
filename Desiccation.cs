@@ -33,9 +33,6 @@ namespace Desiccation
 		//TODO: Fix multitool sprites
 
 		private const string releaseSuffix = "Beta Release!";
-		public Desiccation()
-		{
-		}
 
 		#region Fields
 		private Texture2D vanillaLogoDay;
@@ -59,6 +56,9 @@ namespace Desiccation
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
 		#endregion
+		public Desiccation()
+		{
+		}
 
 		#region tModLoader Hooks
 		public override void Load()

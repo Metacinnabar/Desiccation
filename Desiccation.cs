@@ -8,6 +8,7 @@ using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -87,7 +88,12 @@ namespace Desiccation
 
 		private void OnPreDrawEvent(GameTime gameTime)
 		{
-			
+			if (tModLoaderVersion >= new Version(0, 11, 6))
+			{
+				Type DD2Event = typeof(ModLoader).Assembly.GetType("Terraria.GameContent.Events.DD2Event");
+				FieldInfo TimeLeftBetweenWavesTimer = DD2Event.GetField("TimeLeftBetweenWavesTimer", BindingFlags.Static | BindingFlags.NonPublic);
+				TimeLeftBetweenWavesTimer.SetValue(DD2Event, string.Format("Right-Click to Skip: {0}", Terraria.GameContent.Events.DD2Event.TimeLeftBetweenWaves / 60));
+			}
 		}
 
 		public override void Unload()
@@ -106,6 +112,7 @@ namespace Desiccation
 			#endregion
 			Main.OnTick -= OnTickEvent;
 			Main.OnPostDraw -= OnPostDrawEvent;
+			Main.OnPreDraw -= OnPreDrawEvent;
 			unloadCalled = true;
 		}
 

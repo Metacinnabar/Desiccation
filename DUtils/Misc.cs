@@ -143,7 +143,7 @@ namespace Desiccation.DUtils
 			Type Interface = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.Interface");
 			Type UIInfoMessage = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInfoMessage");
 			FieldInfo infoMessage = Interface.GetField("infoMessage", BindingFlags.Static | BindingFlags.NonPublic);
-			object infoMessageValue = (UIElement)infoMessage.GetValue(null);
+			UIElement infoMessageValue = (UIElement)infoMessage.GetValue(null);
 			MethodInfo Show = UIInfoMessage.GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
 			if (Show != null)
 			{

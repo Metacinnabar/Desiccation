@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace Desiccation.Items.Miner
 {
-	public class Pan : ModItem
+	public class SiftingPan : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Found in the ruins of a cave.\nUse in water to have a chance to pan for ores.");
+			Tooltip.SetDefault("Use in water to have a chance to sift for ores.");
 		}
 
 		public override void SetDefaults()

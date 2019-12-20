@@ -79,6 +79,7 @@ namespace Desiccation
 
 		public override void OnEnterWorld(Player player)
 		{
+			BackgroundReReplacing(173, 172, 171);
 			GetTeamValues();
 			if (MyPlayer.team != 0 && !teamChanged)
 			{
@@ -87,12 +88,11 @@ namespace Desiccation
 				teamChanged = true;
 			}
 			Misc.Chat("Thanks for playing with Desiccation " + MyName + ". Remeber to check out the config menu!", true, Color.CornflowerBlue.R, Color.CornflowerBlue.G, Color.CornflowerBlue.B);
-			BackgroundReReplacing(173, 172, 171);
 		}
 
 		private void GetTeamValues()
 		{
-			teamString = DesiccationClientsideConfig.PvPTeam;
+			teamString = ModContent.GetInstance<DesiccationClientsideConfig>().PvPTeam;
 			switch (teamString)
 			{
 				case "None":
@@ -116,7 +116,7 @@ namespace Desiccation
 			}
 		}
 
-		private void BackgroundReReplacing(int front, int middle, int back)
+		internal void BackgroundReReplacing(int front, int middle, int back)
 		{
 			if (!Main.dedServ)
 			{
@@ -144,7 +144,7 @@ namespace Desiccation
 
 		public override void PostUpdateMiscEffects()
 		{
-			if (DesiccationGlobalConfig.WeightedInventory)
+			if (ModContent.GetInstance<DesiccationGlobalConfig>().WeightedInventory)
 			{
 				int emptySlots = MyPlayer.inventory.Count(x => !x.IsAir);
 				float speedAdd = 0.33f * (emptySlots - 29f) / 29f;

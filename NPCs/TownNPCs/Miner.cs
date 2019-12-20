@@ -193,7 +193,7 @@ namespace Desiccation.NPCs.TownNPCs
 		{
 			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Chisel>());
 			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Pan>());
+			shop.item[nextSlot].SetDefaults(ModContent.ItemType<SiftingPan>());
 			nextSlot++;
 			shop.item[nextSlot].SetDefaults(88);
 			nextSlot++;

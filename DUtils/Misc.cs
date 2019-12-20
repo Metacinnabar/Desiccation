@@ -69,7 +69,9 @@ namespace Desiccation.DUtils
 		/// <param name="MaxNumber"></param>
 		/// <returns>Returns an random integer from >= min to < max.</returns>
 		public static int RandomInt(int MinNumber, int MaxNumber)
-			=> Main.rand.Next(MinNumber, MaxNumber);
+		{
+			return Main.rand.Next(MinNumber, MaxNumber);
+		}
 
 		/// <summary>
 		/// Blends the two colors with the given bias towards "toColor". Made by direwolf420
@@ -78,7 +80,9 @@ namespace Desiccation.DUtils
 		/// <param name="toColor">The color being blended towards.</param>
 		/// <param name="fadePercent">The percent bias towards "toColor". Range[0, 1]</param>
 		public static Color FadeBetween(Color fromColor, Color toColor, float fadePercent)
-			=> fadePercent == 0f ? fromColor : new Color(fromColor.ToVector4() * (1f - fadePercent) + toColor.ToVector4() * fadePercent);
+		{
+			return fadePercent == 0f ? fromColor : new Color(fromColor.ToVector4() * (1f - fadePercent) + toColor.ToVector4() * fadePercent);
+		}
 
 		/// <summary>
 		/// 
@@ -86,7 +90,9 @@ namespace Desiccation.DUtils
 		/// <param name="rectangle">The rectangle.</param>
 		/// <returns></returns>
 		public static bool CountainsMouse(this Rectangle rectangle)
-			=> rectangle.Contains(new Point(Main.mouseX, Main.mouseY)) ? true : false;
+		{
+			return rectangle.Contains(new Point(Main.mouseX, Main.mouseY)) ? true : false;
+		}
 
 		/// <summary>
 		/// Sends a message to the chat. Examples: Chat("message") would send to everone on the server. Chat("message", false) would send just to the player.
@@ -170,6 +176,18 @@ namespace Desiccation.DUtils
 				}
 			}
 			return false;
+		}
+
+		public static bool IsPlayerName(string name)
+		{
+			if (PlayerData.MyName == name)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 }

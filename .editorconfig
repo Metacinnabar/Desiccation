@@ -2,3 +2,6 @@
 
 # CS0642: Possible mistaken empty statement
 dotnet_diagnostic.CS0642.severity = none
+
+# IDE0051: Remove unused private members
+dotnet_diagnostic.IDE0051.severity = none

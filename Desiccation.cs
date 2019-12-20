@@ -5,19 +5,14 @@ using Desiccation.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
-using ReLogic.OS;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
 using Terraria;
-using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.UI.Chat;
-using Terraria.Utilities;
-using static Desiccation.DUtils.Mods;
 using static Desiccation.DUtils.PlayerData;
 #endregion
 
@@ -25,15 +20,16 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Config for main menu changes
-		//TODO: Switch for Vanity Music Boxes
-		//TODO: Create desiccation email, youtube and twitter
-		//TODO: Add mechanics to readme
-		//TODO: Overequipping
-		//TODO: Add server owner for global config.
 		//TODO: Add config for most things
+		//TODO: Add server owner for global config.
+		//TODO: Create desiccation email, youtube and twitter
+		//TODO: Add mechanics to readme & desc.
+		//TODO: Overequipping
 		//TODO: Remove fav tooltip
 		//TODO: discord tags for credits
+		//TODO: Scrap Miner
+		//TODO: Rework sifting pan
+		//TODO: Fix multitool sprites
 
 		private const string releaseSuffix = "Beta Release!";
 		public Desiccation()
@@ -51,7 +47,7 @@ namespace Desiccation
 		internal UserInterface MinerUserInterface;
 		internal static CreditMenu creditMenuUI;
 		private bool unloadCalled;
-		private bool titleReplaced;
+		private readonly bool titleReplaced;
 		private bool isInVersionRectangle;
 		private bool isInDiscordRectangle;
 		private bool isInGithubRectangle;
@@ -66,7 +62,7 @@ namespace Desiccation
 		#region tModLoader Hooks
 		public override void Load()
 		{
-			#region Main Menu Changes
+			#region Main Menu Backups
 			vanillaFrontMainMenuBackground = Main.backgroundTexture[173];
 			vanillaMiddleMainMenuBackground = Main.backgroundTexture[172];
 			vanillaBackMainMenuBackground = Main.backgroundTexture[171];
@@ -80,8 +76,6 @@ namespace Desiccation
 			#endregion
 			if (!Main.dedServ)
 			{
-				Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
-				Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationLogo");
 				MinerUserInterface = new UserInterface();
 			}
 			unloadCalled = false;
@@ -127,9 +121,9 @@ namespace Desiccation
 			{
 				layers.Insert(deathText, new LegacyGameInterfaceLayer("Desiccation: Respawn Timer", delegate
 				{
-					if (MyPlayer.dead)
+					if (MyPlayer.dead && ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimer)
 					{
-						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f1}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f1}", MyPlayer.respawnTimer / 60f)).X / 2f, (Main.screenHeight / 2 - 70)), MyPlayer.GetDeathAlpha(Color.Transparent));
+						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f)).X / 2f, (Main.screenHeight / 2 - 70)), MyPlayer.GetDeathAlpha(Color.Transparent));
 					}
 					return true;
 				},
@@ -145,14 +139,16 @@ namespace Desiccation
 
 		public override void PostSetupContent()
 		{
-			if (Census != null)
+			if (Mods.Census != null)
 			{
-				Census.Call("TownNPCCondition", ModContent.NPCType<Miner>(), "Have either a silver or tungsten pickaxe in your inventory, 1 gold in your inventory, and for the merchant to be housed.");
+				Mods.Census.Call("TownNPCCondition", ModContent.NPCType<Miner>(), "Have either a silver or tungsten pickaxe in your inventory, 1 gold in your inventory, and for the merchant to be housed.");
 			}
 		}
 
 		public override void UpdateMusic(ref int music, ref MusicPriority priority)
 		{
+			#region Title Messages
+			/*
 			string titlePrefix;
 			WeightedRandom<string> titleSuffix = new WeightedRandom<string>();
 			if (titleReplaced == false)
@@ -162,7 +158,8 @@ namespace Desiccation
 				titleSuffix.Add("Still wating...");
 				Platform.Current.SetWindowUnicodeTitle(Main.instance.Window, titlePrefix + " " + titleSuffix);
 				titleReplaced = true;
-			}
+			}*/
+			#endregion
 		}
 
 		public override void PreSaveAndQuit()
@@ -178,23 +175,47 @@ namespace Desiccation
 			{
 				fadePercent += MathHelper.ToRadians(1.7f * 360f / 60f);
 
-				if (Overhaul == null)
+				if (Mods.Overhaul == null)
 				{
-					Main.dayTime = true;
-					Main.time = 40000;
-					Main.sunModY = 5;
-					for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
+					if (ModContent.GetInstance<DesiccationClientsideConfig>().MainMenuDesert)
 					{
-						Main.cloudTexture[vanillaCloudTextureID] = Misc.BlankTexture;
+						Main.dayTime = true;
+						Main.time = 40000;
+						Main.sunModY = 5;
+
+						if (!Main.dedServ)
+						{
+							Misc.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
+							Misc.MainMenuBackgroundSwap(20, 21, 22);
+							for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
+							{
+								Main.cloudTexture[vanillaCloudTextureID] = Misc.BlankTexture;
+							}
+							Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
+							Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationDesertLogo");
+						}
 					}
-					Misc.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
-					Misc.MainMenuBackgroundSwap(20, 21, 22);
-					return;
-				}
-				if (Main.menuMode == 10006 && !unloadCalled)
-				{
-					Unload();
-					return;
+					else
+					{
+						if (!Main.dedServ)
+						{
+							Main.logoTexture = vanillaLogoDay;
+							Main.logo2Texture = vanillaLogoNight;
+							Main.backgroundTexture[0] = vanillaSkyBackground;
+							for (int i = 0; i < vanillaCloud.Length; i++)
+							{
+								Main.cloudTexture[i] = vanillaCloud[i];
+							}
+							Main.backgroundTexture[173] = vanillaFrontMainMenuBackground;
+							Main.backgroundTexture[172] = vanillaMiddleMainMenuBackground;
+							Main.backgroundTexture[171] = vanillaBackMainMenuBackground;
+						}
+					}
+					if (Main.menuMode == 10006 && !unloadCalled)
+					{
+						Unload();
+						return;
+					}
 				}
 			}
 		}

@@ -8,10 +8,9 @@ namespace Desiccation
 	{
 		public override void PreUpdate()
 		{
-			if (Misc.RandomInt(1, 100000) == 1)
+			if (Misc.RandomInt(1, 100000) == 1 && ModContent.GetInstance<DesiccationClientsideConfig>().EerieMessages)
 			{
-				const int messageCount = 50;
-				switch (Main.rand.Next(1, messageCount))
+				switch (Main.rand.Next(1, 50))
 				{
 					case 1:
 						Misc.Chat("The shadows grow...", true);

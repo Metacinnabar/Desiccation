@@ -47,12 +47,17 @@ namespace Desiccation
 		[DefaultValue(true)]
 		public bool VanityMusicBoxes;
 
-		[Header("World Entry")]
+		[Header("Messages")]
 
 		[Label("Welcome Message")]
-		[Tooltip("Having a welcome message on world entery. False for no message, true for message. True by default")]
+		[Tooltip("Having a welcome message on world entry. False for no message, true for message. True by default")]
 		[DefaultValue(true)]
 		public bool WelcomeMessage;
+
+		[Label("Eerie Messages")]
+		[Tooltip("Having eerie message appear in chat and random times. False for no messages, true for messages. True by default")]
+		[DefaultValue(true)]
+		public bool EerieMessages;
 	}
 
 	[Label("Global Config")]

@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,27 +16,27 @@ namespace Desiccation.Items.KingBlizzard
 		{
 			item.damage = 47;
 			item.melee = true;
-			item.width = 40;
-			item.height = 40;
+			item.Size = new Vector2(40);
 			item.useTime = 25;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 11;
-			item.value = Item.buyPrice(gold: 1);
-			item.rare = 2;
+			item.value = Item.sellPrice(gold: 3);
+			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+			item.useTurn = true;
 		}
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			if (DUtils.Misc.RandomInt(0, 2) == 0)
+			if (DUtils.Misc.RandomFrom1OutOf(2))
 			{
-				target.AddBuff(32, 900);
+				target.AddBuff(BuffID.Slow, 900);
 			}
-			if (DUtils.Misc.RandomInt(0, 11) == 0)
+			if (DUtils.Misc.RandomFrom1OutOf(10))
 			{
-				target.AddBuff(47, 180);
+				target.AddBuff(BuffID.Frozen, 180);
 			}
 		}
 	}

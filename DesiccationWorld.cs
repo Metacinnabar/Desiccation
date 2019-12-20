@@ -8,7 +8,7 @@ namespace Desiccation
 	{
 		public override void PreUpdate()
 		{
-			if (Misc.RandomInt(1, 100000) == 1 && ModContent.GetInstance<DesiccationClientsideConfig>().EerieMessages)
+			if (Misc.RandomFrom1OutOf(100000) && ModContent.GetInstance<DesiccationClientsideConfig>().EerieMessages)
 			{
 				switch (Main.rand.Next(1, 50))
 				{

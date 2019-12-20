@@ -32,7 +32,7 @@ namespace Desiccation.Items.OOA.Ogre
 
 		public override void OpenBossBag(Player player)
 		{
-			player.QuickSpawnItem(ItemID.DefenderMedal, DUtils.Misc.RandomInt(6, 10));
+			player.QuickSpawnItem(ItemID.DefenderMedal, Main.rand.Next(6, 10));
 			player.QuickSpawnItem(ModContent.ItemType<EtherianJavelin>(), 1);
 		}
 	}
@@ -65,7 +65,7 @@ namespace Desiccation.Items.OOA.Ogre
 
 		public override void OpenBossBag(Player player)
 		{
-			player.QuickSpawnItem(ItemID.DefenderMedal, DUtils.Misc.RandomInt(6, 10));
+			player.QuickSpawnItem(ItemID.DefenderMedal, Main.rand.Next(6, 10));
 			player.QuickSpawnItem(ModContent.ItemType<EtherianJavelin>(), 1);
 		}
 	}

@@ -20,16 +20,16 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Create desiccation email, youtube and twitter
-		//TODO: Add mechanics to readme & desc.
-		//TODO: Overequipping
 		//TODO: Remove fav tooltip
-		//TODO: SKip notice on elder crystal via reflection
+		//TODO: Skip notice on elder crystal via reflection
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan
+		//TODO: Add mechanics to readme & desc.
+		//TODO: Overequipping
 		//TODO: Name change in player select menu
 		//TODO: Fix multitool sprites
+		//TODO: Create desiccation email, youtube and twitter
 
 		private const string releaseSuffix = "Beta Release!";
 

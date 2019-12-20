@@ -78,5 +78,12 @@ namespace Desiccation
 		[Tooltip("If true, you will be able to skip the waiting time between waves of the OOA. True by default.")]
 		[DefaultValue(true)]
 		public bool OOAWaitingTimeSkip;
+
+		[Header("Items")]
+
+		[Label("Sandgun Projectile Changes")]
+		[Tooltip("If true, ebonsand, crimsand and pearlsand balls from a sandgun will give debuff to enemies. True by default.")]
+		[DefaultValue(true)]
+		public bool SandgunProjectileChanges;
 	}
 }

@@ -1,5 +1,7 @@
+using Desiccation.DUtils;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
+using static Desiccation.DUtils.PlayerData;
 
 namespace Desiccation
 {
@@ -116,5 +118,18 @@ namespace Desiccation
 		[Tooltip("If true, bunnies will have 1/150 chance of dropping a fuzzy carrot. True by default.")]
 		[DefaultValue(true)]
 		public bool Bunny_FuzzyCarrot;
+
+		public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
+		{
+			if (Misc.IsPlayerServerOwner(MyPlayer))
+			{
+				return true;
+			}
+			else
+			{
+				message = "You are not the server host, and thus can't change global configs.";
+				return false;
+			}
+		}
 	}
 }

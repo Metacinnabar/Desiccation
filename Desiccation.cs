@@ -20,8 +20,6 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Add config for most things
-		//TODO: Add server owner for global config.
 		//TODO: Create desiccation email, youtube and twitter
 		//TODO: Add mechanics to readme & desc.
 		//TODO: Overequipping
@@ -30,6 +28,7 @@ namespace Desiccation
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan
+		//TODO: Name change in player select menu
 		//TODO: Fix multitool sprites
 
 		private const string releaseSuffix = "Beta Release!";

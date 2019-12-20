@@ -1,9 +1,14 @@
 using Desiccation.DUtils;
 using Desiccation.Items.Misc;
 using Desiccation.Items.Werewolf;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI.Chat;
 
 namespace Desiccation.NPCs
 {

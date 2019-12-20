@@ -20,7 +20,6 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Remove fav tooltip
 		//TODO: Skip notice on elder crystal via reflection
 		//TODO: discord tags for credits
 		//TODO: Scrap Miner
@@ -57,6 +56,7 @@ namespace Desiccation
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
 		#endregion
+
 		public Desiccation()
 		{
 		}

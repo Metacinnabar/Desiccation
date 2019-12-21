@@ -15,5 +15,7 @@ namespace Desiccation
 				DD2Event.TimeLeftBetweenWaves = 0;
 			}
 		}
+
+		public override void 
 	}
 }

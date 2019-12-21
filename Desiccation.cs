@@ -20,18 +20,32 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Scrap Miner
-		//TODO: Rework sifting pan
-		//TODO: Rework overbright torch
-		//TODO: Squirels from trees
+		//--Stuff for GoodPro712 to do:
+		//TODO: Cactie deal damage but no knockback
+		//TODO: Search for player names and worlds
 		//TODO: Shift z shows extra stats
+		//TODO: Add mana stats to player hovering text in multiplayer
+		//TODO: Piggybank UI when nurse npc chat is active
+		//TODO: Show info on vanity accessories. Code for this in antisocial
+		//TODO: Statue enemies drop loot if requirements are met
+		//0.11.6 TODO: All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
-		//TODO: Name change in player select menu
-		//TODO: Multitool Rework
-		//TODO: Fix multitool sprites
+		//TODO: Quick stack ammo and coins
+		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell
+		//TODO: Able to hold right click to open bags and crates etc
 		//TODO: discord tags for credits
-		//TODO: Add mechanics to readme & desc
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
+
+		//--Stuff for Lemmy to do:
+		//TODO: Make squirels fall out of trees in random ammounts and sometimes none
+		//TODO: Rework sifting pan. the stats are in #stating
+		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
+
+		//--Stuff for Reb to do:
+		//TODO: Banner rework? stats in the checklist google doc.
+
+		//--Stuff for Nobody to do:
+		//TODO: Constructer potion. stats pinned in #stating
 
 		private const string releaseSuffix = "Beta Release!";
 

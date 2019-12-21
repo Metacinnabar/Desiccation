@@ -37,7 +37,7 @@ namespace Desiccation
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 
 		//--Stuff for Lemmy to do:
-		//TODO: Make squirels fall out of trees in random ammounts and sometimes none
+		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Rework sifting pan. the stats are in #stating
 		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
 

@@ -1,7 +1,6 @@
 #region Usings
 using Desiccation.DUtils;
-using Desiccation.NPCs.TownNPCs;
-using Desiccation.UI;
+using Desiccation.UI.UIStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -21,15 +20,17 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: discord tags for credits
 		//TODO: Scrap Miner
 		//TODO: Rework sifting pan
+		//TODO: Rework overbright torch
 		//TODO: Squirels from trees
-		//TODO: Add mechanics to readme & desc.
 		//TODO: Shift z shows extra stats
 		//TODO: Overequipping
 		//TODO: Name change in player select menu
+		//TODO: Multitool Rework
 		//TODO: Fix multitool sprites
+		//TODO: discord tags for credits
+		//TODO: Add mechanics to readme & desc
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 
 		private const string releaseSuffix = "Beta Release!";
@@ -42,7 +43,6 @@ namespace Desiccation
 		public Texture2D vanillaMiddleMainMenuBackground;
 		public Texture2D vanillaBackMainMenuBackground;
 		public Texture2D[] vanillaCloud = new Texture2D[22];
-		internal UserInterface MinerUserInterface;
 		internal static CreditMenu creditMenuUI;
 		private bool unloadCalled;
 		private readonly bool titleReplaced;
@@ -55,6 +55,8 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
+		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
+		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
 		#endregion
 
 		public Desiccation()
@@ -76,10 +78,6 @@ namespace Desiccation
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
-			if (!Main.dedServ)
-			{
-				MinerUserInterface = new UserInterface();
-			}
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
@@ -108,18 +106,6 @@ namespace Desiccation
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
-			int inventory = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
-			if (inventory != -1)
-			{
-				layers.Insert(inventory, new LegacyGameInterfaceLayer("Desiccation: Miner Light UI",
-					delegate
-					{
-						MinerUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
-			}
 			int deathText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Death Text"));
 			if (deathText != -1)
 			{
@@ -127,25 +113,32 @@ namespace Desiccation
 				{
 					if (MyPlayer.dead && ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimer)
 					{
-						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f)).X / 2f, (Main.screenHeight / 2 - 70)), MyPlayer.GetDeathAlpha(Color.Transparent));
+						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f)).X / 2f, Main.screenHeight / 2 - 70), MyPlayer.GetDeathAlpha(Color.Transparent));
 					}
 					return true;
 				},
 					InterfaceScaleType.UI)
 				);
 			}
-		}
-
-		public override void UpdateUI(GameTime gameTime)
-		{
-			MinerUserInterface?.Update(gameTime);
-		}
-
-		public override void PostSetupContent()
-		{
-			if (Mods.Census != null)
+			int mouseText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+			if (mouseText != -1)
 			{
-				Mods.Census.Call("TownNPCCondition", ModContent.NPCType<Miner>(), "Have either a silver or tungsten pickaxe in your inventory, 1 gold in your inventory, and for the merchant to be housed.");
+				layers.Insert(mouseText, new LegacyGameInterfaceLayer("Desiccation: Player Name", delegate
+				{
+					if (!Main.gameMenu && ClientConfig.NameInfo)
+					{
+						string text = $"{MyName} in {Main.worldName}";
+						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
+						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X - 10, (int)size.Y + 16);
+						if (rectangle.CountainsMouse())
+						{
+							Main.hoverItemName = "Type in chat to change names. '/playername NEW NAME' to change player name, '/worldname NEW NAME' to change world name.";
+						}
+					}
+					return true;
+				},
+					InterfaceScaleType.UI)
+				);
 			}
 		}
 

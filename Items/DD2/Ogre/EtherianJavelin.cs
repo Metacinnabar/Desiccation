@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Desiccation.Items.OOA.Ogre
+namespace Desiccation.Items.DD2.Ogre
 {
 	public class EtherianJavelin : ModItem
 	{
@@ -26,8 +26,6 @@ namespace Desiccation.Items.OOA.Ogre
 			item.knockBack = 2;
 			item.shoot = ModContent.ProjectileType<EtherianJavelinProjectile>();
 			item.shootSpeed = 12;
-
-
 			item.thrown = true;
 		}
 	}

@@ -31,13 +31,13 @@ namespace Desiccation.Projectiles.Markoth
 			Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 			//Sound
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
-			if (NPC.downedBoss1 && MyPlayer.ZoneRockLayerHeight && !NPC.AnyNPCs(NPCType<NPCs.Bosses.Markoth.Markoth>()))
+			if (NPC.downedBoss1 && MyPlayer.ZoneRockLayerHeight && !NPC.AnyNPCs(NPCType<NPCs.Markoth.Markoth>()))
 			{
 				Player player = new Player();
 				//Boss Sound
 				Main.PlaySound(SoundID.Roar, player.position, 0);
 				//Boss Spawn
-				NPC.SpawnOnPlayer(player.whoAmI, NPCType<NPCs.Bosses.Markoth.Markoth>());
+				NPC.SpawnOnPlayer(player.whoAmI, NPCType<NPCs.Markoth.Markoth>());
 			}
 		}
 		public override bool OnTileCollide(Vector2 oldVelocity)

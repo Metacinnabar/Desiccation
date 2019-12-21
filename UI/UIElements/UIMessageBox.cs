@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 
-namespace Desiccation.UI
+namespace Desiccation.UI.UIElements
 {
 	internal class UIMessageBox : UIPanel
 	{

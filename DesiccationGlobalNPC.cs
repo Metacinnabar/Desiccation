@@ -1,14 +1,8 @@
 using Desiccation.DUtils;
-using Desiccation.Items.Misc;
 using Desiccation.Items.Werewolf;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
 using Terraria;
-using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.UI.Chat;
 
 namespace Desiccation.NPCs
 {
@@ -16,16 +10,6 @@ namespace Desiccation.NPCs
 	{
 		public override void NPCLoot(NPC npc)
 		{
-			if (!npc.boss)
-			{
-				if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneBeach)
-				{
-					if (Misc.RandomFrom1OutOf(100))
-					{
-						Item.NewItem(npc.getRect(), ModContent.ItemType<SeaHeart>());
-					}
-				}
-			}
 			if (npc.type == NPCID.Bunny)
 			{
 				if (Misc.RandomFrom1OutOf(150) && ModContent.GetInstance<DesiccationGlobalConfig>().Bunny_FuzzyCarrot)

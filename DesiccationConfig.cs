@@ -72,6 +72,13 @@ namespace Desiccation
 		[Tooltip("If true, favorite tooltips wont be displayed. True by default")]
 		[DefaultValue(true)]
 		public bool NoFavoriteTooltips;
+
+		[Header("UI")]
+
+		[Label("Player Name & World Name")]
+		[Tooltip("If true, the player's name and world name will be displayed at the top of the screen. True by default")]
+		[DefaultValue(true)]
+		public bool NameInfo;
 	}
 
 	[Label("Global Config")]
@@ -85,6 +92,13 @@ namespace Desiccation
 		[Tooltip("If true, you will go slower with a full inventory, and faster with an empty inventory.")]
 		[DefaultValue(true)]
 		public bool WeightedInventory;
+
+		[Header("Multiplayer")]
+
+		[Label("Player Name Change")]
+		[Tooltip("If true, players can change their name. Default to true")]
+		[DefaultValue(true)]
+		public bool PlayerNameChange;
 
 		[Header("Events")]
 

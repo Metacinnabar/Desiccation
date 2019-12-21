@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -152,6 +153,18 @@ namespace Desiccation.DUtils
 					text, gotoMenu, null, "", null
 				});
 			}
+		}
+
+		public static UIElement UIInputTextField(string text)
+		{
+			//Doesn't work
+			Type UIInputTextFieldType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInputTextField");
+			return (UIElement)Activator.CreateInstance(UIInputTextFieldType, BindingFlags.NonPublic | BindingFlags.Public, null, new[] { text }, null);
+		}
+
+		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font)
+		{
+			return (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
 		}
 
 		public static bool IsPlayerServerOwner(Player player)

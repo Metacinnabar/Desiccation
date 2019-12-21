@@ -31,16 +31,16 @@ namespace Desiccation.Items.Misc
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(385);
-			recipe.AddIngredient(386);
-			recipe.AddIngredient(388);
-			recipe.AddIngredient(1231);
-			recipe.AddIngredient(579);
-			recipe.AddIngredient(2798);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			ModRecipe r = new ModRecipe(mod);
+			r.AddIngredient(ItemID.CobaltDrill);
+			r.AddIngredient(ItemID.MythrilDrill);
+			r.AddIngredient(ItemID.AdamantiteDrill);
+			r.AddIngredient(ItemID.ChlorophyteDrill);
+			r.AddIngredient(ItemID.Drax);
+			r.AddIngredient(ItemID.LaserDrill);
+			r.AddTile(TileID.LunarCraftingStation);
+			r.SetResult(this);
+			r.AddRecipe();
 		}
 	}
 }

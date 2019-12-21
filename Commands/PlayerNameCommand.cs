@@ -27,7 +27,7 @@ namespace Desiccation.Commands
 					string name = string.Join(" ", args);
 					if (name.Length <= 20)
 					{
-						Misc.Chat($"Changed {caller.Player.name}'s name to {name}!");
+						Misc.Chat($"Changed {caller.Player.name}'s name to '{name}'!");
 						caller.Player.name = name;
 					}
 					if (name.Length > 20)

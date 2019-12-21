@@ -27,7 +27,7 @@ namespace Desiccation.Commands
 					string name = string.Join(" ", args);
 					if (name.Length <= 20)
 					{
-						Misc.Chat($"Changed {Main.worldName}'s name to {name}!");
+						Misc.Chat($"Changed {Main.worldName}'s name to '{name}'!");
 						Main.worldName = name;
 					}
 					if (name.Length > 20)

@@ -21,18 +21,19 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
-		//TODO: Cactie deal damage but no knockback
+		//TODO: Cactie deal damage but no knockback. 
 		//TODO: Search for player names and worlds
 		//TODO: Shift z shows extra stats
-		//TODO: Add mana stats to player hovering text in multiplayer
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Show info on vanity accessories. Code for this in antisocial
 		//TODO: Statue enemies drop loot if requirements are met
+		//TODO: Rework dev weapons. balanace out
 		//0.11.6 TODO: All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
+		//TODO: IL Edit the ooa wave countdown timer
 		//TODO: Quick stack ammo and coins
 		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell
-		//TODO: Able to hold right click to open bags and crates etc
+		//TODO: Able to hold right click to open bags and crates etc. IL Edit
 		//TODO: discord tags for credits
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 
@@ -91,19 +92,19 @@ namespace Desiccation
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
 			#region Update Names
-			if (Version == new Version(0, 1))
+			if (Version >= new Version(0, 1))
 			{
 				releaseSuffix = "Beta Release!";
 			}
-			else if (Version == new Version(1, 0))
+			if (Version >= new Version(1, 0))
 			{
 				releaseSuffix = "Release!";
 			}
-			else if (Version == new Version(2, 0))
+			if (Version >= new Version(2, 0))
 			{
 				releaseSuffix = "Biome Update #1!";
 			}
-			else if (Version == new Version(3, 0))
+			if (Version >= new Version(3, 0))
 			{
 				releaseSuffix = "Qol Update #1!";
 			}
@@ -155,11 +156,11 @@ namespace Desiccation
 			{
 				layers.Insert(mouseText, new LegacyGameInterfaceLayer("Desiccation: Player Name", delegate
 				{
-					if (!Main.gameMenu && ClientConfig.NameInfo)
+					if (!Main.gameMenu && ModContent.GetInstance<DesiccationClientsideConfig>().NameInfo && !Misc.IsInventoryOpen)
 					{
 						string text = $"{MyName} in {Main.worldName}";
 						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
-						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X - 10, (int)size.Y + 16);
+						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X + 2, (int)size.Y - 10);
 						if (rectangle.CountainsMouse())
 						{
 							Main.hoverItemName = "Type in chat to change names. '/playername NEW NAME' to change player name, '/worldname NEW NAME' to change world name.";
@@ -167,7 +168,7 @@ namespace Desiccation
 					}
 					return true;
 				},
-					InterfaceScaleType.UI)
+					InterfaceScaleType.UI) 
 				);
 			}
 		}

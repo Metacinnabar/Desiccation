@@ -155,12 +155,13 @@ namespace Desiccation.DUtils
 			}
 		}
 
-		public static UIElement UIInputTextField(string text)
+		/*public static UIElement UIInputTextField(string text)
 		{
 			//Doesn't work
+			
 			Type UIInputTextFieldType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInputTextField");
 			return (UIElement)Activator.CreateInstance(UIInputTextFieldType, BindingFlags.NonPublic | BindingFlags.Public, null, new[] { text }, null);
-		}
+		}*/
 
 		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font)
 		{
@@ -203,5 +204,8 @@ namespace Desiccation.DUtils
 				return false;
 			}
 		}
+
+		public static bool IsInventoryOpen
+			=> Main.playerInventory;
 	}
 }

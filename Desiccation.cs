@@ -23,6 +23,7 @@ namespace Desiccation
 		//--Stuff for GoodPro712 to do:
 		//TODO: Cactie deal damage but no knockback. 
 		//TODO: Search for player names and worlds
+		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Show info on vanity accessories. Code for this in antisocial
@@ -38,7 +39,6 @@ namespace Desiccation
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 
 		//--Stuff for Lemmy to do:
-		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Rework sifting pan. the stats are in #stating
 		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
 

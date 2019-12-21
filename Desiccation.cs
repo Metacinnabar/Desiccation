@@ -45,7 +45,6 @@ namespace Desiccation
 		public Texture2D[] vanillaCloud = new Texture2D[22];
 		internal static CreditMenu creditMenuUI;
 		private bool unloadCalled;
-		private readonly bool titleReplaced;
 		private bool isInVersionRectangle;
 		private bool isInDiscordRectangle;
 		private bool isInGithubRectangle;
@@ -140,23 +139,6 @@ namespace Desiccation
 					InterfaceScaleType.UI)
 				);
 			}
-		}
-
-		public override void UpdateMusic(ref int music, ref MusicPriority priority)
-		{
-			#region Title Messages
-			/*
-			string titlePrefix;
-			WeightedRandom<string> titleSuffix = new WeightedRandom<string>();
-			if (titleReplaced == false)
-			{
-				titlePrefix = "Terraria with Desiccation:";
-				titleSuffix.Add("Waiting for titles.");
-				titleSuffix.Add("Still wating...");
-				Platform.Current.SetWindowUnicodeTitle(Main.instance.Window, titlePrefix + " " + titleSuffix);
-				titleReplaced = true;
-			}*/
-			#endregion
 		}
 
 		public override void PreSaveAndQuit()

@@ -47,8 +47,6 @@ namespace Desiccation
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
 
-		private static string releaseSuffix;
-
 		#region Fields
 		private Texture2D vanillaLogoDay;
 		private Texture2D vanillaLogoNight;
@@ -68,6 +66,7 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
+		private static string releaseSuffix;
 		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
 		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
 		#endregion

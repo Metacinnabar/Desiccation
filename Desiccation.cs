@@ -91,6 +91,7 @@ namespace Desiccation
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
+			#region Update Names
 			if (Version == new Version(0, 1))
 			{
 				releaseSuffix = "Beta Release!";
@@ -107,6 +108,7 @@ namespace Desiccation
 			{
 				releaseSuffix = "Qol Update #1!";
 			}
+			#endregion
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;

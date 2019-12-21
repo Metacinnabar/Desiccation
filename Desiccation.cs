@@ -47,7 +47,7 @@ namespace Desiccation
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
 
-		private const string releaseSuffix = "Beta Release!";
+		private static string releaseSuffix;
 
 		#region Fields
 		private Texture2D vanillaLogoDay;
@@ -91,6 +91,22 @@ namespace Desiccation
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
+			if (Version == new Version(0, 1))
+			{
+				releaseSuffix = "Beta Release!";
+			}
+			else if (Version == new Version(1, 0))
+			{
+				releaseSuffix = "Release!";
+			}
+			else if (Version == new Version(2, 0))
+			{
+				releaseSuffix = "Biome Update #1!";
+			}
+			else if (Version == new Version(3, 0))
+			{
+				releaseSuffix = "Qol Update #1!";
+			}
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;

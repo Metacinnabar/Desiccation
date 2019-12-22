@@ -78,6 +78,10 @@ namespace Desiccation.Items.Developer.Chem
                     player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " couldn't contain the watts."), player.statLife, 0);
                 TookLife = true;
             }
+            if (player.statLife <= 0)
+            {
+                return false;
+            }
             return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
 

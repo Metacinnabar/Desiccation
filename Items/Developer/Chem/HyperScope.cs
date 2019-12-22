@@ -9,7 +9,7 @@ namespace Desiccation.Items.Developer.Chem
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Rapidly fires energy shots in bursts of three\nWhen low on health, fires slow but powerful orbs\n'Destroy them with lazers!'\nChem's Developer Weapon!");
+			Tooltip.SetDefault("Rapidly fires energy shots in bursts of three\nWhen low on health, fires slow but powerful orbs\n'Destroy them with lazers!'");
 		}
 
 		public override void SetDefaults()
@@ -26,8 +26,7 @@ namespace Desiccation.Items.Developer.Chem
 			item.shootSpeed = 20f;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 3;
-			//Restat the value please. thx
-			item.value = 1000000;
+			item.value = Item.sellPrice(gold: 20);
 			item.rare = ItemRarityID.Pink;
 			item.autoReuse = true;
 		}
@@ -58,7 +57,7 @@ namespace Desiccation.Items.Developer.Chem
 		{
 			ModRecipe r = new ModRecipe(mod);
 			r.AddIngredient(ItemID.LaserRifle);
-			r.AddIngredient(ItemID.SoulofSight, 12);
+			r.AddIngredient(ItemID.SoulofSight, 20);
 			r.AddIngredient(ItemID.IllegalGunParts);
 			r.AddTile(TileID.MythrilAnvil);
 			r.SetResult(this);

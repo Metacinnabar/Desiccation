@@ -29,20 +29,10 @@ namespace Desiccation.NPCs
 				}
 			}
 		}
-
 		public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
-			if (type == NPCID.Wizard && NPC.downedAncientCultist && ModContent.GetInstance<DesiccationGlobalConfig>().Wizard_AncientManipulator)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.LunarCraftingStation);
-				shop.item[nextSlot].shopCustomPrice = Item.buyPrice(1, 0, 0, 0);
-				nextSlot++;
-			}
-			if (type == NPCID.Merchant && NPC.downedBoss1 && ModContent.GetInstance<DesiccationGlobalConfig>().Merchant_TargetDummy)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.TargetDummy);
-				nextSlot++;
-			}
+			NPCData.AddItemToTownNPCShop(type, shop, ref nextSlot, NPCID.Merchant, ItemID.TargetDummy, NPC.downedBoss1, ModContent.GetInstance<DesiccationGlobalConfig>().Merchant_TargetDummy);
+			NPCData.AddItemToTownNPCShopWithCustomBuyPrice(type, shop, ref nextSlot, NPCID.Wizard, ItemID.LunarCraftingStation, Item.buyPrice(1, 0, 0, 0), NPC.downedAncientCultist, ModContent.GetInstance<DesiccationGlobalConfig>().Wizard_AncientManipulator);
 		}
 	}
 }

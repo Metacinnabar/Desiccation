@@ -29,6 +29,7 @@ namespace Desiccation
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Show info on vanity accessories. Code for this in antisocial
 		//TODO: Statue enemies drop loot if requirements are met
+		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
 		//0.11.6 TODO: All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
@@ -36,19 +37,30 @@ namespace Desiccation
 		//TODO: Quick stack ammo and coins
 		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell
 		//TODO: Able to hold right click to open bags and crates etc. IL Edit
+		//TODO: Main menu replacement Texture2D's fade in and out when loaded and unloaded. check #coding for a discord link on some info on how to do this
 		//TODO: discord tags for credits
+		//TODO: IL Edit the color of the hover main menu tabs
+		//TODO: IL the main menu music possibly tmod contribution
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
+		//TODO: Add new boss checklist calls to bosses when coded.
 
 		//--Stuff for Lemmy to do:
 		//TODO: Rework sifting pan. the stats are in #stating
 		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
+		//TODO: Finish the flails off
+		//TODO: Code the dino stuff
 
 		//--Stuff for Reb to do:
 		//TODO: Banner rework? stats in the checklist google doc.
 
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
-		//TODO: Spellcheck credits
+		//TODO: Spellcheck credits. UI/States/CreditMenu
+
+		//--Stuff for WeirdHat to do:
+		//TODO: Underground Desert music
+		//TODO: Underground Night theme music
+		//TODO: marble music
 
 		#region Fields
 		private Texture2D vanillaLogoDay;

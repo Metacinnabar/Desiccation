@@ -16,10 +16,10 @@ namespace Desiccation
 						Misc.Chat("The shadows grow...", true);
 						break;
 					case 2:
-						Misc.Chat("No one will remeber you...", true);
+						Misc.Chat("No one will remember you...", true);
 						break;
 					case 3:
-						Misc.Chat("No one will be able to help you, i'll make sure of it...", true);
+						Misc.Chat("No one will be able to help you, I'll make sure of it...", true);
 						break;
 					case 4:
 						Misc.Chat("I could do whatever I want to you...", true);
@@ -37,7 +37,7 @@ namespace Desiccation
 						Misc.Chat("Is everything really where it should be?", true);
 						break;
 					case 9:
-						Misc.Chat("Wherever you go, i'll be there...", true);
+						Misc.Chat("Wherever you go, I'll be there...", true);
 						break;
 					case 10:
 						Misc.Chat("You are in total isolation and no one will hear your cries for help...", true);
@@ -97,7 +97,7 @@ namespace Desiccation
 						Misc.Chat("Ever wondered whether there’s someone who sends these messages?", true);
 						break;
 					case 29:
-						Misc.Chat("Where are you going...?  ...come back...", true);
+						Misc.Chat("Where are you going...?  ...Come back...", true);
 						break;
 					case 30:
 						Misc.Chat("You hear screaming from the caves below you...", true);

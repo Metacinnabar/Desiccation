@@ -12,7 +12,7 @@ namespace Desiccation.Items.Developer.Chem
         bool TookLife;
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Rapidly fires energy shots in bursts of three\nOvercharges at critical health, fires slow but powerful orbs\nConsumes life when used while overcharged\n'Destroy them with lazers!'");
+			Tooltip.SetDefault("Rapidly fires energy shots in bursts of three\nOvercharges at critical health, firing slow but powerful orbs\nConsumes life when used while overcharged\n'Destroy them with lazers!'");
 		}
         //TODO: Rework Hyper Scope to have a charge shot instead eventually
 		public override void SetDefaults()

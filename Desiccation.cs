@@ -58,11 +58,6 @@ namespace Desiccation
 		//TODO: Constructer potion. stats pinned in #stating
 		//TODO: Spellcheck credits. UI/States/CreditMenu
 
-		//--Stuff for WeirdHat to do:
-		//TODO: Underground Desert music
-		//TODO: Underground Night theme music
-		//TODO: marble music
-
 		#region Fields
 		private Texture2D vanillaLogoDay;
 		private Texture2D vanillaLogoNight;

@@ -20,7 +20,8 @@ namespace Desiccation.UI.UIStates
 				"Vectix - Main spriter\n" +
 				"Zando - Main respriter\n" +
 				"Rebmiami - Google docs helper, stater, coder\n" +
-				"AnAvailableUsername - Stater\n\n" +
+				"AnAvailableUsername - Stater\n" +
+                "Chem - Coder\n\n" +
 				"- Contributers\n" +
 				"Orange - Werewolf Staff\n" +
 				"Spectre - Vanilla shop additions\n" +

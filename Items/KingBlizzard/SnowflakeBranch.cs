@@ -9,7 +9,7 @@ namespace Desiccation.Items.KingBlizzard
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Wait snowflakes have branches? Yes you fool.");
+			Tooltip.SetDefault("Wait, snowflakes have branches? Yes you fool.");
 		}
 
 		public override void SetDefaults()

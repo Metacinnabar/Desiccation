@@ -9,7 +9,7 @@ namespace Desiccation.Items.KingBlizzard
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Creates a large cloud of frost that pierces infinite enemies and travels through walls. Inflicts the Chilled debuff for 8 seconds.");
+			Tooltip.SetDefault("Creates a large cloud of frost that pierces infinite enemies and travels through walls.\nInflicts the Chilled debuff for 8 seconds.");
 			Item.staff[item.type] = true;
 		}
 

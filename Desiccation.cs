@@ -3,6 +3,7 @@ using Desiccation.DUtils;
 using Desiccation.UI.UIStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoMod.Cil;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace Desiccation
 
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
+		//TODO: Spellcheck credits
 
 		#region Fields
 		private Texture2D vanillaLogoDay;
@@ -67,7 +69,7 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
-		private static string releaseSuffix;
+		private static readonly string releaseSuffix = "Beta Release!";
 		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
 		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
 		#endregion
@@ -91,30 +93,12 @@ namespace Desiccation
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
-			#region Update Names
-			if (Version >= new Version(0, 1))
-			{
-				releaseSuffix = "Beta Release!";
-			}
-			if (Version >= new Version(1, 0))
-			{
-				releaseSuffix = "Release!";
-			}
-			if (Version >= new Version(2, 0))
-			{
-				releaseSuffix = "Biome Update #1!";
-			}
-			if (Version >= new Version(3, 0))
-			{
-				releaseSuffix = "Qol Update #1!";
-			}
-			#endregion
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
 			Main.OnPreDraw += OnPreDrawEvent;
+			IL.Terraria.Main.DrawInterface_14_EntityHealthBars += HookDrawInterface_14_EntityHealthBars;
 		}
-
 		public override void Unload()
 		{
 			#region Main Menu Changes
@@ -168,7 +152,7 @@ namespace Desiccation
 					}
 					return true;
 				},
-					InterfaceScaleType.UI) 
+					InterfaceScaleType.UI)
 				);
 			}
 		}
@@ -332,6 +316,24 @@ namespace Desiccation
 			}
 			#endregion Rectangle & Hover/Click
 			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, Main.fontMouseText, text, new Vector2(10f, Y), newColor, 0f, Vector2.Zero, new Vector2(1f, 1f));
+		}
+		#endregion
+
+		#region IL Editing
+		private void HookDrawInterface_14_EntityHealthBars(ILContext il)
+		{
+			ILCursor c = new ILCursor(il);
+			if (!c.TryGotoNext(i => i.MatchLdstr("{0}")))
+			{
+				return;
+			}
+			c.Index++;
+			c.Emit(Mono.Cecil.Cil.OpCodes.Ldstr, "{0}");
+			c.EmitDelegate<Func<string, string, string>>((original, append) =>
+			{
+				append = "Right Click to Skip: ";
+				return append + original;
+			});
 		}
 		#endregion
 	}

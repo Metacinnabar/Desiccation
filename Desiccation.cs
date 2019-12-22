@@ -31,7 +31,7 @@ namespace Desiccation
 		//TODO: Statue enemies drop loot if requirements are met
 		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
-		//0.11.6 TODO: All items don't burn via GlobalItem.CanBurnInLava() return false;
+		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
 		//TODO: IL Edit the ooa wave countdown timer
 		//TODO: Quick stack ammo and coins

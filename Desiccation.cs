@@ -23,12 +23,14 @@ namespace Desiccation
 	{
 		//--Stuff for GoodPro712 to do:
 		//TODO: Cactie deal damage but no knockback. 
+		//TODO: Fix wave skip thingy
 		//TODO: Search for player names and worlds
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Show info on vanity accessories. Code for this in antisocial
 		//TODO: Statue enemies drop loot if requirements are met
+		//TODO: up and down key for switching ammo to be used
 		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
@@ -111,6 +113,7 @@ namespace Desiccation
 			Main.OnPreDraw += OnPreDrawEvent;
 			IL.Terraria.Main.DrawInterface_14_EntityHealthBars += HookDrawInterface_14_EntityHealthBars;
 		}
+
 		public override void Unload()
 		{
 			#region Main Menu Changes

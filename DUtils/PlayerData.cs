@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Desiccation.DUtils
@@ -538,8 +539,29 @@ namespace Desiccation.DUtils
 		}
 		#endregion
 
-		#region Armor Related
-
+		#region Tile Related
+		/// <summary>
+		/// Checks if the player is touching a specifc tile. Thx aqua
+		/// </summary>
+		/// <param name="P">The player</param>
+		/// <param name="TileID">The tile ID that your checking for the player to be touching</param>
+		/// <returns></returns>
+		public static bool IsPlayerTouchingTile(this Player P, int TileID)
+		{
+			Point16 curTilePos = P.position.ToTileCoordinates16();
+			for (int curX = curTilePos.X; curX < curTilePos.X + 3; curX++)
+			{
+				for (int curY = curTilePos.Y; curY < curTilePos.Y + 4; curY++)
+				{
+					Rectangle tileRect = new Rectangle(curX * 16, curY * 16, 16, 16);
+					if (P.getRect().Intersects(tileRect) && Main.tile[curX, curY].type == TileID)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 		#endregion
 	}
 }

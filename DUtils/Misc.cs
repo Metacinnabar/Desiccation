@@ -205,6 +205,12 @@ namespace Desiccation.DUtils
 			}
 		}
 
+		public static object GetFieldValue(this Type type, string fieldName, BindingFlags? flags = default, object obj = null)
+		{
+			FieldInfo field = type.GetField(fieldName, flags.Value);
+			return field.GetValue(obj);
+		}
+
 		public static bool IsInventoryOpen
 			=> Main.playerInventory;
 	}

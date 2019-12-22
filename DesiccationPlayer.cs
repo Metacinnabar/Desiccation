@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Desiccation.DUtils.PlayerData;
@@ -120,11 +121,10 @@ namespace Desiccation
 
 		public override void PostUpdate()
 		{
-			if (TileData.SolidTileCollision(MyPlayer))
+			if (player.IsPlayerTouchingTile(TileID.Cactus))
 			{
-				player.statLife -= 5;
+				player.Hurt(PlayerDeathReason.ByCustomReason(" got spiked up their spine"), 9, player.direction);
 			}
-			base.PostUpdate();
 		}
 		#endregion
 

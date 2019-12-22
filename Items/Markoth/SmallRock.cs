@@ -2,7 +2,6 @@ using Desiccation.Projectiles.Markoth;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace Desiccation.Items.Markoth
 {
@@ -30,7 +29,7 @@ namespace Desiccation.Items.Markoth
 			item.autoReuse = false;
 			item.UseSound = SoundID.Item1;
 			item.value = Item.sellPrice(gold: 2);
-			item.shoot = ProjectileType<SmallRockProjectile>();
+			item.shoot = ModContent.ProjectileType<SmallRockProjectile>();
 		}
 
 		public override bool CanUseItem(Player player)
@@ -40,16 +39,17 @@ namespace Desiccation.Items.Markoth
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StoneBlock, 50);
-			recipe.AddIngredient(ItemID.Diamond, 4);
-			recipe.AddIngredient(ItemID.Ruby, 4);
-			recipe.AddIngredient(ItemID.Emerald, 4);
-			recipe.AddIngredient(ItemID.Amethyst, 4);
-			recipe.AddIngredient(ItemID.Sapphire, 4);
-			recipe.AddIngredient(ItemID.Topaz, 4);
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
+			ModRecipe r = new ModRecipe(mod);
+			r.AddIngredient(ItemID.StoneBlock, 50);
+			r.AddIngredient(ItemID.Diamond, 4);
+			r.AddIngredient(ItemID.Ruby, 4);
+			r.AddIngredient(ItemID.Emerald, 4);
+			r.AddIngredient(ItemID.Amethyst, 4);
+			r.AddIngredient(ItemID.Sapphire, 4);
+			r.AddIngredient(ItemID.Topaz, 4);
+			r.AddTile(TileID.DemonAltar);
+			r.SetResult(this);
+			r.AddRecipe();
 		}
 	}
 }

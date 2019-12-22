@@ -22,7 +22,7 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
-		//TODO: Cactie deal damage but no knockback. 
+		//TODO: Fix cactus damage knockbackknockback. 
 		//TODO: Fix wave skip thingy
 		//TODO: Search for player names and worlds
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
@@ -35,7 +35,6 @@ namespace Desiccation
 		//TODO: Rework dev weapons. balanace out
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
-		//TODO: IL Edit the ooa wave countdown timer
 		//TODO: Quick stack ammo and coins
 		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell
 		//TODO: Able to hold right click to open bags and crates etc. IL Edit

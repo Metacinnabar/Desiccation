@@ -1,16 +1,15 @@
-using Microsoft.Xna.Framework;
+using Desiccation.Projectiles.EyeOfCthulhu;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace Desiccation.Items.EyeOfCuthulu
 {
-	public class Staff : ModItem
+	public class EyeOfCthulhuStaff : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("This is a modded magic weapon.");
+			Tooltip.SetDefault("'It's very gaze has the power to kill'");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
@@ -23,18 +22,15 @@ namespace Desiccation.Items.EyeOfCuthulu
 			item.height = 40;
 			item.useTime = 25;
 			item.useAnimation = 25;
-			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.noMelee = true;
 			item.knockBack = 5;
-			item.value = 10000;
-			item.rare = 2; 
+			item.value = Item.sellPrice(silver: 20);
+			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = ModContent.ProjectileType<EyeProjectile>();
+			item.shoot = ModContent.ProjectileType<EyeOfCthulhuStaffProjectile>();
 			item.shootSpeed = 16f;
 		}
-
-
-
 	}
 }

@@ -1,4 +1,4 @@
-﻿using Desiccation.Projectiles.OOA.Ogre;
+﻿using Desiccation.Projectiles.DD2.Ogre;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,18 +27,6 @@ namespace Desiccation.Items.DD2.Ogre
 			item.shoot = ModContent.ProjectileType<EtherianJavelinProjectile>();
 			item.shootSpeed = 12;
 			item.thrown = true;
-<<<<<<< HEAD:Items/OOA/Ogre/EtherianJavelin.cs
-        }
-
-
-            public override bool UseItem(Player player)
-            {
-            return base.UseItem(player);
-            }
-
-
-       
-=======
->>>>>>> fc89202a0de5e46a19ce7eabd97a4118db58945d:Items/DD2/Ogre/EtherianJavelin.cs
 		}
 	}
+}

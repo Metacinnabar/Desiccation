@@ -18,7 +18,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 			projectile.timeLeft = 600;
 		}
 		public override void AI()
-		{ //Thanks, Fargo (TODO: prolly add in credits somewhere maybe?)
+		{
 			for (int i = 0; i < 10; i++)
 			{
 				Vector2 offset = new Vector2();

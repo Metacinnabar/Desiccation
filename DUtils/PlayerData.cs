@@ -537,5 +537,9 @@ namespace Desiccation.DUtils
 			return !P.ZoneJungle && !P.ZoneDungeon && !P.ZoneCorrupt && !P.ZoneCrimson && !P.ZoneHoly && !P.ZoneSnow && !P.ZoneUndergroundDesert && !P.ZoneGlowshroom && !P.ZoneMeteor && P.ZoneOverworldHeight;
 		}
 		#endregion
+
+		#region Armor Related
+
+		#endregion
 	}
 }

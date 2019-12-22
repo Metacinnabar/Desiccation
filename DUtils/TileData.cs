@@ -21,5 +21,10 @@ namespace Desiccation.DUtils
 			}
 			return false;
 		}
+
+		public static bool IsPlatform(int type)
+		{
+			return Main.tileSolid[type] && Main.tileSolidTop[type];
+		}
 	}
 }

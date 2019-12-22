@@ -22,15 +22,15 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
-		//TODO: Fix cactus damage knockbackknockback. 
+		//TODO: Fix cactus damage knockback. 
+		//TODO: IL Edit the color of the hover main menu tabs
 		//TODO: Fix wave skip thingy
-		//TODO: Search for player names and worlds
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Show info on vanity accessories. Code for this in antisocial
+		//TODO: Search for player names and worlds ui
 		//TODO: Statue enemies drop loot if requirements are met
-		//TODO: up and down key for switching ammo to be used
 		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
@@ -40,7 +40,6 @@ namespace Desiccation
 		//TODO: Able to hold right click to open bags and crates etc. IL Edit
 		//TODO: Main menu replacement Texture2D's fade in and out when loaded and unloaded. check #coding for a discord link on some info on how to do this
 		//TODO: discord tags for credits
-		//TODO: IL Edit the color of the hover main menu tabs
 		//TODO: IL the main menu music possibly tmod contribution
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 		//TODO: Add new boss checklist calls to bosses when coded.
@@ -52,6 +51,7 @@ namespace Desiccation
 		//TODO: Code the dino stuff
 
 		//--Stuff for Reb to do:
+		//TODO: Enchanted flail
 		//TODO: Banner rework? stats in the checklist google doc.
 
 		//--Stuff for Nobody to do:
@@ -331,18 +331,21 @@ namespace Desiccation
 		#region IL Editing
 		private void HookDrawInterface_14_EntityHealthBars(ILContext il)
 		{
-			ILCursor c = new ILCursor(il);
-			if (!c.TryGotoNext(i => i.MatchLdstr("{0}")))
+			if (ModContent.GetInstance<DesiccationGlobalConfig>().OOAWaitingTimeSkip)
 			{
-				return;
+				ILCursor c = new ILCursor(il);
+				if (!c.TryGotoNext(i => i.MatchLdstr("{0}")))
+				{
+					return;
+				}
+				c.Index++;
+				c.Emit(Mono.Cecil.Cil.OpCodes.Ldstr, "{0}");
+				c.EmitDelegate<Func<string, string, string>>((original, append) =>
+				{
+					append = "Right Click to Skip: ";
+					return append + original;
+				});
 			}
-			c.Index++;
-			c.Emit(Mono.Cecil.Cil.OpCodes.Ldstr, "{0}");
-			c.EmitDelegate<Func<string, string, string>>((original, append) =>
-			{
-				append = "Right Click to Skip: ";
-				return append + original;
-			});
 		}
 		#endregion
 	}

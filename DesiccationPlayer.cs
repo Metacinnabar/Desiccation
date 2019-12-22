@@ -117,6 +117,15 @@ namespace Desiccation
 				MyPlayer.moveSpeed *= 1 - speedAdd;
 			}
 		}
+
+		public override void PostUpdate()
+		{
+			if (TileData.SolidTileCollision(MyPlayer))
+			{
+				player.statLife -= 5;
+			}
+			base.PostUpdate();
+		}
 		#endregion
 
 		private void GetTeamValues()

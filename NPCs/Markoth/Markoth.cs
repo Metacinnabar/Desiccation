@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Desiccation.NPCs.Bosses.Markoth
+namespace Desiccation.NPCs.Markoth
 {
 	public class Markoth : ModNPC
 	{
@@ -23,10 +23,6 @@ namespace Desiccation.NPCs.Bosses.Markoth
 			npc.value = 60f;
 			npc.knockBackResist = 0.5f;
 			npc.behindTiles = false;
-		}
-
-		public override void AI()
-		{
 		}
 	}
 }

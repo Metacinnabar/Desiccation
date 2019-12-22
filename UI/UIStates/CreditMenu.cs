@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace Desiccation.UI
+namespace Desiccation.UI.UIStates
 {
 	internal class CreditMenu : UIState
 	{
@@ -38,7 +38,7 @@ namespace Desiccation.UI
 				"Itorius - Help with weighted inventory\n\n" +
 				"- Patrons\n" +
 				"Thank you so much to all of our patrons!\n" +
-				"Current patrons from v" + ModContent.GetInstance<Desiccation>().Version + " of Desiccation:\n" +
+				$"Current patrons from v{ModContent.GetInstance<Desiccation>().Version} of Desiccation:\n" +
 				"No one yet.";
 
 			Misc.UIInfoMessage_Show(text, 0);

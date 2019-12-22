@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -143,7 +144,7 @@ namespace Desiccation.DUtils
 			Type Interface = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.Interface");
 			Type UIInfoMessage = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInfoMessage");
 			FieldInfo infoMessage = Interface.GetField("infoMessage", BindingFlags.Static | BindingFlags.NonPublic);
-			object infoMessageValue = (UIElement)infoMessage.GetValue(null);
+			UIElement infoMessageValue = (UIElement)infoMessage.GetValue(null);
 			MethodInfo Show = UIInfoMessage.GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
 			if (Show != null)
 			{
@@ -152,6 +153,19 @@ namespace Desiccation.DUtils
 					text, gotoMenu, null, "", null
 				});
 			}
+		}
+
+		/*public static UIElement UIInputTextField(string text)
+		{
+			//Doesn't work
+			
+			Type UIInputTextFieldType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInputTextField");
+			return (UIElement)Activator.CreateInstance(UIInputTextFieldType, BindingFlags.NonPublic | BindingFlags.Public, null, new[] { text }, null);
+		}*/
+
+		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font)
+		{
+			return (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
 		}
 
 		public static bool IsPlayerServerOwner(Player player)
@@ -190,5 +204,8 @@ namespace Desiccation.DUtils
 				return false;
 			}
 		}
+
+		public static bool IsInventoryOpen
+			=> Main.playerInventory;
 	}
 }

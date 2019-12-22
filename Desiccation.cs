@@ -1,13 +1,14 @@
 #region Usings
 using Desiccation.DUtils;
-using Desiccation.NPCs.TownNPCs;
-using Desiccation.UI;
+using Desiccation.UI.UIStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoMod.Cil;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,18 +21,46 @@ namespace Desiccation
 {
 	public class Desiccation : Mod
 	{
-		//TODO: Remove fav tooltip
-		//TODO: Skip notice on elder crystal via reflection
-		//TODO: discord tags for credits
-		//TODO: Scrap Miner
-		//TODO: Rework sifting pan
-		//TODO: Add mechanics to readme & desc.
+		//--Stuff for GoodPro712 to do:
+		//TODO: Cactie deal damage but no knockback. 
+		//TODO: Search for player names and worlds
+		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
+		//TODO: Shift z shows extra stats
+		//TODO: Piggybank UI when nurse npc chat is active
+		//TODO: Show info on vanity accessories. Code for this in antisocial
+		//TODO: Statue enemies drop loot if requirements are met
+		//TODO: Ammo notice bottom left
+		//TODO: Rework dev weapons. balanace out
+		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
-		//TODO: Name change in player select menu
-		//TODO: Fix multitool sprites
-		//TODO: Create desiccation email, youtube and twitter
+		//TODO: IL Edit the ooa wave countdown timer
+		//TODO: Quick stack ammo and coins
+		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell
+		//TODO: Able to hold right click to open bags and crates etc. IL Edit
+		//TODO: Main menu replacement Texture2D's fade in and out when loaded and unloaded. check #coding for a discord link on some info on how to do this
+		//TODO: discord tags for credits
+		//TODO: IL Edit the color of the hover main menu tabs
+		//TODO: IL the main menu music possibly tmod contribution
+		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
+		//TODO: Add new boss checklist calls to bosses when coded.
 
-		private const string releaseSuffix = "Beta Release!";
+		//--Stuff for Lemmy to do:
+		//TODO: Rework sifting pan. the stats are in #stating
+		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
+		//TODO: Finish the flails off
+		//TODO: Code the dino stuff
+
+		//--Stuff for Reb to do:
+		//TODO: Banner rework? stats in the checklist google doc.
+
+		//--Stuff for Nobody to do:
+		//TODO: Constructer potion. stats pinned in #stating
+		//TODO: Spellcheck credits. UI/States/CreditMenu
+
+		//--Stuff for WeirdHat to do:
+		//TODO: Underground Desert music
+		//TODO: Underground Night theme music
+		//TODO: marble music
 
 		#region Fields
 		private Texture2D vanillaLogoDay;
@@ -41,10 +70,8 @@ namespace Desiccation
 		public Texture2D vanillaMiddleMainMenuBackground;
 		public Texture2D vanillaBackMainMenuBackground;
 		public Texture2D[] vanillaCloud = new Texture2D[22];
-		internal UserInterface MinerUserInterface;
 		internal static CreditMenu creditMenuUI;
 		private bool unloadCalled;
-		private readonly bool titleReplaced;
 		private bool isInVersionRectangle;
 		private bool isInDiscordRectangle;
 		private bool isInGithubRectangle;
@@ -54,7 +81,11 @@ namespace Desiccation
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
+		private static readonly string releaseSuffix = "Beta Release!";
+		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
+		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
 		#endregion
+
 		public Desiccation()
 		{
 		}
@@ -74,15 +105,12 @@ namespace Desiccation
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
 			#endregion
-			if (!Main.dedServ)
-			{
-				MinerUserInterface = new UserInterface();
-			}
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
+			Main.OnPreDraw += OnPreDrawEvent;
+			IL.Terraria.Main.DrawInterface_14_EntityHealthBars += HookDrawInterface_14_EntityHealthBars;
 		}
-
 		public override void Unload()
 		{
 			#region Main Menu Changes
@@ -99,23 +127,12 @@ namespace Desiccation
 			#endregion
 			Main.OnTick -= OnTickEvent;
 			Main.OnPostDraw -= OnPostDrawEvent;
+			Main.OnPreDraw -= OnPreDrawEvent;
 			unloadCalled = true;
 		}
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
-			int inventory = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
-			if (inventory != -1)
-			{
-				layers.Insert(inventory, new LegacyGameInterfaceLayer("Desiccation: Miner Light UI",
-					delegate
-					{
-						MinerUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
-			}
 			int deathText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Death Text"));
 			if (deathText != -1)
 			{
@@ -123,43 +140,33 @@ namespace Desiccation
 				{
 					if (MyPlayer.dead && ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimer)
 					{
-						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f)).X / 2f, (Main.screenHeight / 2 - 70)), MyPlayer.GetDeathAlpha(Color.Transparent));
+						DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontDeathText, string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f), new Vector2((Main.screenWidth / 2) - Main.fontDeathText.MeasureString(string.Format("{0:f" + ModContent.GetInstance<DesiccationClientsideConfig>().RespawnTimerDecimal + "}", MyPlayer.respawnTimer / 60f)).X / 2f, Main.screenHeight / 2 - 70), MyPlayer.GetDeathAlpha(Color.Transparent));
 					}
 					return true;
 				},
 					InterfaceScaleType.UI)
 				);
 			}
-		}
-
-		public override void UpdateUI(GameTime gameTime)
-		{
-			MinerUserInterface?.Update(gameTime);
-		}
-
-		public override void PostSetupContent()
-		{
-			if (Mods.Census != null)
+			int mouseText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+			if (mouseText != -1)
 			{
-				Mods.Census.Call("TownNPCCondition", ModContent.NPCType<Miner>(), "Have either a silver or tungsten pickaxe in your inventory, 1 gold in your inventory, and for the merchant to be housed.");
+				layers.Insert(mouseText, new LegacyGameInterfaceLayer("Desiccation: Player Name", delegate
+				{
+					if (!Main.gameMenu && ModContent.GetInstance<DesiccationClientsideConfig>().NameInfo && !Misc.IsInventoryOpen)
+					{
+						string text = $"{MyName} in {Main.worldName}";
+						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
+						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X + 2, (int)size.Y - 10);
+						if (rectangle.CountainsMouse())
+						{
+							Main.hoverItemName = "Type in chat to change names. '/playername NEW NAME' to change player name, '/worldname NEW NAME' to change world name.";
+						}
+					}
+					return true;
+				},
+					InterfaceScaleType.UI)
+				);
 			}
-		}
-
-		public override void UpdateMusic(ref int music, ref MusicPriority priority)
-		{
-			#region Title Messages
-			/*
-			string titlePrefix;
-			WeightedRandom<string> titleSuffix = new WeightedRandom<string>();
-			if (titleReplaced == false)
-			{
-				titlePrefix = "Terraria with Desiccation:";
-				titleSuffix.Add("Waiting for titles.");
-				titleSuffix.Add("Still wating...");
-				Platform.Current.SetWindowUnicodeTitle(Main.instance.Window, titlePrefix + " " + titleSuffix);
-				titleReplaced = true;
-			}*/
-			#endregion
 		}
 
 		public override void PreSaveAndQuit()
@@ -217,6 +224,16 @@ namespace Desiccation
 						return;
 					}
 				}
+			}
+		}
+
+		private void OnPreDrawEvent(GameTime gameTime)
+		{
+			if (tModLoaderVersion >= new Version(0, 11, 6))
+			{
+				Type DD2Event = typeof(ModLoader).Assembly.GetType("Terraria.GameContent.Events.DD2Event");
+				FieldInfo TimeLeftBetweenWavesTimer = DD2Event.GetField("TimeLeftBetweenWavesTimer", BindingFlags.Static | BindingFlags.Public);
+				TimeLeftBetweenWavesTimer.SetValue(DD2Event, string.Format("Right-Click to Skip: {0}", Terraria.GameContent.Events.DD2Event.TimeLeftBetweenWaves / 60));
 			}
 		}
 
@@ -311,6 +328,24 @@ namespace Desiccation
 			}
 			#endregion Rectangle & Hover/Click
 			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, Main.fontMouseText, text, new Vector2(10f, Y), newColor, 0f, Vector2.Zero, new Vector2(1f, 1f));
+		}
+		#endregion
+
+		#region IL Editing
+		private void HookDrawInterface_14_EntityHealthBars(ILContext il)
+		{
+			ILCursor c = new ILCursor(il);
+			if (!c.TryGotoNext(i => i.MatchLdstr("{0}")))
+			{
+				return;
+			}
+			c.Index++;
+			c.Emit(Mono.Cecil.Cil.OpCodes.Ldstr, "{0}");
+			c.EmitDelegate<Func<string, string, string>>((original, append) =>
+			{
+				append = "Right Click to Skip: ";
+				return append + original;
+			});
 		}
 		#endregion
 	}

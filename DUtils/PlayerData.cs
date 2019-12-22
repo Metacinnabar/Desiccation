@@ -240,46 +240,6 @@ namespace Desiccation.DUtils
 			=> MyPlayer.statManaMax2;
 
 		/// <summary>
-		/// Gets the current health of a player.
-		/// </summary>
-		/// <param name="P">The player.</param>
-		/// <returns>Int value of current life.</returns>
-		public static int Health(Player P)
-		{
-			return P.statLife;
-		}
-
-		/// <summary>
-		/// Gets the max health of a player.
-		/// </summary>
-		/// <param name="P">The player.</param>
-		/// <returns>Int value of the player's maximum health./returns>
-		public static int MaxHealth(Player P)
-		{
-			return P.statLifeMax2;
-		}
-
-		/// <summary>
-		/// Gets the current mana of a player.
-		/// </summary>
-		/// <param name="P">The player.</param>
-		/// <returns>Int value of the player's mana.</returns>
-		public static int Mana(Player P)
-		{
-			return P.statMana;
-		}
-
-		/// <summary>
-		/// Gets the max mana of a player.
-		/// </summary>
-		/// <param name="P">The player.</param>
-		/// <returns></returns>
-		public static int MaxMana(Player P)
-		{
-			return P.statManaMax2;
-		}
-
-		/// <summary>
 		/// Gets the value of bardResource from ThoriumPlayer.
 		/// </summary>
 		/// <returns>returns the bardResource value if Thorium is enabled, otherwise returns 0.</returns>

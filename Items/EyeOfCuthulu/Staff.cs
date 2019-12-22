@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-
 namespace Desiccation.Items.EyeOfCuthulu
 {
 	public class Staff : ModItem
@@ -28,7 +27,7 @@ namespace Desiccation.Items.EyeOfCuthulu
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 2; 
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ModContent.ProjectileType<EyeProjectile>();

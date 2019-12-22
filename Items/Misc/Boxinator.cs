@@ -77,18 +77,17 @@ namespace Desiccation.Items.Misc
 			WorldGen.PlaceTile((int)standingOn.X + 7, (int)standingOn.Y - 1, 15);
 			WorldGen.PlaceTile((int)standingOn.X + 5, (int)standingOn.Y - 1, 18);
 			NetMessage.SendTileRange(-1, (int)standingOn.X, (int)standingOn.Y - 6, 9, 7, TileChangeType.None);
-			//Main.NewText("Position " + Main.tile[(int)(player.position.X / 16f), (int)((player.position.Y + player.height) / 16f)].type + ", " + Main.tile[(int)(player.position.X / 16f), (int)((player.position.Y + player.height) / 16f)].wall);
 			return true;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Wood, 42);
-			recipe.AddIngredient(ItemID.Gel, 1);
-			recipe.anyWood = true;
-			recipe.SetResult(this, 1);
-			recipe.AddRecipe();
+			ModRecipe r = new ModRecipe(mod);
+			r.AddIngredient(ItemID.Wood, 42);
+			r.AddIngredient(ItemID.Gel, 1);
+			r.anyWood = true;
+			r.SetResult(this, 1);
+			r.AddRecipe();
 		}
 	}
 }

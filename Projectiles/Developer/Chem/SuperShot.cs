@@ -18,7 +18,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 			projectile.extraUpdates += 1;
 		}
 		public override void AI()
-		{
+		{ //Thanks, Fargo
 			Vector2 offset = new Vector2();
 			double angle = Main.rand.NextDouble() * 2d * Math.PI;
 			offset.X += (float)(Math.Sin(angle) * 7);

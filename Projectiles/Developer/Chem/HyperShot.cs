@@ -18,7 +18,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 			projectile.timeLeft = 600;
 		}
 		public override void AI()
-		{
+		{ //Thanks, Fargo
 			for (int i = 0; i < 10; i++)
 			{
 				Vector2 offset = new Vector2();
@@ -45,7 +45,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 		}
 		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit)
 		{
-			//TODO: Make shadowflame work on players
+			//TODO: Shadowflame for players
 			target.AddBuff(BuffID.Frostburn, 300);
 		}
 		public override void Kill(int timeLeft)

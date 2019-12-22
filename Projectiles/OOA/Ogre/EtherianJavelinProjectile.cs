@@ -6,6 +6,11 @@ namespace Desiccation.Projectiles.OOA.Ogre
 	{
 		public override void SetDefaults()
 		{
+			 projectile.aiStyle = 2;
+			 projectile.friendly = true;
+
+
+
 
 		}
 	}

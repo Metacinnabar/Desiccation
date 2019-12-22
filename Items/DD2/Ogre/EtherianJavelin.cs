@@ -17,7 +17,7 @@ namespace Desiccation.Items.DD2.Ogre
 			item.value = Item.sellPrice(gold: 1);
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useTurn = true;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.useTime = item.useAnimation = 25;
 			item.rare = ItemRarityID.Pink;
 			item.width = item.height = 32;
@@ -27,6 +27,18 @@ namespace Desiccation.Items.DD2.Ogre
 			item.shoot = ModContent.ProjectileType<EtherianJavelinProjectile>();
 			item.shootSpeed = 12;
 			item.thrown = true;
+<<<<<<< HEAD:Items/OOA/Ogre/EtherianJavelin.cs
+        }
+
+
+            public override bool UseItem(Player player)
+            {
+            return base.UseItem(player);
+            }
+
+
+       
+=======
+>>>>>>> fc89202a0de5e46a19ce7eabd97a4118db58945d:Items/DD2/Ogre/EtherianJavelin.cs
 		}
 	}
-}

@@ -146,6 +146,7 @@ namespace Desiccation.DUtils
 			FieldInfo infoMessage = Interface.GetField("infoMessage", BindingFlags.Static | BindingFlags.NonPublic);
 			UIElement infoMessageValue = (UIElement)infoMessage.GetValue(null);
 			MethodInfo Show = UIInfoMessage.GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
+
 			if (Show != null)
 			{
 				Show.Invoke(infoMessageValue, new object[5]

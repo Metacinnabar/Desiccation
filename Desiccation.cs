@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using Terraria;
+using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
@@ -23,7 +24,7 @@ namespace Desiccation
 	{
 		//--Stuff for GoodPro712 to do:
 		//TODO: Fix cactus damage knockback. 
-		//TODO: IL Edit the color of the hover main menu tabs
+		//TODO: IL Edit the color of the hover main menu tabs //Marked impossible
 		//TODO: Fix wave skip thingy
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
@@ -104,7 +105,6 @@ namespace Desiccation
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
-			Main.OnPreDraw += OnPreDrawEvent;
 			IL.Terraria.Main.DrawInterface_14_EntityHealthBars += HookDrawInterface_14_EntityHealthBars;
 		}
 
@@ -124,7 +124,6 @@ namespace Desiccation
 			#endregion
 			Main.OnTick -= OnTickEvent;
 			Main.OnPostDraw -= OnPostDrawEvent;
-			Main.OnPreDraw -= OnPreDrawEvent;
 			unloadCalled = true;
 		}
 
@@ -221,16 +220,6 @@ namespace Desiccation
 						return;
 					}
 				}
-			}
-		}
-
-		private void OnPreDrawEvent(GameTime gameTime)
-		{
-			if (tModLoaderVersion >= new Version(0, 11, 6))
-			{
-				Type DD2Event = typeof(ModLoader).Assembly.GetType("Terraria.GameContent.Events.DD2Event");
-				FieldInfo TimeLeftBetweenWavesTimer = DD2Event.GetField("TimeLeftBetweenWavesTimer", BindingFlags.Static | BindingFlags.Public);
-				TimeLeftBetweenWavesTimer.SetValue(DD2Event, string.Format("Right-Click to Skip: {0}", Terraria.GameContent.Events.DD2Event.TimeLeftBetweenWaves / 60));
 			}
 		}
 

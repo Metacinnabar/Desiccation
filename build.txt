@@ -4,5 +4,5 @@ displayName = Desiccation
 hideCode = true
 hideResources = true
 includePDB = true
-buildIgnore = *.user, obj\*, bin\*, .vs\*
+buildIgnore = *.user, obj\*, bin\*, .vs\*, *.zip
 homepage = https://forums.terraria.org/index.php?conversations/84525/

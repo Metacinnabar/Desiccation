@@ -10,8 +10,10 @@ namespace Desiccation.Items.EyeOfCuthulu
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'It's very gaze has the power to kill'");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[item.type] = true; 
 		}
+
+
 
 		public override void SetDefaults()
 		{

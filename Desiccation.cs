@@ -23,8 +23,6 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
-		//TODO: Fix cactus damage knockback. 
-		//TODO: IL Edit the color of the hover main menu tabs //Marked impossible
 		//TODO: Fix wave skip thingy
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
@@ -42,6 +40,7 @@ namespace Desiccation
 		//TODO: Main menu replacement Texture2D's fade in and out when loaded and unloaded. check #coding for a discord link on some info on how to do this
 		//TODO: discord tags for credits
 		//TODO: IL the main menu music possibly tmod contribution
+		//TODO: change the color of the hover main menu tabs. have to redraw them all
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 		//TODO: Add new boss checklist calls to bosses when coded.
 
@@ -57,7 +56,6 @@ namespace Desiccation
 
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
-		//TODO: Spellcheck credits. UI/States/CreditMenu
 
 		#region Fields
 		private Texture2D vanillaLogoDay;

@@ -19,6 +19,7 @@ namespace Desiccation.Items.EyeOfCuthulu
 		{
 			item.damage = 20;
 			item.summon = true;
+			item.noMelee = true;
 			item.mana = 12;
 			item.width = 40;
 			item.height = 40;

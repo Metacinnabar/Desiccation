@@ -23,7 +23,22 @@ namespace Desiccation.Projectiles.EyeOfCthulhu
 
 		public override bool MinionContactDamage()
 	    {
-			return true;       
+			return true;   
+		}
+			public override void AI()
+		    {
+
+			int frameSpeed = 2;
+			projectile.frameCounter++;
+			if (projectile.frameCounter >= 65)
+			{
+				projectile.frameCounter = 0;
+				projectile.frame++;
+	            if (projectile.frame >= Main.projFrames[projectile.type]) 
+				{
+		        projectile.frame = 2;
+                }
+            }
         }
 	}
 }

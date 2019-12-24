@@ -23,7 +23,7 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
-		//TODO: Fix wave skip thingy
+		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false; bruh turns out i need to il edit it
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
@@ -32,7 +32,6 @@ namespace Desiccation
 		//TODO: Statue enemies drop loot if requirements are met
 		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
-		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false;
 		//TODO: Overequipping
 		//TODO: Quick stack ammo and coins
 		//TODO: Multitool Rework with select ui and random thing. Ideas in #concept-discussion. fix multitool sprites aswell

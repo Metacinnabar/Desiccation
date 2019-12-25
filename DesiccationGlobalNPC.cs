@@ -17,8 +17,15 @@ namespace Desiccation.NPCs
 					Item.NewItem(npc.getRect(), ItemID.FuzzyCarrot);
 				}
 			}
-
-
+		
+			if (npc.type == NPCID.AngryNimbus)
+			{
+				if (Misc.RandomFrom1OutOf(3))
+				{
+					Item.NewItem(npc.getRect(), mod.ItemType("WaterFall"));
+                }
+			}        
+			
 			if (npc.type == NPCID.Werewolf)
 			{
 				if (Misc.RandomFrom1OutOf(3))

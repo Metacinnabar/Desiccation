@@ -11,7 +11,7 @@ namespace Desiccation.Projectiles.AngryNimbus
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Elemental Ball");
+            DisplayName.SetDefault("Water Bolt Porjectile");
         }
 
         public override void SetDefaults()

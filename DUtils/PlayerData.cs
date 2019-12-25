@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
@@ -204,9 +205,9 @@ namespace Desiccation.DUtils
 		}
 
 		/// <summary>
-		/// 
+		/// Get an inventory item texture from a specific slot
 		/// </summary>
-		/// <param name="Slot"></param>
+		/// <param name="Slot">The slot to get the item from.</param>
 		/// <returns></returns>
 		public static Texture2D GetInventoryItemSlotTexture(int Slot)
 		{
@@ -220,17 +221,25 @@ namespace Desiccation.DUtils
 		/// <param name="itemType"></param>
 		/// <param name="stack">The amount of items in the stack to give</param>
 		/// <returns></returns>
-		public static bool GivePlayerItem(this Player P, int itemType, int stack = 1)
+		public static int GivePlayerItem(this Player player, int itemType, int amount = 1)
 		{
-			Item[] inv = P.inventory;
+			Item[] inv = player.inventory;
+
+			int amountLeft = amount;
 
 			for (int i = 0; i < 54; i++)
 			{
-				Item thisItem = inv[i];
-				if (thisItem.type == itemType && thisItem.stack < thisItem.maxStack)
+				Item item = inv[i];
+				if (item.type == itemType && item.stack < item.maxStack)
 				{
-					thisItem.stack++;
-					return true;
+					int toAdd = Math.Min(amountLeft, item.maxStack - item.stack);
+					item.stack += toAdd;
+					amountLeft -= toAdd;
+
+					if (amountLeft <= 0)
+					{
+						return amount;
+					}
 				}
 			}
 
@@ -242,12 +251,19 @@ namespace Desiccation.DUtils
 				{
 					item = new Item();
 					item.SetDefaults(itemType, true);
-					item.stack = stack;
-					return true;
+
+					int toAdd = Math.Min(amountLeft, item.maxStack);
+					item.stack = toAdd;
+					amountLeft -= toAdd;
+
+					if (amountLeft <= 0)
+					{
+						return amount;
+					}
 				}
 			}
 
-			return false;
+			return amount - amountLeft;
 		}
 		#endregion
 

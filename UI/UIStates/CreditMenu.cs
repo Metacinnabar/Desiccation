@@ -43,7 +43,7 @@ namespace Desiccation.UI.UIStates
 				"Darthmoth - Desiccation logo generator (without edits)\n" +
 				"Jaserd - Edits on the Desiccation logo\n" +
 				"Fargo - AI for the Hyper Scope\n" +
-				"Mirsario - Unload errors from logo swapping\n" +
+				"Mirsario - Unload errors from logo swapping. NPCAIStyle class\n" +
 				"Itorius - Help with weighted inventory\n" +
 				"Anegorami - Some ebic ideas" +
 				"\n" +

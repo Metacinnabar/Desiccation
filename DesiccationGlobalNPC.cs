@@ -20,7 +20,7 @@ namespace Desiccation.NPCs
 		
 			if (npc.type == NPCID.AngryNimbus)
 			{
-				if (Misc.RandomFrom1OutOf(3))
+				if (Misc.RandomFrom1OutOf(99))
 				{
 					Item.NewItem(npc.getRect(), mod.ItemType("WaterFall"));
                 }
@@ -42,6 +42,7 @@ namespace Desiccation.NPCs
 		{
 			NPCData.AddItemToTownNPCShop(type, shop, ref nextSlot, NPCID.Merchant, ItemID.TargetDummy, NPC.downedBoss1, ModContent.GetInstance<DesiccationGlobalConfig>().Merchant_TargetDummy);
 			NPCData.AddItemToTownNPCShopWithCustomBuyPrice(type, shop, ref nextSlot, NPCID.Wizard, ItemID.LunarCraftingStation, Item.buyPrice(1, 0, 0, 0), NPC.downedAncientCultist, ModContent.GetInstance<DesiccationGlobalConfig>().Wizard_AncientManipulator);
+			NPCData.AddItemToTownNPCShopWithCustomBuyPrice(type, shop, ref nextSlot, NPCID.Merchant, ItemID.WhoopieCushion, Item.buyPrice(0, 1, 0, 0), NPC.downedBoss1);
 		}
 	}
 }

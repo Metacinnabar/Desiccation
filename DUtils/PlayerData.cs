@@ -212,6 +212,43 @@ namespace Desiccation.DUtils
 		{
 			return Main.itemTexture[MyPlayer.inventory[Slot].type];
 		}
+
+		/// <summary>
+		/// Gives the player an item with the specified params. Thanks Mirsario
+		/// </summary>
+		/// <param name="player">The player</param>
+		/// <param name="itemType"></param>
+		/// <param name="stack">The amount of items in the stack to give</param>
+		/// <returns></returns>
+		public static bool GivePlayerItem(this Player P, int itemType, int stack = 1)
+		{
+			Item[] inv = P.inventory;
+
+			for (int i = 0; i < 54; i++)
+			{
+				Item thisItem = inv[i];
+				if (thisItem.type == itemType && thisItem.stack < thisItem.maxStack)
+				{
+					thisItem.stack++;
+					return true;
+				}
+			}
+
+			for (int i = 0; i < 54; i++)
+			{
+				ref Item item = ref inv[i];
+
+				if (item.IsAir)
+				{
+					item = new Item();
+					item.SetDefaults(itemType, true);
+					item.stack = stack;
+					return true;
+				}
+			}
+
+			return false;
+		}
 		#endregion
 
 		#region Player Stats

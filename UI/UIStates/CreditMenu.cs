@@ -15,6 +15,7 @@ namespace Desiccation.UI.UIStates
 				"Lemmy - Main content coder\n" +
 				"\n" +
 				"- Developers\n" +
+				"Plex - Idea for the mod creation, multitool ideas & some sprites\n" +
 				"Nobody - Stater, coder\n" +
 				"Chem - Coder\n" +
 				"Syringe - Stater\n" +
@@ -37,7 +38,6 @@ namespace Desiccation.UI.UIStates
 				"Spectre - Vanilla shop additions\n" +
 				"TraoX - Markoth, werewolf staff and gem reflecter sprites\n" +
 				"Corinna - PlayerData libary code\n" +
-				"Plex - Multitool ideas & some sprites\n" +
 				"Quartz - Some multitool sprites\n" +
 				"Overhaul - Categorisation of config & teaching me how to method.Invoke\n" +
 				"Darthmoth - Desiccation logo generator (without edits)\n" +

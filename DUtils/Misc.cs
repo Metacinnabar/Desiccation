@@ -64,16 +64,6 @@ namespace Desiccation.DUtils
 			=> ModContent.GetTexture("Desiccation/UI/Textures/Blank");
 
 		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="rectangle">The rectangle.</param>
-		/// <returns></returns>
-		public static bool CountainsMouse(this Rectangle rectangle)
-		{
-			return rectangle.Contains(new Point(Main.mouseX, Main.mouseY)) ? true : false;
-		}
-
-		/// <summary>
 		/// Sends a message to the chat. Examples: Chat("message") would send to everone on the server. Chat("message", false) would send just to the player.
 		/// </summary>
 		/// <param name="message"></param>
@@ -197,5 +187,8 @@ namespace Desiccation.DUtils
 
 		public static bool IsInventoryOpen
 			=> Main.playerInventory;
+
+		public static bool Crimson => WorldGen.crimson;
+		public static bool Corruption => !WorldGen.crimson;
 	}
 }

@@ -31,9 +31,26 @@ namespace Desiccation.Items.EyeOfCuthulu
 			item.value = Item.sellPrice(silver: 20);
 			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item20;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.shoot = ModContent.ProjectileType<EyeOfCthulhuStaffProjectile>();
 			item.shootSpeed = 16f;
-		}
+        }
+
+
+		public override void AddRecipes()
+		{
+			ModRecipe r = new ModRecipe(mod);
+			r.AddIngredient(ItemID.CrimtaneBar, 15);
+			r.AddTile(TileID.Anvils);
+			r.SetResult(this);
+			r.AddRecipe();
+			r.AddRecipe();r = new ModRecipe(mod);
+			r.AddIngredient(ItemID.DemoniteBar, 15);
+			r.AddTile(TileID.Anvils);
+			r.SetResult(this);
+			r.AddRecipe();
+
+	    }
+		
 	}
 }

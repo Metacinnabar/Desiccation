@@ -14,6 +14,8 @@ namespace Desiccation.Items.Werewolf.Armor
 		{
 			item.width = 22;
 			item.height = 18;
+			item.defense = 21;
+			item.value = 25000;
 		}
 
 		public override void AddRecipes()

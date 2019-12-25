@@ -10,8 +10,8 @@ namespace Desiccation.UI.UIStates
 		{
 			string text =
 				"- Main Developers\n" +
+				"GoodPro712 - Current owner of Desiccation, main coder & manager\n" +
 				"WeirdHat - Main stater, co-owner\n" +
-				"GoodPro712 - Main coder\n" +
 				"Lemmy - Main content coder\n" +
 				"\n" +
 				"- Developers\n" +

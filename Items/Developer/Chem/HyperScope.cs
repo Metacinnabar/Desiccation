@@ -68,9 +68,10 @@ namespace Desiccation.Items.Developer.Chem
             if (!TookLife && player.statLife <= player.statLifeMax2 / 5)
             {
                 Main.PlaySound(SoundID.Item93.WithVolume(0.75f), player.position);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 30; i++)
                 {
-                    Dust.NewDust(player.position, player.width, player.height, DustID.Electric);
+                    Dust dust = Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.Electric, Scale: 1.25f)];
+                    dust.velocity *= 1.5f;
                 }
                 player.statLife -= 10;
                 CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, 10);

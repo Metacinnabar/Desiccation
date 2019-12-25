@@ -10,7 +10,7 @@ namespace Desiccation.Items.Werewolf
 
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Makes your eye sight better when its a night and even better on a full moon.\nDropped by werewolfs");
+			Tooltip.SetDefault("Improves vision during the night\nMore effective during a full moon\nDropped by werewolfs");
 			DisplayName.SetDefault("Werewolf's Eye");
 		}
 

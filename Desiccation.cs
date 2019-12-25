@@ -48,6 +48,8 @@ namespace Desiccation
 		//TODO: Rework overbright torch. Mak eit burn out after a certain amount of time of it being selected. Maybe progress bar under sprite? for goodpro to do? idk
 		//TODO: Finish the flails off
 		//TODO: Code the dino stuff
+		//TODO: Code the Timelost items
+		//TODO: Code the random gun
 
 		//--Stuff for Reb to do:
 		//TODO: Enchanted flail

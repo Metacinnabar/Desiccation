@@ -9,7 +9,7 @@ namespace Desiccation.Items.Miner
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("A pickaxe that lights up the area around you!\nWorks in water!");
+			Tooltip.SetDefault("A pickaxe that lights up the area around you!\nIt even works underwater!");
 		}
 
 		public override void SetDefaults()

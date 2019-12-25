@@ -12,7 +12,7 @@ namespace Desiccation.Items.Miner
 
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Light up whever your mouse goes.");
+			Tooltip.SetDefault("Light up the area around your cursor.");
 		}
 
 		public override void SetDefaults()

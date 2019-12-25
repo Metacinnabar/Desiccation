@@ -8,7 +8,7 @@ namespace Desiccation.Items.DinoFossil
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("32% Armor Piercing");
+			Tooltip.SetDefault("Increases armor penetration by 32");
 		}
 
 		public override void SetDefaults()

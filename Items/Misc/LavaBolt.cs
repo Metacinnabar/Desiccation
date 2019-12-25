@@ -30,7 +30,7 @@ namespace Desiccation.Items.Misc
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ModContent.ProjectileType<LavaBoltProjectile>();
-			item.shootSpeed = 16f;
+			item.shootSpeed = 12f;
 		}
 
 		public override void AddRecipes()

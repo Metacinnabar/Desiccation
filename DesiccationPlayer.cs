@@ -93,7 +93,7 @@ namespace Desiccation
 			}
 			if (ModContent.GetInstance<DesiccationClientsideConfig>().WelcomeMessage)
 			{
-				Misc.Chat("Thanks for playing with Desiccation " + MyName + ". Remeber to check out the config menu!", true, Color.CornflowerBlue.R, Color.CornflowerBlue.G, Color.CornflowerBlue.B);
+				Misc.Chat("Thanks for playing with Desiccation, " + MyName + ". Remeber to check out the config menu!", true, Color.CornflowerBlue.R, Color.CornflowerBlue.G, Color.CornflowerBlue.B);
 			}
 		}
 

@@ -27,7 +27,7 @@ namespace Desiccation.Items.Misc
 		{
 			player.QuickSpawnItem(ItemID.MiningPotion, Main.rand.Next(1, 3));
 			player.QuickSpawnItem(ItemID.SpelunkerPotion);
-			if (DUtils.Misc.Multiplayer)
+			if (DUtils.NetData.Multiplayer)
 			{
 				player.QuickSpawnItem(ItemID.WormholePotion, Main.rand.Next(2, 6));
 			}

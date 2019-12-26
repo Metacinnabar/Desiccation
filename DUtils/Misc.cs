@@ -14,45 +14,6 @@ namespace Desiccation.DUtils
 {
 	internal static class Misc
 	{
-		public static bool ChristmasDay
-		{
-			get
-			{
-				DateTime now = DateTime.Now;
-				int day = now.Day;
-				int month = now.Month;
-				bool xMas;
-				if (day == 25 && month == 12)
-				{
-					xMas = true;
-				}
-				else
-				{
-					xMas = false;
-				}
-				return xMas;
-			}
-		}
-
-		public static bool HalloweenDay
-		{
-			get
-			{
-				bool halloween;
-				DateTime now = DateTime.Now;
-				int day = now.Day;
-				int month = now.Month;
-				if (day == 31 && month == 10)
-				{
-					halloween = true;
-				}
-				else
-				{
-					halloween = false;
-				}
-				return halloween;
-			}
-		}
 
 		/// <summary>
 		/// Sends a message to the chat. Examples: Chat("message") would send to everone on the server. Chat("message", false) would send just to the player.
@@ -81,8 +42,6 @@ namespace Desiccation.DUtils
 			}
 		}
 
-		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font) => (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
-
 		public static bool RandomFrom1OutOf(int number)
 		{
 			if (Main.rand.Next(1, number) == number)
@@ -99,6 +58,44 @@ namespace Desiccation.DUtils
 		public static bool IsInventoryOpen => Main.playerInventory;
 		public static bool Crimson => WorldGen.crimson;
 		public static bool Corruption => !WorldGen.crimson;
+		public static bool ChristmasDay
+		{
+			get
+			{
+				DateTime now = DateTime.Now;
+				int day = now.Day;
+				int month = now.Month;
+				bool xMas;
+				if (day == 25 && month == 12)
+				{
+					xMas = true;
+				}
+				else
+				{
+					xMas = false;
+				}
+				return xMas;
+			}
+		}
+		public static bool HalloweenDay
+		{
+			get
+			{
+				bool halloween;
+				DateTime now = DateTime.Now;
+				int day = now.Day;
+				int month = now.Month;
+				if (day == 31 && month == 10)
+				{
+					halloween = true;
+				}
+				else
+				{
+					halloween = false;
+				}
+				return halloween;
+			}
+		}
 		#endregion
 	}
 }

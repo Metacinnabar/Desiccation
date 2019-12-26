@@ -2,7 +2,7 @@
 
 namespace Desiccation.DUtils.ID
 {
-	internal static class DownedID
+	public static class DownedID
 	{
 		//Bosses
 		public static bool KingSlime => NPC.downedSlimeKing;

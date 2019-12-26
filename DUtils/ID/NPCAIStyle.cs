@@ -3,7 +3,7 @@
 /// </summary>
 namespace Desiccation.DUtils.ID
 {
-	internal static class NPCAIStyle
+	public static class NPCAIStyle
 	{
 		public const int None = 0;
 		public const int Slime = 1;

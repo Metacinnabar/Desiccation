@@ -1,5 +1,6 @@
 #region Usings
 using Desiccation.DUtils;
+using Desiccation.DUtils.ID;
 using Desiccation.UI.UIStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,7 @@ namespace Desiccation
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
+		//TODO: Music Box ID thing
 		//TODO: Show info on vanity accessories. Code for this in antisocial
 		//TODO: Search for player names and worlds ui
 		//TODO: Statue enemies drop loot if requirements are met
@@ -152,7 +154,7 @@ namespace Desiccation
 						string text = $"{MyName} in {Main.worldName}";
 						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
 						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X + 2, (int)size.Y - 10);
-						if (rectangle.CountainsMouse())
+						if (rectangle.ContainsCursor())
 						{
 							Main.hoverItemName = "Type in chat to change names. '/playername NEW NAME' to change player name, '/worldname NEW NAME' to change world name.";
 						}
@@ -187,11 +189,11 @@ namespace Desiccation
 
 						if (!Main.dedServ)
 						{
-							Misc.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
-							Misc.MainMenuBackgroundSwap(20, 21, 22);
+							BGData.LoadBackgrounds(new List<int>() { 173, 171, 172, 20, 21, 22 });
+							BGData.MainMenuBackgroundSwap(20, 21, 22);
 							for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
 							{
-								Main.cloudTexture[vanillaCloudTextureID] = Misc.BlankTexture;
+								Main.cloudTexture[vanillaCloudTextureID] = Textures.BlankTexture;
 							}
 							Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
 							Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationDesertLogo");

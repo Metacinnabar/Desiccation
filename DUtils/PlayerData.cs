@@ -16,14 +16,12 @@ namespace Desiccation.DUtils
 		/// <summary>
 		/// Reference to the current player, yourself.
 		/// </summary>
-		public static Player MyPlayer
-			=> Main.LocalPlayer;
+		public static Player MyPlayer => Main.LocalPlayer;
 
 		/// <summary>
 		/// Reference to Thorium's ModPlayer class.
 		/// </summary>
-		public static ModPlayer ThoriumPlayer
-			=> Mods.Thorium.GetPlayer("ThoriumPlayer");
+		public static ModPlayer ThoriumPlayer => Mods.Thorium.GetPlayer("ThoriumPlayer");
 
 		#region Player Gender
 		/// <summary>
@@ -396,6 +394,15 @@ namespace Desiccation.DUtils
 		public static Vector2 PlayerNameSize(Player P)
 		{
 			return Main.fontMouseText.MeasureString(P.name);
+		}
+
+		public static bool IsPlayerName(string name)
+		{
+			if (MyName == name)
+			{
+				return true;
+			}
+			return false;
 		}
 		#endregion
 

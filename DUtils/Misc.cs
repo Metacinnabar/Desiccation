@@ -54,15 +54,6 @@ namespace Desiccation.DUtils
 			}
 		}
 
-		public static bool Singleplayer
-			=> Main.netMode == NetmodeID.SinglePlayer;
-
-		public static bool Multiplayer
-			=> Main.netMode != NetmodeID.SinglePlayer;
-
-		public static Texture2D BlankTexture
-			=> ModContent.GetTexture("Desiccation/UI/Textures/Blank");
-
 		/// <summary>
 		/// Sends a message to the chat. Examples: Chat("message") would send to everone on the server. Chat("message", false) would send just to the player.
 		/// </summary>
@@ -73,11 +64,11 @@ namespace Desiccation.DUtils
 		/// <param name="b">b color</param>
 		public static void Chat(string message, bool multiplayer = true, byte r = 255, byte g = 255, byte b = 255)
 		{
-			if (Singleplayer)
+			if (NetData.Singleplayer)
 			{
 				Main.NewText(message, r, g, b);
 			}
-			else if (Multiplayer)
+			else if (NetData.Multiplayer)
 			{
 				if (multiplayer)
 				{
@@ -90,88 +81,7 @@ namespace Desiccation.DUtils
 			}
 		}
 
-		/// <summary>
-		/// Call with the provided params to swap the main menu backgrounds.
-		/// </summary>
-		/// <param name="newFrontBackgroudID"></param>
-		/// <param name="newMiddleBackgroundID"></param>
-		/// <param name="newBackBackgroundID"></param>
-		public static void MainMenuBackgroundSwap(int newFrontBackgroudID, int newMiddleBackgroundID, int newBackBackgroundID)
-		{
-			Main.backgroundTexture[173] = Main.backgroundTexture[newFrontBackgroudID];
-			Main.backgroundTexture[172] = Main.backgroundTexture[newMiddleBackgroundID];
-			Main.backgroundTexture[171] = Main.backgroundTexture[newBackBackgroundID];
-		}
-
-		/// <summary>
-		/// Loads specifc backgrounds
-		/// </summary>
-		/// <param name="loadbgNumbers">The backgrounds to load.</param>
-		public static void LoadBackgrounds(List<int> loadbgNumbers)
-		{
-			if (!Main.dedServ)
-			{
-				foreach (int loadbgNumber in loadbgNumbers)
-				{
-					Main.instance.LoadBackground(loadbgNumber);
-				}
-			}
-		}
-
-		public static void UIInfoMessage_Show(string text, int gotoMenu)
-		{
-			Type Interface = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.Interface");
-			Type UIInfoMessage = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInfoMessage");
-			FieldInfo infoMessage = Interface.GetField("infoMessage", BindingFlags.Static | BindingFlags.NonPublic);
-			UIElement infoMessageValue = (UIElement)infoMessage.GetValue(null);
-			MethodInfo Show = UIInfoMessage.GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
-
-			if (Show != null)
-			{
-				Show.Invoke(infoMessageValue, new object[5]
-				{
-					text, gotoMenu, null, "", null
-				});
-			}
-		}
-
-		/*public static UIElement UIInputTextField(string text)
-		{
-			//Doesn't work
-			
-			Type UIInputTextFieldType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIInputTextField");
-			return (UIElement)Activator.CreateInstance(UIInputTextFieldType, BindingFlags.NonPublic | BindingFlags.Public, null, new[] { text }, null);
-		}*/
-
-		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font)
-		{
-			return (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
-		}
-
-		public static bool IsPlayerServerOwner(Player player)
-		{
-			for (int plr = 0; plr < Main.maxPlayers; plr++)
-			{
-				Console.WriteLine(Netplay.Clients[plr].Socket.GetRemoteAddress());
-				if (Netplay.Clients[plr].State == 10 && Main.player[plr] == player && Netplay.Clients[plr].Socket.GetRemoteAddress().IsLocalHost())
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-
-		public static bool IsPlayerName(string name)
-		{
-			if (PlayerData.MyName == name)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
+		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font) => (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
 
 		public static bool RandomFrom1OutOf(int number)
 		{
@@ -185,10 +95,10 @@ namespace Desiccation.DUtils
 			}
 		}
 
-		public static bool IsInventoryOpen
-			=> Main.playerInventory;
-
+		#region Bools
+		public static bool IsInventoryOpen => Main.playerInventory;
 		public static bool Crimson => WorldGen.crimson;
 		public static bool Corruption => !WorldGen.crimson;
+		#endregion
 	}
 }

@@ -20,7 +20,7 @@ namespace Desiccation.Commands
 
 		public override void Action(CommandCaller caller, string input, string[] args)
 		{
-			if (Misc.IsPlayerServerOwner(PlayerData.MyPlayer))
+			if (NetData.IsPlayerServerOwner(PlayerData.MyPlayer))
 			{
 				if (args.Length > 0)
 				{

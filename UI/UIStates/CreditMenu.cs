@@ -52,7 +52,7 @@ namespace Desiccation.UI.UIStates
 				$"Current patrons from v{ModContent.GetInstance<Desiccation>().Version} of Desiccation:\n" +
 				"No one yet.";
 
-			Misc.UIInfoMessage_Show(text, 0);
+			UIData.UIInfoMessage_Show(text, 0);
 		}
 	}
 }

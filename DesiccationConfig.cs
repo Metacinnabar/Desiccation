@@ -140,7 +140,7 @@ namespace Desiccation
 
 		public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
 		{
-			if (Misc.IsPlayerServerOwner(MyPlayer))
+			if (NetData.IsPlayerServerOwner(MyPlayer))
 			{
 				return true;
 			}

@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Desiccation
+namespace Desiccation.Global
 {
 	public class DesiccationGlobalProjectile : GlobalProjectile
 	{

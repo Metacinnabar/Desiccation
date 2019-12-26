@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Desiccation.DUtils.PlayerData;
 
-namespace Desiccation.Items
+namespace Desiccation.Global
 {
 	public class DesiccationGlobalItem : GlobalItem
 	{

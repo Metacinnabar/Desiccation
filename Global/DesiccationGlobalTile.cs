@@ -3,7 +3,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Desiccation
+namespace Desiccation.Global
 {
 	public class DesiccationGlobalTile : GlobalTile
 	{

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Desiccation.NPCs
+namespace Desiccation.Global
 {
 	public class DesiccationGlobalNPC : GlobalNPC
 	{

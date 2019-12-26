@@ -24,6 +24,7 @@ namespace Desiccation.DUtils
 		public static ModPlayer ThoriumPlayer => Mods.Thorium.GetPlayer("ThoriumPlayer");
 
 		#region Player Gender
+
 		/// <summary>
 		/// The player's gender.
 		/// </summary>
@@ -42,13 +43,15 @@ namespace Desiccation.DUtils
 		{
 			return Player.Male ? Gender.Male : Gender.Female;
 		}
-		#endregion
+
+		#endregion Player Gender
 
 		#region Player Position
+
 		/// <summary>
 		/// Direction of the player, -1 for left, 1 for right.
 		/// </summary>
-		/// <param name="Player">The player.</param> 
+		/// <param name="Player">The player.</param>
 		/// <returns>-1 for left, 1 for right.</returns>
 		public static int Direction(Player Player)
 		{
@@ -60,9 +63,11 @@ namespace Desiccation.DUtils
 		/// </summary>
 		public static Vector2 MyPosition
 			=> MyPlayer.position;
-		#endregion
+
+		#endregion Player Position
 
 		#region Player Frames
+
 		/// <summary>
 		/// Gets the ID of the player's skin.
 		/// </summary>
@@ -177,7 +182,8 @@ namespace Desiccation.DUtils
 		{
 			return Main.armorLegTexture[LegID(Player)];
 		}
-		#endregion
+
+		#endregion Player Frames
 
 		#region Player Inventory
 
@@ -263,7 +269,8 @@ namespace Desiccation.DUtils
 
 			return amount - amountLeft;
 		}
-		#endregion
+
+		#endregion Player Inventory
 
 		#region Player Stats
 
@@ -346,9 +353,11 @@ namespace Desiccation.DUtils
 		{
 			P.maxFallSpeed = NewMaxSpeed;
 		}
-		#endregion
+
+		#endregion Player Stats
 
 		#region Player Name
+
 		/// <summary>
 		/// Gets the local player's name.
 		/// </summary>
@@ -404,9 +413,11 @@ namespace Desiccation.DUtils
 			}
 			return false;
 		}
-		#endregion
+
+		#endregion Player Name
 
 		#region Player Movement
+
 		public static float DefaultGravity
 			=> Player.defaultGravity;
 
@@ -449,9 +460,11 @@ namespace Desiccation.DUtils
 		{
 			P.accRunSpeed = Speed;
 		}
-		#endregion
+
+		#endregion Player Movement
 
 		#region Player States
+
 		/// <summary>
 		/// Checks if the player is colliding with a liquid.
 		/// </summary>
@@ -537,7 +550,8 @@ namespace Desiccation.DUtils
 		{
 			return P.merman = IsMerman;
 		}
-		#endregion
+
+		#endregion Player States
 
 		#region Mount Related
 
@@ -561,9 +575,10 @@ namespace Desiccation.DUtils
 			return P.onWrongGround = Value;
 		}
 
-		#endregion
+		#endregion Mount Related
 
 		#region Projectile Related
+
 		public static int HeldProjectile(Player P)
 		{
 			return P.heldProj;
@@ -573,9 +588,11 @@ namespace Desiccation.DUtils
 		{
 			P.heldProj = Type;
 		}
-		#endregion
+
+		#endregion Projectile Related
 
 		#region Item Related
+
 		/// <summary>
 		/// Gets the bool value of Player.PortalPhysicsEnabled
 		/// </summary>
@@ -585,9 +602,11 @@ namespace Desiccation.DUtils
 		{
 			return P.PortalPhysicsEnabled;
 		}
-		#endregion
+
+		#endregion Item Related
 
 		#region Biome Related
+
 		/// <summary>
 		/// Checks if the player is on the surface and not in any biome. Thanks Aqua.
 		/// </summary>
@@ -597,9 +616,11 @@ namespace Desiccation.DUtils
 		{
 			return !P.ZoneJungle && !P.ZoneDungeon && !P.ZoneCorrupt && !P.ZoneCrimson && !P.ZoneHoly && !P.ZoneSnow && !P.ZoneUndergroundDesert && !P.ZoneGlowshroom && !P.ZoneMeteor && P.ZoneOverworldHeight;
 		}
-		#endregion
+
+		#endregion Biome Related
 
 		#region Tile Related
+
 		/// <summary>
 		/// Checks if the player is touching a specifc tile. Thx aqua
 		/// </summary>
@@ -629,6 +650,7 @@ namespace Desiccation.DUtils
 			rect.Y += 1;
 			return rect.Intersects(TileData.GetTileRectangle(x, y));
 		}
-		#endregion
+
+		#endregion Tile Related
 	}
 }

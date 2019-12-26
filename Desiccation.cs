@@ -1,4 +1,5 @@
 #region Usings
+
 using Desiccation.DUtils;
 using Desiccation.DUtils.ID;
 using Desiccation.UI.UIStates;
@@ -9,15 +10,14 @@ using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
 using Terraria;
-using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.UI.Chat;
 using static Desiccation.DUtils.PlayerData;
-#endregion
+
+#endregion Usings
 
 namespace Desiccation
 {
@@ -61,6 +61,7 @@ namespace Desiccation
 		//TODO: Constructer potion. stats pinned in #stating
 
 		#region Fields
+
 		private Texture2D vanillaLogoDay;
 		private Texture2D vanillaLogoNight;
 		private Texture2D vanillaSkyBackground;
@@ -82,16 +83,19 @@ namespace Desiccation
 		private static readonly string releaseSuffix = "Beta Release!";
 		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
 		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
-		#endregion
+
+		#endregion Fields
 
 		public Desiccation()
 		{
 		}
 
 		#region tModLoader Hooks
+
 		public override void Load()
 		{
 			#region Main Menu Backups
+
 			vanillaFrontMainMenuBackground = Main.backgroundTexture[173];
 			vanillaMiddleMainMenuBackground = Main.backgroundTexture[172];
 			vanillaBackMainMenuBackground = Main.backgroundTexture[171];
@@ -102,7 +106,9 @@ namespace Desiccation
 			vanillaSkyBackground = Main.backgroundTexture[0];
 			vanillaLogoDay = Main.logoTexture;
 			vanillaLogoNight = Main.logo2Texture;
-			#endregion
+
+			#endregion Main Menu Backups
+
 			unloadCalled = false;
 			Main.OnTick += OnTickEvent;
 			Main.OnPostDraw += OnPostDrawEvent;
@@ -112,6 +118,7 @@ namespace Desiccation
 		public override void Unload()
 		{
 			#region Main Menu Changes
+
 			Main.logoTexture = vanillaLogoDay;
 			Main.logo2Texture = vanillaLogoNight;
 			Main.backgroundTexture[0] = vanillaSkyBackground;
@@ -122,7 +129,9 @@ namespace Desiccation
 			Main.backgroundTexture[173] = vanillaFrontMainMenuBackground;
 			Main.backgroundTexture[172] = vanillaMiddleMainMenuBackground;
 			Main.backgroundTexture[171] = vanillaBackMainMenuBackground;
-			#endregion
+
+			#endregion Main Menu Changes
+
 			Main.OnTick -= OnTickEvent;
 			Main.OnPostDraw -= OnPostDrawEvent;
 			unloadCalled = true;
@@ -170,9 +179,11 @@ namespace Desiccation
 		{
 			WorldGen.setBG(0, 6);
 		}
-		#endregion
+
+		#endregion tModLoader Hooks
 
 		#region Events
+
 		private void OnTickEvent()
 		{
 			if (Main.gameMenu)
@@ -248,12 +259,15 @@ namespace Desiccation
 			}
 			lastMouseLeft = Main.mouseLeft;
 		}
-		#endregion
+
+		#endregion Events
 
 		#region Main Menu Text
+
 		private void MainMenuLinkDraw(string text, float Y, string process, int offset, ref bool IsIn, string type)
 		{
 			#region Color Setting
+
 			Color color;
 			if (type == "Useful Links")
 			{
@@ -275,8 +289,11 @@ namespace Desiccation
 				}
 				newColor.A = (byte)(newColor.A * 0.5f);
 			}
+
 			#endregion Color Setting
+
 			#region Rectangle & Hover/Click
+
 			Vector2 size = ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, Main.fontMouseText, text, new Vector2(10f, Y), Color.Transparent, 0f, Vector2.Zero, new Vector2(1f, 1f));
 			Rectangle rectangle = new Rectangle((int)10f, (int)Y, (int)size.X - 10, (int)size.Y + offset);
 			if (rectangle.Contains(new Point(Main.mouseX, Main.mouseY)))
@@ -313,12 +330,16 @@ namespace Desiccation
 					Process.Start(process);
 				}
 			}
+
 			#endregion Rectangle & Hover/Click
+
 			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, Main.fontMouseText, text, new Vector2(10f, Y), newColor, 0f, Vector2.Zero, new Vector2(1f, 1f));
 		}
-		#endregion
+
+		#endregion Main Menu Text
 
 		#region IL Editing
+
 		private void HookDrawInterface_14_EntityHealthBars(ILContext il)
 		{
 			if (ModContent.GetInstance<DesiccationGlobalConfig>().OOAWaitingTimeSkip)
@@ -337,6 +358,7 @@ namespace Desiccation
 				});
 			}
 		}
-		#endregion
+
+		#endregion IL Editing
 	}
 }

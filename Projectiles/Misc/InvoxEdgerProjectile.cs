@@ -8,6 +8,7 @@ namespace Desiccation.Projectiles.Misc
 		{
 			DisplayName.SetDefault("InvoxEdgerProjectile");
 		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;

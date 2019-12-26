@@ -17,6 +17,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 			projectile.penetrate = 20;
 			projectile.timeLeft = 600;
 		}
+
 		public override void AI()
 		{ //Thanks, Fargo
 			for (int i = 0; i < 10; i++)
@@ -34,20 +35,24 @@ namespace Desiccation.Projectiles.Developer.Chem
 				dust.noGravity = true;
 			}
 		}
+
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White; //Makes the projectile unaffected by light
 		}
+
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			target.AddBuff(BuffID.Frostburn, 300);
 			target.AddBuff(BuffID.ShadowFlame, 300);
 		}
+
 		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit)
 		{
 			//TODO: Shadowflame for players
 			target.AddBuff(BuffID.Frostburn, 300);
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 40; i++)

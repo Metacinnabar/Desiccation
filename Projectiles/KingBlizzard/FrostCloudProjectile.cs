@@ -17,7 +17,6 @@ namespace Desiccation.Projectiles.KingBlizzard
 			projectile.timeLeft = 200; // lowered from 300
 			projectile.penetrate = -1;
 			projectile.position = Main.MouseWorld;
-
 		}
 
 		public override string Texture => "Terraria/Projectile_" + ProjectileID.RainNimbus;

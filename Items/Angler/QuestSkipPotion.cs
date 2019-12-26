@@ -6,7 +6,6 @@ namespace Desiccation.Items.Angler
 {
 	public class QuestSkipPotion : ModItem
 	{
-
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Very useful for changing your name.");
@@ -33,7 +32,6 @@ namespace Desiccation.Items.Angler
 
 		public override void AddRecipes()
 		{
-
 		}
 	}
 }

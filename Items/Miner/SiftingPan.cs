@@ -129,7 +129,6 @@ namespace Desiccation.Items.Miner
 							}
 						}
 					}
-
 				}
 			} //Thx Dark;Light and Direwolf
 			return true;
@@ -137,7 +136,6 @@ namespace Desiccation.Items.Miner
 
 		public override void AddRecipes()
 		{
-
 		}
 	}
 }

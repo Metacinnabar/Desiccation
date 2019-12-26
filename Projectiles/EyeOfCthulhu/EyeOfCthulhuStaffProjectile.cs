@@ -15,6 +15,7 @@ namespace Desiccation.Projectiles.EyeOfCthulhu
 			projectile.CloneDefaults(388);
 			aiType = 388;
 		}
+
 		public override bool? CanCutTiles()
 		{
 			return true;

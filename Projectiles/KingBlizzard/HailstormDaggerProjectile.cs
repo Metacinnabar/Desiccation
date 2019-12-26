@@ -19,6 +19,7 @@ namespace Desiccation.Projectiles.KingBlizzard
 		}
 
 		private bool rotChanged = false;
+
 		public override void AI()
 		{
 			if (!rotChanged)

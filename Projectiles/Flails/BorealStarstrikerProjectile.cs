@@ -9,8 +9,6 @@ namespace Desiccation.Projectiles.Flails
 {
 	public class BorealStarstrikerProjectile : ModProjectile
 	{
-
-
 		public override void SetDefaults()
 		{
 			projectile.width = 28;
@@ -69,4 +67,3 @@ namespace Desiccation.Projectiles.Flails
 		}
 	}
 }
-

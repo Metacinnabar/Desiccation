@@ -17,6 +17,7 @@ namespace Desiccation.Projectiles.Developer.Chem
 			projectile.penetrate += 1;
 			projectile.extraUpdates += 1;
 		}
+
 		public override void AI()
 		{ //Thanks, Fargo
 			Vector2 offset = new Vector2();
@@ -27,24 +28,29 @@ namespace Desiccation.Projectiles.Developer.Chem
 			dust.velocity *= 0.75f;
 			dust.noGravity = true;
 		}
+
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White; //Makes the projectile unaffected by light
 		}
+
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			target.AddBuff(BuffID.Frostburn, 30);
 			target.AddBuff(BuffID.ShadowFlame, 30);
 		}
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.immune[projectile.owner] = 5; //This projectile would occasionally appear to pierce through 2 extra enemies otherwise
 		}
+
 		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit)
 		{
 			//TODO: Shadoowflame for players
 			target.AddBuff(BuffID.Frostburn, 30);
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 20; i++)

@@ -13,6 +13,7 @@ namespace Desiccation.Projectiles.Miner
 			projectile.maxPenetrate = -1;
 			projectile.melee = true;
 		}
+
 		public override void AI()
 		{
 			float rotationsPerSecond = 3f;

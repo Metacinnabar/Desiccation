@@ -17,15 +17,15 @@ namespace Desiccation.Global
 					Item.NewItem(npc.getRect(), ItemID.FuzzyCarrot);
 				}
 			}
-		
+
 			if (npc.type == NPCID.AngryNimbus)
 			{
 				if (Misc.RandomFrom1OutOf(99))
 				{
 					Item.NewItem(npc.getRect(), mod.ItemType("WaterFall"));
-                }
-			}        
-			
+				}
+			}
+
 			if (npc.type == NPCID.Werewolf)
 			{
 				if (Misc.RandomFrom1OutOf(3))
@@ -38,6 +38,7 @@ namespace Desiccation.Global
 				}
 			}
 		}
+
 		public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
 			NPCData.AddItemToTownNPCShop(type, shop, ref nextSlot, NPCID.Merchant, ItemID.TargetDummy, NPC.downedBoss1, ModContent.GetInstance<DesiccationGlobalConfig>().Merchant_TargetDummy);

@@ -28,6 +28,7 @@ namespace Desiccation.Items.Flails
 			item.crit = 9;
 			item.channel = true;
 		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe r = new ModRecipe(mod);

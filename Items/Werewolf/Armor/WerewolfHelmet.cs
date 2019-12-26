@@ -28,15 +28,15 @@ namespace Desiccation.Items.Werewolf.Armor
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Same as moon charm but with +5% knockback and can be stacked with moon charm";
-			        player.statDefense += 2;
-					player.meleeCrit += 2;
-					player.allDamage += 0.05f;
-					player.meleeSpeed += 0.05f;
-					player.magicCrit += 2;
-					player.rangedCrit += 2;
-					player.thrownCrit += 2;
-					player.minionKB += 0.5f;
-					player.moveSpeed += 0.2f;
+			player.statDefense += 2;
+			player.meleeCrit += 2;
+			player.allDamage += 0.05f;
+			player.meleeSpeed += 0.05f;
+			player.magicCrit += 2;
+			player.rangedCrit += 2;
+			player.thrownCrit += 2;
+			player.minionKB += 0.5f;
+			player.moveSpeed += 0.2f;
 		}
 
 		public override void AddRecipes()

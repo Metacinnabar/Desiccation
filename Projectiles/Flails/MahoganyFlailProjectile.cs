@@ -9,8 +9,6 @@ namespace Desiccation.Projectiles.Flails
 {
 	public class MahoganyFlailProjectile : ModProjectile
 	{
-
-
 		public override void SetDefaults()
 		{
 			projectile.width = 28;

@@ -15,6 +15,7 @@ namespace Desiccation.Projectiles.Gems
 
 		// The maximum charge value
 		private const float MAX_CHARGE = 50f;
+
 		//The distance charge particle from the player center
 		private const float MOVE_DISTANCE = 60f;
 
@@ -171,6 +172,7 @@ namespace Desiccation.Projectiles.Gems
 		/*
 		 * Sets the end of the laser position based on where it collides with something
 		 */
+
 		private void SetLaserPosition(Player player)
 		{
 			for (Distance = MOVE_DISTANCE; Distance <= 2200f; Distance += 5f)
@@ -254,6 +256,7 @@ namespace Desiccation.Projectiles.Gems
 		/*
 		 * Update CutTiles so the laser will cut tiles (like grass)
 		 */
+
 		public override void CutTiles()
 		{
 			DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;

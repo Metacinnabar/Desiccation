@@ -14,6 +14,7 @@ namespace Desiccation.Items.Developer.TheWeirdhat
 			DisplayName.SetDefault("The Weird Sword");
 			Tooltip.SetDefault("Great for impersonating devs!\nThis sword has been blessed by weird magic that makes it swing unusually fast.");
 		}
+
 		public override void SetDefaults()
 		{
 			item.maxStack = 1;

@@ -30,9 +30,7 @@ namespace Desiccation.Global
 					TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "PickPower" && x.mod == "Terraria");
 					if (tt != null)
 					{
-						string pickValue = item.pick.ToString();
-						string pickWord = "pickaxe";
-						tt.text = pickValue + " " + pickWord;
+						tt.text = $"{item.pick.ToString()} pickaxe power";
 					}
 				}
 				if (item.axe > 0)
@@ -40,9 +38,7 @@ namespace Desiccation.Global
 					TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "AxePower" && x.mod == "Terraria");
 					if (tt != null)
 					{
-						string axeValue = item.axe.ToString();
-						string axeWord = "axe";
-						tt.text = axeValue + " " + axeWord;
+						tt.text = $"{item.axe.ToString()} axe power";
 					}
 				}
 				if (item.hammer > 0)
@@ -50,9 +46,7 @@ namespace Desiccation.Global
 					TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "HammerPower" && x.mod == "Terraria");
 					if (tt != null)
 					{
-						string hammerValue = item.hammer.ToString();
-						string hammerWord = "hammer";
-						tt.text = hammerValue + " " + hammerWord;
+						tt.text = $"{item.hammer.ToString()} hammer power";
 					}
 				}
 			}

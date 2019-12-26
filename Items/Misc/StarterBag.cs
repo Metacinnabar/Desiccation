@@ -1,3 +1,4 @@
+using Desiccation.DUtils;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +28,7 @@ namespace Desiccation.Items.Misc
 		{
 			player.QuickSpawnItem(ItemID.MiningPotion, Main.rand.Next(1, 3));
 			player.QuickSpawnItem(ItemID.SpelunkerPotion);
-			if (DUtils.NetData.Multiplayer)
+			if (NetData.Multiplayer)
 			{
 				player.QuickSpawnItem(ItemID.WormholePotion, Main.rand.Next(2, 6));
 			}

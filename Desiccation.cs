@@ -152,8 +152,8 @@ namespace Desiccation
 					if (!Main.gameMenu && ModContent.GetInstance<DesiccationClientsideConfig>().NameInfo && !Misc.IsInventoryOpen)
 					{
 						string text = $"{MyName} in {Main.worldName}";
-						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
-						Rectangle rectangle = new Rectangle((int)Misc.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X + 2, (int)size.Y - 10);
+						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(DrawData.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
+						Rectangle rectangle = new Rectangle((int)DrawData.CenterStringXOnScreen(text, Main.fontMouseText), 2, (int)size.X + 2, (int)size.Y - 10);
 						if (rectangle.ContainsCursor())
 						{
 							Main.hoverItemName = "Type in chat to change names. '/playername NEW NAME' to change player name, '/worldname NEW NAME' to change world name.";

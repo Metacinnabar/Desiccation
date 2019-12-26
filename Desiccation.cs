@@ -24,6 +24,8 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
+		//TODO: Change eerie messages to be ambient sounds instead
+		//TODO: Weighted inventory notices
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false; bruh turns out i need to il edit it
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats

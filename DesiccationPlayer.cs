@@ -130,7 +130,7 @@ namespace Desiccation
 		{
 			if (player.IsPlayerTouchingTile(TileID.Cactus))
 			{
-				player.Hurt(PlayerDeathReason.ByCustomReason(" got spiked up their spine"), 9, player.direction);
+				player.Hurt(PlayerDeathReason.ByCustomReason(" got spiked up their spine"), Main.rand.Next(7, 10), player.direction);
 			}
 		}
 

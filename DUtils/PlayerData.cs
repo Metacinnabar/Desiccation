@@ -622,6 +622,13 @@ namespace Desiccation.DUtils
 			}
 			return false;
 		}
+
+		public static bool IsOnTile(this Player player, int x, int y)
+		{
+			Rectangle rect = player.getRect();
+			rect.Y += 1;
+			return rect.Intersects(TileData.GetTileRectangle(x, y));
+		}
 		#endregion
 	}
 }

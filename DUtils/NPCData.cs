@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Desiccation.DUtils
@@ -55,6 +56,13 @@ namespace Desiccation.DUtils
 				shop.item[nextSlot].shopCustomPrice = CustomBuyPrice;
 				nextSlot++;
 			}
+		}
+
+		public static bool IsOnTile(this NPC npc, int x, int y)
+		{
+			Rectangle rectangle = npc.getRect();
+			rectangle.Y += 1;
+			return rectangle.Intersects(TileData.GetTileRectangle(x, y));
 		}
 	}
 }

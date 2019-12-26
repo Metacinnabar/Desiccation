@@ -26,5 +26,14 @@ namespace Desiccation.DUtils
 		{
 			return Main.tileSolid[type] && Main.tileSolidTop[type];
 		}
+
+		/// <summary>
+		/// Gets the tale's rectangle. Thx aqua
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <returns></returns>
+		public static Rectangle GetTileRectangle(int x, int y)
+			=> new Rectangle(x * 16, y * 16, 16, 16);
 	}
 }

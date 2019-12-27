@@ -24,6 +24,14 @@ namespace Desiccation
 	public class Desiccation : Mod
 	{
 		//--Stuff for GoodPro712 to do:
+		//TODO: Replace eerie messages with ambient sounds
+		//TODO: Change the main menu rework into "themes"
+		//TODO: Make vanity music boxes its own mod
+		//TODO: Remove cactus damage
+		//TODO: Keep favourite tooltip
+		//TODO: Scrap more item info in tooltips idea
+		//TODO: Make banner rework unique
+		//TODO: Rework flails to find a reason for players to use them?
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false; bruh turns out i need to il edit it
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
 		//TODO: Shift z shows extra stats

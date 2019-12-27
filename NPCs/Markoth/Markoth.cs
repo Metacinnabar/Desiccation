@@ -24,5 +24,19 @@ namespace Desiccation.NPCs.Markoth
 			npc.knockBackResist = 0.5f;
 			npc.behindTiles = false;
 		}
-	}
+//<<<<<<< HEAD
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.625 * bossLifeScale);
+			npc.damage = (int)(npc.damage * 0.6f);
+        }
+
+
+
+
+    }
 }
+//=======
+	
+//>>>>>>> 86b7570e6e4a2b2b31bc676abf37c61d23190781

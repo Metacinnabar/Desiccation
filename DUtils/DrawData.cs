@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using ReLogic.Graphics;
 using Terraria;
 
@@ -15,7 +14,7 @@ namespace Desiccation.DUtils
 		/// </summary>
 		/// <param name="rectangle">The rectangle.</param>
 		/// <returns></returns>
-		public static bool ContainsCursor(this Rectangle rectangle) 
+		public static bool ContainsCursor(this Rectangle rectangle)
 			=> rectangle.Contains(new Point(Main.mouseX, Main.mouseY)) ? true : false;
 
 		public static void Draw(this Rectangle rectangle)
@@ -25,7 +24,7 @@ namespace Desiccation.DUtils
 			Main.spriteBatch.Draw(Main.magicPixel, rectangle, Color.White);
 		}
 
-		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font) 
+		public static float CenterStringXOnScreen(string text, DynamicSpriteFont font)
 			=> (Main.screenWidth / 2f) - font.MeasureString(text).X / 2;
 	}
 }

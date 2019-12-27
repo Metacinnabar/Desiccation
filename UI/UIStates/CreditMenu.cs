@@ -24,7 +24,7 @@ namespace Desiccation.UI.UIStates
 				"Zando - Main respriter\n" +
 				"Rebmiami - Google docs helper, stater, coder\n" +
 				"AnAvailableUsername - Stater\n" +
-                "Chem - Coder\n" +
+				"Chem - Coder\n" +
 				"\n" +
 				"- Main Helpers\n" +
 				"Jopojelly - Huge help with code problems. Thx heaps!\n" +

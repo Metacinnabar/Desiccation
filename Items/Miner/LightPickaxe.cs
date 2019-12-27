@@ -37,7 +37,6 @@ namespace Desiccation.Items.Miner
 
 		public override void AddRecipes()
 		{
-
 		}
 	}
 }

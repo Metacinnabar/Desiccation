@@ -22,7 +22,6 @@ namespace Desiccation.Projectiles.DinoFossil
 			projectile.velocity.Y += projectile.ai[0];
 			if (Main.rand.NextBool(3))
 			{
-
 			}
 		}
 
@@ -54,7 +53,6 @@ namespace Desiccation.Projectiles.DinoFossil
 		{
 			for (int k = 0; k < 5; k++)
 			{
-
 			}
 			Main.PlaySound(SoundID.Item25, projectile.position);
 		}

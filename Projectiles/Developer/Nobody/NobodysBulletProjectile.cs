@@ -58,6 +58,7 @@ namespace Desiccation.Projectiles.Developer.Nobody
 			}
 			return false;
 		}
+
 		//Note, you can use this with an NPC to shoot at a Player also
 		//For every npc slot in Main.npc
 
@@ -80,6 +81,7 @@ namespace Desiccation.Projectiles.Developer.Nobody
 			Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 			Main.PlaySound(SoundID.Item10, projectile.position);
 		}
+
 		public override void AI()
 		{
 			for (int i = 0; i < 200; i++)

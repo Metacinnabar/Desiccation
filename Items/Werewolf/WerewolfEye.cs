@@ -7,7 +7,6 @@ namespace Desiccation.Items.Werewolf
 {
 	public class WerewolfEye : ModItem
 	{
-
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Improves vision during the night\nMore effective during a full moon\nDropped by werewolfs");
@@ -30,12 +29,10 @@ namespace Desiccation.Items.Werewolf
 			{
 				if (Main.moonPhase == 1)
 				{
-
 					Lighting.AddLight(position, 1f, 1f, 10f);
 				}
 				else
 				{
-
 					Lighting.AddLight(position, 1f, 1f, 1f);
 				}
 			}

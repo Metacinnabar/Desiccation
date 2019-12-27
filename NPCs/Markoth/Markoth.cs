@@ -24,6 +24,7 @@ namespace Desiccation.NPCs.Markoth
 			npc.knockBackResist = 0.5f;
 			npc.behindTiles = false;
 		}
+//<<<<<<< HEAD
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -36,3 +37,6 @@ namespace Desiccation.NPCs.Markoth
 
     }
 }
+//=======
+	
+//>>>>>>> 86b7570e6e4a2b2b31bc676abf37c61d23190781

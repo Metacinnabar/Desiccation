@@ -77,7 +77,6 @@ namespace Desiccation.Projectiles.Spectre
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-
 		}
 	}
 }

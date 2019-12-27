@@ -40,6 +40,7 @@ namespace Desiccation.Projectiles.Markoth
 				NPC.SpawnOnPlayer(player.whoAmI, NPCType<NPCs.Markoth.Markoth>());
 			}
 		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			//Penetrate

@@ -12,7 +12,6 @@ namespace Desiccation
 			=> ConfigScope.ClientSide; // per player config
 
 		[Header("Multiplayer")]
-
 		[Label("Team Auto Join")]
 		[Tooltip("You will automaticly join this team after entering a world in multiplayer.")]
 		[DrawTicks]
@@ -21,14 +20,12 @@ namespace Desiccation
 		public string PvPTeam;
 
 		[Header("Main Menu")]
-
 		[Label("Background Changes")]
 		[Tooltip("Changes for the main menu. False for no changes, true to change the whole main menu to a desert. True by default")]
 		[DefaultValue(true)]
 		public bool MainMenuDesert;
 
 		[Header("Death Screen")]
-
 		[Label("Respawn Timer")]
 		[Tooltip("False for no timer on the death screen, true to show a timer until repawn on the death screen. True by default")]
 		[DefaultValue(true)]
@@ -43,14 +40,12 @@ namespace Desiccation
 		public int RespawnTimerDecimal;
 
 		[Header("Accessories Slots")]
-
 		[Label("Vanity Music Boxes")]
 		[Tooltip("Making music boxes work in the vanity slots. False to keep them the same, true to be able to have music boxes play in vanity slots. True by default")]
 		[DefaultValue(true)]
 		public bool VanityMusicBoxes;
 
 		[Header("Messages")]
-
 		[Label("Welcome Message")]
 		[Tooltip("Having a welcome message on world entry. False for no message, true for message. True by default")]
 		[DefaultValue(true)]
@@ -62,7 +57,6 @@ namespace Desiccation
 		public bool EerieMessages;
 
 		[Header("Tooltips")]
-
 		[Label("Tool Tooltip Changes")]
 		[Tooltip("If true, tools with have tool damage, not melee, and they wont have a '%' in their tool power. True by default")]
 		[DefaultValue(true)]
@@ -74,7 +68,6 @@ namespace Desiccation
 		public bool NoFavoriteTooltips;
 
 		[Header("UI")]
-
 		[Label("Player Name & World Name")]
 		[Tooltip("If true, the player's name and world name will be displayed at the top of the screen. True by default")]
 		[DefaultValue(true)]
@@ -87,28 +80,24 @@ namespace Desiccation
 		public override ConfigScope Mode => ConfigScope.ServerSide; // all player config
 
 		[Header("Inventory")]
-
 		[Label("Weighted Inventory")]
 		[Tooltip("If true, you will go slower with a full inventory, and faster with an empty inventory.")]
 		[DefaultValue(true)]
 		public bool WeightedInventory;
 
 		[Header("Multiplayer")]
-
 		[Label("Player Name Change")]
 		[Tooltip("If true, players can change their name. Default to true")]
 		[DefaultValue(true)]
 		public bool PlayerNameChange;
 
 		[Header("Events")]
-
 		[Label("OOA Skip Waiting Time")]
 		[Tooltip("If true, you will be able to skip the waiting time between waves of the OOA. True by default.")]
 		[DefaultValue(true)]
 		public bool OOAWaitingTimeSkip;
 
 		[Header("Items")]
-
 		[Label("Sandgun Projectile Changes")]
 		[Tooltip("If true, ebonsand, crimsand and pearlsand balls from a sandgun will give debuff to enemies. True by default.")]
 		[DefaultValue(true)]
@@ -120,7 +109,6 @@ namespace Desiccation
 		public bool ResourcePickup;
 
 		[Header("Town NPC Shop Additions")]
-
 		[Label("Merchant - Target Dummy")]
 		[Tooltip("If true, the merchant will sell target dummies when EoC has been defeated. True by default.")]
 		[DefaultValue(true)]
@@ -132,7 +120,6 @@ namespace Desiccation
 		public bool Wizard_AncientManipulator;
 
 		[Header("NPC Drop Additions")]
-
 		[Label("Bunny - FuzzyCarrot")]
 		[Tooltip("If true, bunnies will have 1/150 chance of dropping a fuzzy carrot. True by default.")]
 		[DefaultValue(true)]

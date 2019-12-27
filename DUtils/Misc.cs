@@ -1,20 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace Desiccation.DUtils
 {
 	internal static class Misc
 	{
-
 		/// <summary>
 		/// Sends a message to the chat. Examples: Chat("message") would send to everone on the server. Chat("message", false) would send just to the player.
 		/// </summary>
@@ -55,9 +47,11 @@ namespace Desiccation.DUtils
 		}
 
 		#region Bools
+
 		public static bool IsInventoryOpen => Main.playerInventory;
 		public static bool Crimson => WorldGen.crimson;
 		public static bool Corruption => !WorldGen.crimson;
+
 		public static bool ChristmasDay
 		{
 			get
@@ -77,6 +71,7 @@ namespace Desiccation.DUtils
 				return xMas;
 			}
 		}
+
 		public static bool HalloweenDay
 		{
 			get
@@ -96,6 +91,7 @@ namespace Desiccation.DUtils
 				return halloween;
 			}
 		}
-		#endregion
+
+		#endregion Bools
 	}
 }

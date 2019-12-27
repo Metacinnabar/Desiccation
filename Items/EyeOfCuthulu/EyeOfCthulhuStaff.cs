@@ -10,10 +10,8 @@ namespace Desiccation.Items.EyeOfCuthulu
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'It's very gaze has the power to kill'");
-			Item.staff[item.type] = true; 
+			Item.staff[item.type] = true;
 		}
-
-
 
 		public override void SetDefaults()
 		{
@@ -34,8 +32,7 @@ namespace Desiccation.Items.EyeOfCuthulu
 			item.autoReuse = false;
 			item.shoot = ModContent.ProjectileType<EyeOfCthulhuStaffProjectile>();
 			item.shootSpeed = 16f;
-        }
-
+		}
 
 		public override void AddRecipes()
 		{
@@ -44,13 +41,11 @@ namespace Desiccation.Items.EyeOfCuthulu
 			r.AddTile(TileID.Anvils);
 			r.SetResult(this);
 			r.AddRecipe();
-			r.AddRecipe();r = new ModRecipe(mod);
+			r.AddRecipe(); r = new ModRecipe(mod);
 			r.AddIngredient(ItemID.DemoniteBar, 15);
 			r.AddTile(TileID.Anvils);
 			r.SetResult(this);
 			r.AddRecipe();
-
-	    }
-		
+		}
 	}
 }

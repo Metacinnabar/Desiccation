@@ -82,24 +82,28 @@ namespace Desiccation.Global
 							return false;
 						}
 						break;
+
 					case ItemID.CandyApple:
 						if (MyHealth == MyMaxHealth)
 						{
 							return false;
 						}
 						break;
+
 					case ItemID.CandyCane:
 						if (MyHealth == MyMaxHealth)
 						{
 							return false;
 						}
 						break;
+
 					case ItemID.Star:
 						if (MyMana == MyMaxMana)
 						{
 							return false;
 						}
 						break;
+
 					case ItemID.SugarPlum:
 						if (MyMana == MyMaxMana)
 						{

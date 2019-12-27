@@ -41,6 +41,5 @@ namespace Desiccation.Items.Flails
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
 	}
 }

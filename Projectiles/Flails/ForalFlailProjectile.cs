@@ -8,8 +8,6 @@ namespace Desiccation.Projectiles.Flails
 {
 	public class ForalFlailProjectile : ModProjectile
 	{
-
-
 		public override void SetDefaults()
 		{
 			projectile.width = 28;

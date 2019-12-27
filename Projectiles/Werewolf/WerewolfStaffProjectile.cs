@@ -30,7 +30,6 @@ namespace Desiccation.Projectiles.Werewolf
 
 		public override void AI()
 		{
-
 			if (projectile.localAI[1] == 0f)
 			{
 				projectile.localAI[1] = 1f;
@@ -98,6 +97,7 @@ namespace Desiccation.Projectiles.Werewolf
 				projectile.ai[0] += 1f;
 			}
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound

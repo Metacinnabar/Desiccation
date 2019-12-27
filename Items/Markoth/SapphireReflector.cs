@@ -2,9 +2,8 @@ using Desiccation.Projectiles.Gems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
-namespace Desiccation.Items.Gems
+namespace Desiccation.Items.Markoth
 {
 	public class SapphireReflector : ModItem
 	{
@@ -28,7 +27,7 @@ namespace Desiccation.Items.Gems
 			item.useStyle = 5;
 			item.shootSpeed = 14f;
 			item.useAnimation = 20;
-			item.shoot = ProjectileType<SapphireReflectorBeam>();
+			item.shoot = ModContent.ProjectileType<SapphireReflectorBeam>();
 			item.value = Item.sellPrice(silver: 3);
 		}
 	}

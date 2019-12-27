@@ -64,7 +64,7 @@ namespace Desiccation
 
 		[Label("No Favorite Tooltips")]
 		[Tooltip("If true, favorite tooltips wont be displayed. True by default")]
-		[DefaultValue(true)]
+		[DefaultValue(false)]
 		public bool NoFavoriteTooltips;
 
 		[Header("UI")]

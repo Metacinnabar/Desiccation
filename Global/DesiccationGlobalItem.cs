@@ -14,17 +14,6 @@ namespace Desiccation.Global
 		{
 			if (ModContent.GetInstance<DesiccationClientsideConfig>().ToolTooltipRework)
 			{
-				if (item.pick > 0 || item.axe > 0 || item.hammer > 0)
-				{
-					TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
-					if (tt != null)
-					{
-						string[] splitText = tt.text.Split(' ');
-						string damageValue = splitText.First();
-						string damageWord = splitText.Last();
-						tt.text = damageValue + " tool " + damageWord;
-					}
-				}
 				if (item.pick > 0)
 				{
 					TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "PickPower" && x.mod == "Terraria");

@@ -34,6 +34,7 @@ namespace Desiccation.NPCs.KingBlizzard
             npc.value = 60f;
             npc.knockBackResist = 0.5f;
             npc.behindTiles = false;
+            npc.noTileCollide = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -48,7 +49,7 @@ namespace Desiccation.NPCs.KingBlizzard
 
             DespawnHandler(); // Handles if the npc should despwan
 
-            Move(new Vector2 (0, -100)); // calls the move method 
+            Move(new Vector2 (0, -50)); // calls the move method 
             //Attacking
             npc.ai[1] -= 1f; // subtracts 1 from the AI
             if(npc.ai[1] <= 0f)
@@ -61,7 +62,7 @@ namespace Desiccation.NPCs.KingBlizzard
                 Main.PlaySound(SoundID.Roar, npc.position, 0);
                 npc.localAI[0] = 1f;
             }
-            npc.velocity.Y += 1f;
+
             if (npc.timeLeft > 10)
             {
                 npc.timeLeft = 10;
@@ -83,7 +84,7 @@ namespace Desiccation.NPCs.KingBlizzard
             {
                 move *= speed / magnitude;
             }
-            float turnResistance = 10f;
+            float turnResistance = 5f; //it was 10 orginally 
             move = (npc.velocity * turnResistance + move) / (turnResistance + 1f);
             magnitude = Magnitude(move);
             if(magnitude > speed)

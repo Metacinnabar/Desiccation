@@ -27,14 +27,11 @@ namespace Desiccation
 		//TODO: Replace eerie messages with ambient sounds
 		//TODO: Change the main menu rework into "themes"
 		//TODO: Make vanity music boxes its own mod
-		//TODO: Remove cactus damage
-		//TODO: Keep favourite tooltip
-		//TODO: Scrap more item info in tooltips idea
+		//TODO: Make cactus damage its own mod
 		//TODO: Make banner rework unique
 		//TODO: Rework flails to find a reason for players to use them?
 		//TODO: 0.11.6 All items don't burn via GlobalItem.CanBurnInLava() return false; bruh turns out i need to il edit it
 		//TODO: Make squirrels fall out of trees in random ammounts and sometimes none. Maybe make use of NPCData.SpawnMoreThanOneNPCOfTheSameType
-		//TODO: Shift z shows extra stats
 		//TODO: Piggybank UI when nurse npc chat is active
 		//TODO: Music Box ID thing
 		//TODO: Show info on vanity accessories. Code for this in antisocial
@@ -49,7 +46,7 @@ namespace Desiccation
 		//TODO: Main menu replacement Texture2D's fade in and out when loaded and unloaded. check #coding for a discord link on some info on how to do this
 		//TODO: discord tags for credits
 		//TODO: IL the main menu music possibly tmod contribution
-		//TODO: change the color of the hover main menu tabs. have to redraw them all
+		//TODO: change the color of the hover main menu tabs. have to redraw them all posssibly IL
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 		//TODO: Add new boss checklist calls to bosses when coded.
 

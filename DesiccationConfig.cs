@@ -13,7 +13,7 @@ namespace Desiccation
 
 		[Header("Multiplayer")]
 		[Label("Team Auto Join")]
-		[Tooltip("You will automaticly join this team after entering a world in multiplayer.")]
+		[Tooltip("You will automatically join this team after entering a world in multiplayer.")]
 		[DrawTicks]
 		[OptionStrings(new string[] { "None", "Red", "Green", "Blue", "Yellow", "Pink" })]
 		[DefaultValue("None")]
@@ -32,7 +32,7 @@ namespace Desiccation
 		public bool RespawnTimer;
 
 		[Label("Respawn Timer Decimal")]
-		[Tooltip("The ammount of decimals to show on the respawn timer. Default 2")]
+		[Tooltip("The amount of decimals to show on the respawn timer. Default 2")]
 		[DrawTicks]
 		[Range(0, 2)]
 		[Increment(1)]

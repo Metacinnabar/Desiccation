@@ -126,14 +126,6 @@ namespace Desiccation
 			}
 		}
 
-		public override void PostUpdate()
-		{
-			if (player.IsPlayerTouchingTile(TileID.Cactus))
-			{
-				player.Hurt(PlayerDeathReason.ByCustomReason(" got spiked up their spine"), 9, player.direction);
-			}
-		}
-
 		#endregion tModLoader Hooks
 
 		private void GetTeamValues()

@@ -1,7 +1,7 @@
 ﻿using Desiccation.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace Desiccation.ModCommands
 {

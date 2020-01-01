@@ -1,8 +1,7 @@
 #region Usings
 
-using Desiccation.Utilities;
-using Desiccation.Utilities.ID;
 using Desiccation.UI.UIStates;
+using Desiccation.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoMod.Cil;

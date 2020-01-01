@@ -36,11 +36,11 @@ namespace Desiccation.ModNPCs.KingBlizzard
 
 		public override void AI()
 		{
-			Target(); // sets the player target 
+			Target(); // sets the player target
 
 			DespawnHandler(); // Handles if the npc should despwan
 
-			Move(new Vector2(0, -50)); // calls the move method 
+			Move(new Vector2(0, -50)); // calls the move method
 									   //Attacking
 			npc.ai[1] -= 1f; // subtracts 1 from the AI
 			if (npc.ai[1] <= 0f)
@@ -75,7 +75,7 @@ namespace Desiccation.ModNPCs.KingBlizzard
 			{
 				move *= speed / magnitude;
 			}
-			float turnResistance = 5f; //it was 10 orginally 
+			float turnResistance = 5f; //it was 10 orginally
 			move = (npc.velocity * turnResistance + move) / (turnResistance + 1f);
 			magnitude = Magnitude(move);
 			if (magnitude > speed)

@@ -1,8 +1,9 @@
-using Desiccation.DUtils;
-using Desiccation.Items.Werewolf;
+using Desiccation.Utilities;
+using Desiccation.ModItems.Werewolf;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Desiccation.ModItems.AngryNimbus;
 
 namespace Desiccation.Global
 {
@@ -12,7 +13,7 @@ namespace Desiccation.Global
 		{
 			if (npc.type == NPCID.Bunny)
 			{
-				if (Misc.RandomFrom1OutOf(150) && ModContent.GetInstance<DesiccationGlobalConfig>().Bunny_FuzzyCarrot)
+				if (DUtils.RandomFrom1OutOf(150) && ModContent.GetInstance<DesiccationGlobalConfig>().Bunny_FuzzyCarrot)
 				{
 					Item.NewItem(npc.getRect(), ItemID.FuzzyCarrot);
 				}
@@ -20,19 +21,19 @@ namespace Desiccation.Global
 
 			if (npc.type == NPCID.AngryNimbus)
 			{
-				if (Misc.RandomFrom1OutOf(99))
+				if (DUtils.RandomFrom1OutOf(99))
 				{
-					Item.NewItem(npc.getRect(), mod.ItemType("WaterFall"));
+					Item.NewItem(npc.getRect(), ModContent.ItemType<WaterFall>());
 				}
 			}
 
 			if (npc.type == NPCID.Werewolf)
 			{
-				if (Misc.RandomFrom1OutOf(3))
+				if (DUtils.RandomFrom1OutOf(3))
 				{
 					Item.NewItem(npc.getRect(), ModContent.ItemType<WerewolfFur>(), Main.rand.Next(1, 3));
 				}
-				if (Misc.RandomFrom1OutOf(100))
+				if (DUtils.RandomFrom1OutOf(100))
 				{
 					Item.NewItem(npc.getRect(), ModContent.ItemType<MoonStaff>());
 				}

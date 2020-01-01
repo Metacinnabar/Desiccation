@@ -1,4 +1,4 @@
-using Desiccation.DUtils;
+using Desiccation.Utilities;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Desiccation.DUtils.PlayerData;
+using static Desiccation.Utilities.PlayerData;
 
 namespace Desiccation
 {
@@ -95,7 +95,7 @@ namespace Desiccation
 			if (MyPlayer.team != 0 && !teamChanged)
 			{
 				MyPlayer.team = teamInt;
-				Misc.Chat("Team auto changed to " + teamString + " from config.", false, 172, 191, 184);
+				DUtils.Chat("Team auto changed to " + teamString + " from config.", false, 172, 191, 184);
 				teamChanged = true;
 			}
 			if (ModContent.GetInstance<DesiccationClientsideConfig>().WelcomeMessage)

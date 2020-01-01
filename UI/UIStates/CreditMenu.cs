@@ -1,4 +1,4 @@
-﻿using Desiccation.DUtils;
+﻿using Desiccation.Utilities;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -43,14 +43,14 @@ namespace Desiccation.UI.UIStates
 				"Darthmoth - Desiccation logo generator (without edits)\n" +
 				"Jaserd - Edits on the Desiccation logo\n" +
 				"Fargo - AI for the Hyper Scope\n" +
-				"Mirsario - Unload errors from logo swapping. NPCAIStyle class\n" +
+				"Mirsario - Unload errors from logo swapping. NPCAIStyle class. RemoveUnloadedTiles cmd\n" +
 				"Itorius - Help with weighted inventory\n" +
 				"Anegorami - Some ebic ideas" +
 				"\n" +
 				"- Patrons\n" +
 				"Thank you so much to all of our patrons!\n" +
 				$"Current patrons from v{ModContent.GetInstance<Desiccation>().Version} of Desiccation:\n" +
-				"No one yet.";
+				"Waasephi - For donating $1 Thank You!!";
 
 			UIData.UIInfoMessage_Show(text, 0);
 		}

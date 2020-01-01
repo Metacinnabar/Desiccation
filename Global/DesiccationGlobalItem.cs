@@ -1,10 +1,10 @@
-using Desiccation.DUtils;
+using Desiccation.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Desiccation.DUtils.PlayerData;
+using static Desiccation.Utilities.PlayerData;
 
 namespace Desiccation.Global
 {

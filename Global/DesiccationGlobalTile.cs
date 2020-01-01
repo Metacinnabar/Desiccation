@@ -1,4 +1,4 @@
-﻿using Desiccation.DUtils;
+﻿using Desiccation.Utilities;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,7 +16,7 @@ namespace Desiccation.Global
 				Timer++;
 				if (Timer > 1)
 				{
-					Misc.Chat("Skipped the time between Old Ones Army waves!", true, 152, 144, 255);
+					DUtils.Chat("Skipped the time between Old Ones Army waves!", true, 152, 144, 255);
 					DD2Event.TimeLeftBetweenWaves = 0;
 					Timer = 0;
 				}

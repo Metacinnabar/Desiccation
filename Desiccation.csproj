@@ -16,6 +16,8 @@
     <None Remove="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove=".editorconfig" />
+    <None Remove=".gitignore" />
     <None Remove="Assets.zip" />
     <None Remove="icon.png" />
     <None Remove="LICENSE" />

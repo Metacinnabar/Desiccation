@@ -1,7 +1,7 @@
 #region Usings
 
-using Desiccation.DUtils;
-using Desiccation.DUtils.ID;
+using Desiccation.Utilities;
+using Desiccation.Utilities.ID;
 using Desiccation.UI.UIStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +15,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.UI.Chat;
-using static Desiccation.DUtils.PlayerData;
+using static Desiccation.Utilities.PlayerData;
 
 #endregion Usings
 
@@ -162,7 +162,7 @@ namespace Desiccation
 			{
 				layers.Insert(mouseText, new LegacyGameInterfaceLayer("Desiccation: Player Name", delegate
 				{
-					if (!Main.gameMenu && ModContent.GetInstance<DesiccationClientsideConfig>().NameInfo && !Misc.IsInventoryOpen)
+					if (!Main.gameMenu && ModContent.GetInstance<DesiccationClientsideConfig>().NameInfo && !DUtils.IsInventoryOpen)
 					{
 						string text = $"{MyName} in {Main.worldName}";
 						Vector2 size = Utils.DrawBorderString(Main.spriteBatch, text, new Vector2(DrawData.CenterStringXOnScreen(text, Main.fontMouseText), 2f), Color.WhiteSmoke);
@@ -208,7 +208,7 @@ namespace Desiccation
 							BGData.MainMenuBackgroundSwap(20, 21, 22);
 							for (int vanillaCloudTextureID = 0; vanillaCloudTextureID < vanillaCloud.Length; vanillaCloudTextureID++)
 							{
-								Main.cloudTexture[vanillaCloudTextureID] = Textures.BlankTexture;
+								Main.cloudTexture[vanillaCloudTextureID] = DrawData.BlankTexture;
 							}
 							Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
 							Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationDesertLogo");

@@ -1,5 +1,5 @@
-author = GoodPro712, Lemmy, Weirdhat and the Desiccation Developer Team
-version = 0.0.297
+author = GoodPro712, Weirdhat & DD Team
+version = 0.1
 displayName = Desiccation
 hideCode = true
 hideResources = true

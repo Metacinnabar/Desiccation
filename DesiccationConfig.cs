@@ -1,7 +1,7 @@
-using Desiccation.DUtils;
+using Desiccation.Utilities;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
-using static Desiccation.DUtils.PlayerData;
+using static Desiccation.Utilities.PlayerData;
 
 namespace Desiccation
 {
@@ -58,18 +58,18 @@ namespace Desiccation
 
 		[Header("Tooltips")]
 		[Label("Tool Tooltip Changes")]
-		[Tooltip("If true, tools with have tool damage, not melee, and they wont have a '%' in their tool power. True by default")]
+		[Tooltip("If true, tools wont have a '%' in their tool power. True by default")]
 		[DefaultValue(true)]
 		public bool ToolTooltipRework;
 
 		[Label("No Favorite Tooltips")]
-		[Tooltip("If true, favorite tooltips wont be displayed. True by default")]
+		[Tooltip("If true, favorite tooltips wont be displayed. False by default")]
 		[DefaultValue(false)]
 		public bool NoFavoriteTooltips;
 
 		[Header("UI")]
-		[Label("Player Name & World Name")]
-		[Tooltip("If true, the player's name and world name will be displayed at the top of the screen. True by default")]
+		[Label("Info Bar")]
+		[Tooltip("If true, an info text bar will be displayed at the top of the screen. True by default")]
 		[DefaultValue(true)]
 		public bool NameInfo;
 	}

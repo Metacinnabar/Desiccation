@@ -13,8 +13,8 @@ namespace Desiccation.ModProjectiles.AngryNimbus
 
 		public override void SetDefaults()
 		{
-			projectile.width = 30;
-			projectile.height = 30;
+			projectile.width = 40;
+			projectile.height = 40;
 			projectile.alpha = 255;
 			projectile.timeLeft = 180;
 			projectile.penetrate = -1;

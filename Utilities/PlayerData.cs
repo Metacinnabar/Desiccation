@@ -589,7 +589,7 @@ namespace Desiccation.Utilities
 			P.heldProj = Type;
 		}
 
-		#endregion Projectile Related
+		#endregion Projectile Related Z
 
 		#region Item Related
 

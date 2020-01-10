@@ -19,7 +19,7 @@ namespace Desiccation.Utilities
 		public static bool ContainsCursor(this Rectangle rectangle)
 			=> rectangle.Contains(new Point(Main.mouseX, Main.mouseY)) ? true : false;
 
-		public static void Draw(this Rectangle rectangle)
+		public static void DrawRectangle(this Rectangle rectangle)
 		{
 			//TODO: Needs Testing
 			//rectangle.Offset((int)-Main.screenPosition.X, (int)-Main.screenPosition.Y);

@@ -3,15 +3,18 @@
 using Desiccation.UI.UIStates;
 using Desiccation.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using MonoMod.Cil;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Audio;
 using Terraria.UI;
 using Terraria.UI.Chat;
 using static Desiccation.Utilities.PlayerData;
@@ -35,6 +38,7 @@ namespace Desiccation
 		//TODO: Music Box ID thing
 		//TODO: Show info on vanity accessories. Code for this in antisocial
 		//TODO: Search for player names and worlds ui
+		//TODO: Save but dont exit button
 		//TODO: Statue enemies drop loot if requirements are met
 		//TODO: Ammo notice bottom left
 		//TODO: Rework dev weapons. balanace out
@@ -81,18 +85,17 @@ namespace Desiccation
 		private bool isInPatreonRectangle;
 		private bool isInCreditRectangle;
 		private bool isInLinkMenuRectangle;
+		private volatile bool swap = false;
+		private volatile bool stop = false;
 		private bool linksOpen;
 		private bool lastMouseLeft;
 		public float fadePercent = 0;
 		private static readonly string releaseSuffix = "Beta Release!";
 		public static DesiccationGlobalConfig GlobalConfig = ModContent.GetInstance<DesiccationGlobalConfig>();
 		public static DesiccationClientsideConfig ClientConfig = ModContent.GetInstance<DesiccationClientsideConfig>();
+		private ManualResetEvent swapComplete = new ManualResetEvent(false);
 
 		#endregion Fields
-
-		public Desiccation()
-		{
-		}
 
 		#region tModLoader Hooks
 
@@ -114,7 +117,7 @@ namespace Desiccation
 			#endregion Main Menu Backups
 
 			unloadCalled = false;
-			Main.OnTick += OnTickEvent;
+			Main.OnTick += OnUpdate;
 			Main.OnPostDraw += OnPostDrawEvent;
 			IL.Terraria.Main.DrawInterface_14_EntityHealthBars += HookDrawInterface_14_EntityHealthBars;
 		}
@@ -136,7 +139,7 @@ namespace Desiccation
 
 			#endregion Main Menu Changes
 
-			Main.OnTick -= OnTickEvent;
+			Main.OnTick -= OnUpdate;
 			Main.OnPostDraw -= OnPostDrawEvent;
 			unloadCalled = true;
 		}
@@ -184,11 +187,52 @@ namespace Desiccation
 			WorldGen.setBG(0, 6);
 		}
 
+		public override void PostSetupContent()
+		{
+			swap = true;
+			swapComplete.WaitOne();
+			swapComplete.Reset();
+		}
+
+		public override void Close()
+		{
+			if (Main.music[MusicID.Title] == GetMusic("Sounds/Music/Title"))
+			{
+				stop = true;
+				swap = true;
+				swapComplete.WaitOne();
+			}
+			base.Close();
+		}
+
+		public static void Swap<T>(ref T a, ref T b)
+		{
+			var tmp = a;
+			a = b;
+			b = tmp;
+		}
+
+		public override void UpdateMusic(ref int music, ref MusicPriority priority)
+		{
+			if (swap)
+			{
+				int slot = GetSoundSlot(SoundType.Music, "Sounds/Music/Title");
+				Swap(ref Main.music[MusicID.Title], ref Main.music[slot]);
+				Swap(ref Main.musicFade[MusicID.Title], ref Main.musicFade[slot]);
+				swap = false;
+
+				if (stop)
+					((MusicStreaming)Main.music[slot]).Dispose();
+
+				swapComplete.Set();
+			}
+		}
+
 		#endregion tModLoader Hooks
 
 		#region Events
 
-		private void OnTickEvent()
+		private void OnUpdate()
 		{
 			if (Main.gameMenu)
 			{

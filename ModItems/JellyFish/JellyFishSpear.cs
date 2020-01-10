@@ -29,6 +29,7 @@ namespace Desiccation.ModItems.JellyFish
 			item.shootSpeed = 9;
 			item.thrown = true;
 			item.noUseGraphic = true;
+			item.melee = true;
 		}
 
 	}

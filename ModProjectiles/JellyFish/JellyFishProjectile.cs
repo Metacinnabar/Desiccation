@@ -9,12 +9,12 @@ namespace Desiccation.ModProjectiles.JellyFish
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 22;
-			projectile.height = 22;
+			projectile.width = 119;
+			projectile.height = 70;
 			projectile.friendly = true;
 			projectile.maxPenetrate = -1;
 			projectile.melee = true;
-			projectile.aiStyle = 37;
+			projectile.aiStyle = 40;
 		}
 		private bool rotChanged = false;
 
@@ -31,8 +31,8 @@ namespace Desiccation.ModProjectiles.JellyFish
 		{
 			{
 
-				float projectilespeedX = 5f;
-				float projectilespeedY = 5f;
+				float projectilespeedX = 0f;
+				float projectilespeedY = 0f;
 				float projectileknockBack = 4f;
 				int projectiledamage = 20;
 				{

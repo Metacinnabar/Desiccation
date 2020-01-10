@@ -15,7 +15,7 @@ namespace Desiccation.ModProjectiles.AngryNimbus
 		{
 			projectile.width = 40;
 			projectile.height = 40;
-			projectile.alpha = 255;
+			projectile.alpha = 0;
 			projectile.timeLeft = 180;
 			projectile.penetrate = -1;
 			projectile.friendly = true;

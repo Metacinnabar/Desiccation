@@ -183,7 +183,7 @@ namespace Desiccation
 		{
 			WorldGen.setBG(0, 6);
 		}
-
+		/*
 		public override void PostSetupContent()
 		{
 			swap = true;
@@ -223,7 +223,7 @@ namespace Desiccation
 
 				swapComplete.Set();
 			}
-		}
+		}*/
 
 		#endregion tModLoader Hooks
 
@@ -252,7 +252,7 @@ namespace Desiccation
 								Main.cloudTexture[vanillaCloudTextureID] = DrawData.BlankTexture;
 							}
 							Main.backgroundTexture[0] = GetTexture("UI/Textures/Sky");
-							Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesiccationDesertLogo");
+							Main.logoTexture = Main.logo2Texture = GetTexture("UI/Textures/DesertLogo");
 						}
 					}
 					else

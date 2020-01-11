@@ -8,6 +8,7 @@ namespace Desiccation.ModProjectiles.EyeOfCthulhu
 	{
 		public override void SetDefaults()
 		{
+			Main.projFrames[projectile.type] = 2;
 			projectile.minionSlots = 2f;
 			projectile.tileCollide = false;
 			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
@@ -28,14 +29,14 @@ namespace Desiccation.ModProjectiles.EyeOfCthulhu
 
 		public override void AI()
 		{
-			projectile.frameCounter++;
-			if (projectile.frameCounter >= 65)
+			projectile.velocity *= 0.98f;
+			// Fix later.
+			if (++projectile.frameCounter >= 8)
 			{
 				projectile.frameCounter = 0;
-				projectile.frame++;
-				if (projectile.frame >= Main.projFrames[projectile.type])
+				if (++projectile.frame >= 2)
 				{
-					projectile.frame = 2;
+					projectile.frame = 0;
 				}
 			}
 		}

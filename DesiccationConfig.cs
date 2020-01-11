@@ -21,7 +21,7 @@ namespace Desiccation
 		[Header("Main Menu")]
 		[Label("Background Changes")]
 		[Tooltip("Changes for the main menu. False for no changes, true to change the whole main menu to a desert. True by default")]
-		[DefaultValue(true)]
+		[DefaultValue(false)]
 		public bool MainMenuDesert;
 
 		[Header("Death Screen")]

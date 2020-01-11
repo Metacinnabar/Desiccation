@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Desiccation.Utilities.PlayerData;
+using Desiccation.ModItems.Misc;
 
 namespace Desiccation
 {
@@ -177,5 +178,12 @@ namespace Desiccation
 				Main.backgroundTexture[back] = ModContent.GetInstance<Desiccation>().vanillaBackMainMenuBackground;
 			}
 		}
-	}
+        public override void SetupStartInventory(IList<Item> items)
+        {
+            Item item = new Item();
+			item.SetDefaults(ModContent.ItemType<StarterBag>());
+			item.stack = 1;
+			items.Add(item);
+        }
+    }
 }

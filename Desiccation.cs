@@ -1,5 +1,3 @@
-#region Usings
-
 using Desiccation.UI.UIStates;
 using Desiccation.Utilities;
 using Microsoft.Xna.Framework;
@@ -18,8 +16,6 @@ using Terraria.ModLoader.Audio;
 using Terraria.UI;
 using Terraria.UI.Chat;
 using static Desiccation.Utilities.PlayerData;
-
-#endregion Usings
 
 namespace Desiccation
 {
@@ -52,6 +48,7 @@ namespace Desiccation
 		//TODO: change the color of the hover main menu tabs. have to redraw them all posssibly IL
 		//TODO: Create desiccation email, youtube and twitter and twitter discord webhook
 		//TODO: Add new boss checklist calls to bosses when coded.
+		//TODO: Make Pumpkins spwn at any time.
 
 		//--Stuff for Lemmy to do:
 		//TODO: Rework sifting pan. the stats are in #stating

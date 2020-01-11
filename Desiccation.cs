@@ -1,5 +1,3 @@
-#region Usings
-
 using Desiccation.UI.UIStates;
 using Desiccation.Utilities;
 using Microsoft.Xna.Framework;
@@ -18,8 +16,6 @@ using Terraria.ModLoader.Audio;
 using Terraria.UI;
 using Terraria.UI.Chat;
 using static Desiccation.Utilities.PlayerData;
-
-#endregion Usings
 
 namespace Desiccation
 {

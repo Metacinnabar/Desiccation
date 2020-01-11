@@ -8,6 +8,7 @@ using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using System.Threading;
 using Terraria;
 using Terraria.ID;
@@ -231,6 +232,13 @@ namespace Desiccation
 
 		private void OnUpdate()
 		{
+			FieldInfo textures = typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic);
+			IDictionary<string, Texture2D> texturesValue = (IDictionary<string, Texture2D>)textures.GetValue(this);
+			foreach (KeyValuePair<string, Texture2D> texture in texturesValue)
+			{
+				Logger.Debug(texture);
+			}
+
 			if (Main.gameMenu)
 			{
 				fadePercent += MathHelper.ToRadians(1.7f * 360f / 60f);

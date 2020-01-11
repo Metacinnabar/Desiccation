@@ -8,7 +8,8 @@ namespace Desiccation
 	[Label("Clientside Config")]
 	public class DesiccationClientsideConfig : ModConfig
 	{
-		public override ConfigScope Mode => ConfigScope.ClientSide; // per player config
+		public override ConfigScope Mode
+			=> ConfigScope.ClientSide; // per player config
 
 		[Header("Multiplayer")]
 		[Label("Team Auto Join")]

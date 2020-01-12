@@ -1,7 +1,5 @@
-
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace Desiccation.ModItems.Pumpkin
 {
@@ -39,9 +37,8 @@ namespace Desiccation.ModItems.Pumpkin
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
-            //Add the alt function down here
-
         }
-    }
+
+		//Add the alt function here
+	}
 }

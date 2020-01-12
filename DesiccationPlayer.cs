@@ -90,7 +90,7 @@ namespace Desiccation
 
 		public override void OnEnterWorld(Player player)
 		{
-			BackgroundReReplacing(173, 172, 171);
+			BGData.BackgroundReReplacing(173, 172, 171);
 			GetTeamValues();
 			if (MyPlayer.team != 0 && !teamChanged)
 			{
@@ -159,31 +159,12 @@ namespace Desiccation
 			}
 		}
 
-		/// <summary>
-		/// Putting the backgrounds back for normal gameplay
-		/// </summary>
-		/// <param name="front"></param>
-		/// <param name="middle"></param>
-		/// <param name="back"></param>
-		internal void BackgroundReReplacing(int front, int middle, int back)
+		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath)
 		{
-			if (!Main.dedServ)
-			{
-				for (int i = 0; i < ModContent.GetInstance<Desiccation>().vanillaCloud.Length; i++)
-				{
-					Main.cloudTexture[i] = ModContent.GetInstance<Desiccation>().vanillaCloud[i];
-				}
-				Main.backgroundTexture[front] = ModContent.GetInstance<Desiccation>().vanillaFrontMainMenuBackground;
-				Main.backgroundTexture[middle] = ModContent.GetInstance<Desiccation>().vanillaMiddleMainMenuBackground;
-				Main.backgroundTexture[back] = ModContent.GetInstance<Desiccation>().vanillaBackMainMenuBackground;
-			}
-		}
-        public override void SetupStartInventory(IList<Item> items)
-        {
-            Item item = new Item();
+			Item item = new Item();
 			item.SetDefaults(ModContent.ItemType<StarterBag>());
 			item.stack = 1;
 			items.Add(item);
-        }
+		}
     }
 }

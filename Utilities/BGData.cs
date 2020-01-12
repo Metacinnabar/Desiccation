@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Desiccation.Utilities
 {
@@ -24,6 +25,26 @@ namespace Desiccation.Utilities
 				{
 					Main.instance.LoadBackground(loadbgNumber);
 				}
+			}
+		}
+
+		/// <summary>
+		/// Putting the backgrounds back for normal gameplay
+		/// </summary>
+		/// <param name="front"></param>
+		/// <param name="middle"></param>
+		/// <param name="back"></param>
+		public static void BackgroundReReplacing(int front, int middle, int back)
+		{
+			if (!Main.dedServ)
+			{
+				for (int i = 0; i < ModContent.GetInstance<Desiccation>().vanillaCloud.Length; i++)
+				{
+					Main.cloudTexture[i] = ModContent.GetInstance<Desiccation>().vanillaCloud[i];
+				}
+				Main.backgroundTexture[front] = ModContent.GetInstance<Desiccation>().vanillaFrontMainMenuBackground;
+				Main.backgroundTexture[middle] = ModContent.GetInstance<Desiccation>().vanillaMiddleMainMenuBackground;
+				Main.backgroundTexture[back] = ModContent.GetInstance<Desiccation>().vanillaBackMainMenuBackground;
 			}
 		}
 	}

@@ -9,8 +9,8 @@ namespace Desiccation.ModProjectiles.JellyFish
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 119;
-			projectile.height = 70;
+			projectile.width = 100;
+			projectile.height = 40;
 			projectile.friendly = true;
 			projectile.maxPenetrate = -1;
 			projectile.melee = true;

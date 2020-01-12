@@ -21,7 +21,7 @@ namespace Desiccation.ModItems.JellyFish
 			item.autoReuse = false;
 			item.useTime = item.useAnimation = 18;
 			item.rare = ItemRarityID.Pink;
-			item.width = item.height = 32;
+			item.width = item.height = 86;
 			item.UseSound = SoundID.Item19;
 			item.damage = 32;
 			item.knockBack = 2;
@@ -29,7 +29,7 @@ namespace Desiccation.ModItems.JellyFish
 			item.shootSpeed = 9;
 			item.thrown = true;
 			item.noUseGraphic = true;
-			item.melee = true;
+			
 		}
 
 	}

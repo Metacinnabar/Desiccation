@@ -16,8 +16,8 @@ namespace Desiccation.ModItems.Pumpkin
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.useTime = 15;
-            item.useAnimation = 10;
+            item.useTime = 17;
+            item.useAnimation = 17;
             item.axe = 40;
             item.useStyle = 1;
             item.knockBack = 6;

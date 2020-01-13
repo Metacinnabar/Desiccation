@@ -1,9 +1,5 @@
-
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace Desiccation.ModItems.Pumpkin
 {
@@ -11,17 +7,17 @@ namespace Desiccation.ModItems.Pumpkin
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("OOF.");
+            Tooltip.SetDefault("Mushy"); //bruh
         }
 
         public override void SetDefaults()
         {
             item.damage = 5;
             item.melee = true;
-            item.width = 40;
+            item.width = 4;
             item.height = 40;
-            item.useTime = 17;
-            item.useAnimation = 17;
+            item.useTime = 15;
+			item.useAnimation = 10;
             item.axe = 40;
             item.useStyle = 1;
             item.knockBack = 6;
@@ -34,12 +30,11 @@ namespace Desiccation.ModItems.Pumpkin
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(1725, 35);
-            recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ItemID.Pumpkin, 35);
+			recipe.AddRecipeGroup("IronBar", 6);
+			recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-
         }
     }
 }
-

@@ -1,7 +1,5 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace Desiccation.ModItems.Pumpkin
 {
@@ -14,21 +12,21 @@ namespace Desiccation.ModItems.Pumpkin
 
         public override void SetDefaults()
         {
-            item.damage = 11;
+            item.damage = 8;
             item.ranged = true;
-            item.width = 18;
-            item.height = 32;
-            item.useAnimation = 24;
-            item.useTime = 24;
+            item.width = 40;
+            item.height = 20;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = 5;
-            item.noMelee = true;
-            item.knockBack = 2;
+            item.noMelee = true; //so the item's animation doesn't do damage
+            item.knockBack = 4;
+            item.value = 10000;
             item.rare = 2;
             item.UseSound = SoundID.Item5;
-            item.autoReuse = false;
-            item.shoot = 1;
-            item.shootSpeed = 7f;
-            item.value = Item.sellPrice(0, 0, 15, 0);
+            item.autoReuse = true;
+            item.shoot = 10; //idk why but all the guns in the vanilla source have this
+            item.shootSpeed = 16f;
             item.useAmmo = AmmoID.Arrow;
         }
 
@@ -40,6 +38,7 @@ namespace Desiccation.ModItems.Pumpkin
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-        
-    }
+
+		//Add the alt function here
+	}
 }

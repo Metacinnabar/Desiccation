@@ -66,6 +66,8 @@ namespace Desiccation
 		//--Stuff for Nobody to do:
 		//TODO: Constructer potion. stats pinned in #stating
 
+		private bool DebugMode => false;
+
 		#region Fields
 
 		private Texture2D vanillaLogoDay;
@@ -122,8 +124,6 @@ namespace Desiccation
 
 		public override void Unload()
 		{
-			#region Main Menu Changes
-
 			Main.logoTexture = vanillaLogoDay;
 			Main.logo2Texture = vanillaLogoNight;
 			Main.backgroundTexture[0] = vanillaSkyBackground;
@@ -134,8 +134,6 @@ namespace Desiccation
 			Main.backgroundTexture[173] = vanillaFrontMainMenuBackground;
 			Main.backgroundTexture[172] = vanillaMiddleMainMenuBackground;
 			Main.backgroundTexture[171] = vanillaBackMainMenuBackground;
-
-			#endregion Main Menu Changes
 
 			Main.OnTick -= OnUpdate;
 			Main.OnPostDraw -= OnPostDrawEvent;
@@ -184,14 +182,31 @@ namespace Desiccation
 		{
 			WorldGen.setBG(0, 6);
 		}
-		/*
+
 		public override void PostSetupContent()
 		{
+			if (DebugMode)
+			{
+				try
+				{
+					FieldInfo texturesField = typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic);
+					IDictionary<string, Texture2D> textures = (IDictionary<string, Texture2D>)texturesField?.GetValue(this);
+					foreach (KeyValuePair<string, Texture2D> texture in textures)
+					{
+						Logger.Debug($"Texture: {texture}\nWidth * Height * 4: {texture.Value.Width * texture.Value.Height * 4}\nKey: {texture.Key}");
+					}
+				}
+				catch (Exception e)
+				{
+					Logger.Error("Desiccation textures reflection error: " + e);
+				}
+			}
+			/*
 			swap = true;
 			swapComplete.WaitOne();
-			swapComplete.Reset();
+			swapComplete.Reset();*/
 		}
-
+		/*
 		public override void Close()
 		{
 			if (Main.music[MusicID.Title] == GetMusic("Sounds/Music/Title"))
@@ -232,13 +247,6 @@ namespace Desiccation
 
 		private void OnUpdate()
 		{
-			FieldInfo textures = typeof(Mod).GetField("textures", BindingFlags.Instance | BindingFlags.NonPublic);
-			IDictionary<string, Texture2D> texturesValue = (IDictionary<string, Texture2D>)textures.GetValue(this);
-			foreach (KeyValuePair<string, Texture2D> texture in texturesValue)
-			{
-				Logger.Debug(texture);
-			}
-
 			if (Main.gameMenu)
 			{
 				fadePercent += MathHelper.ToRadians(1.7f * 360f / 60f);

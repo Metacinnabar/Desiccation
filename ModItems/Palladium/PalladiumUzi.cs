@@ -21,14 +21,14 @@ namespace Desiccation.ModItems.Palladium
 			item.useTime = 15;
 			item.useAnimation = 15;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true; 
 			item.knockBack = 4;
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
-			item.shootSpeed = 16f;
+			item.shoot = 10; 
+			item.shootSpeed = 15f;
 			item.useAmmo = AmmoID.Bullet;
 			
 		}

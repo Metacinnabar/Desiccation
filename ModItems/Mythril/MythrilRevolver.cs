@@ -19,13 +19,13 @@ namespace Desiccation.ModItems.Mythril
 			item.useTime = 12;
 			item.useAnimation = 12;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true; 
 			item.knockBack = 4;
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = false;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
+			item.shoot = 10; 
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
 			item.crit = 5;

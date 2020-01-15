@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -30,5 +31,16 @@ namespace Desiccation.ModItems.Adamantite
 			item.shootSpeed = 15f;
 			item.useAmmo = AmmoID.Bullet;
 		}
+
+		public override void AddRecipes()
+	    {
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(391, 25); 
+			recipe.AddTile(TileID.MythrilAnvil); 
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+
+	    }
 	}
 }

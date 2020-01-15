@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -11,7 +12,8 @@ namespace Desiccation.ModItems.Mythril
 			Tooltip.SetDefault("OOf.");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults() 
+		{
 			item.damage = 42;
 			item.ranged = true;
 			item.width = 40;
@@ -29,7 +31,19 @@ namespace Desiccation.ModItems.Mythril
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
 			item.crit = 5;
-			}
+			
 		}
+
+		public override void AddRecipes()
+	   {
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(382, 25); 
+			recipe.AddTile(TileID.MythrilAnvil); 
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+
+	   }
 	}
+}
 		

@@ -1,4 +1,4 @@
-
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -9,10 +9,11 @@ namespace Desiccation.ModItems.Cobalt
 	{
 		public override void SetStaticDefaults() 
 		{
-			Tooltip.SetDefault("This is a modded gun.");
+			Tooltip.SetDefault("No.");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults() 
+		{
 			item.damage = 37;
 			item.ranged = true;
 			item.width = 40;
@@ -29,7 +30,18 @@ namespace Desiccation.ModItems.Cobalt
 			item.shoot = 10; 
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
-			}
+			
 		}
+
+		public override void AddRecipes()
+	    {
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(381, 25); 
+			recipe.AddTile(TileID.MythrilAnvil); 
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+
+	    }
 	}
-		
+}

@@ -7,7 +7,7 @@ namespace Desiccation.ModProjectiles.Slime
 {
     class PinkSlimeArrow : ModProjectile
     {
-        bool CanBounce;
+        int Bounces;
         bool Washed;
 
         //TODO: Make gel on arrow pink (Crim's already on it)
@@ -21,7 +21,8 @@ namespace Desiccation.ModProjectiles.Slime
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.noDropItem = true;
-            CanBounce = true;
+            projectile.penetrate = 3;
+            Bounces = 2;
             Washed = false;
         }
 
@@ -31,6 +32,10 @@ namespace Desiccation.ModProjectiles.Slime
             {
                 if (projectile.ai[1] == 0 || projectile.ai[1] == 1)
                 {
+                    if (projectile.ai[1] == 1)
+                    {
+                        Main.PlaySound(SoundID.LiquidsWaterLava, projectile.position);
+                    }
                     Projectile.NewProjectile(projectile.position, projectile.velocity, ProjectileID.WoodenArrowFriendly, projectile.damage, 0, projectile.owner);
                 }
                 else if (projectile.ai[1] == 2)
@@ -79,7 +84,7 @@ namespace Desiccation.ModProjectiles.Slime
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (CanBounce)
+            if (Bounces > 0)
             {
                 Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
                 Main.PlaySound(SoundID.Item56, projectile.position);
@@ -91,7 +96,8 @@ namespace Desiccation.ModProjectiles.Slime
                 {
                     projectile.velocity.Y = -oldVelocity.Y;
                 }
-                CanBounce = false;
+                projectile.penetrate -= 1;
+                Bounces -= 1;
                 return false;
             }
             return base.OnTileCollide(oldVelocity);
@@ -110,6 +116,30 @@ namespace Desiccation.ModProjectiles.Slime
             else if (projectile.ai[1] == 3 && Main.rand.Next(3) == 0)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
+            }
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            if (Bounces > 0)
+            {
+                Main.PlaySound(SoundID.Item56, projectile.position);
+                projectile.velocity.X = -projectile.oldVelocity.X * 0.75f;
+                if (projectile.oldVelocity.Y > 0)
+                {
+                    projectile.velocity.Y = -projectile.oldVelocity.Y * 0.5f;
+                }
+                else
+                {
+                    projectile.velocity.Y = -projectile.oldVelocity.Y * 1.5f;
+                }
+                if (projectile.ai[1] > 0)
+                {
+                    projectile.ai[1] = 0;
+                    Main.PlaySound(SoundID.LiquidsWaterLava, projectile.position);
+                }
+                projectile.damage /= 2;
+                Bounces -= 1;
             }
         }
 

@@ -90,14 +90,34 @@ namespace Desiccation.ModProjectiles.Slime
                 Main.PlaySound(SoundID.Item56, projectile.position);
                 if (projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X;
+                    projectile.velocity.X = -oldVelocity.X * 0.75f;
                 }
                 if (projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y;
+                    projectile.velocity.Y = -oldVelocity.Y * 0.75f;
                 }
                 projectile.penetrate -= 1;
                 Bounces -= 1;
+                if (Bounces <= 0)
+                {
+                    if (projectile.ai[1] == 0)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.75f, ProjectileID.WoodenArrowFriendly, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 1)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.75f, ProjectileID.FireArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 2)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.75f, ProjectileID.CursedArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 3)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.75f, ProjectileID.FrostburnArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    projectile.Kill();
+                }
                 return false;
             }
             return base.OnTileCollide(oldVelocity);
@@ -105,15 +125,15 @@ namespace Desiccation.ModProjectiles.Slime
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            if (projectile.ai[1] == 1 && Main.rand.Next(3) == 0)
+            if (projectile.ai[1] == 1)
             {
                 target.AddBuff(BuffID.OnFire, 180);
             }
-            else if (projectile.ai[1] == 2 && Main.rand.Next(3) == 0)
+            else if (projectile.ai[1] == 2)
             {
                 target.AddBuff(BuffID.CursedInferno, 180);
             }
-            else if (projectile.ai[1] == 3 && Main.rand.Next(3) == 0)
+            else if (projectile.ai[1] == 3)
             {
                 target.AddBuff(BuffID.Frostburn, 180);
             }
@@ -140,6 +160,27 @@ namespace Desiccation.ModProjectiles.Slime
                 }
                 projectile.damage /= 2;
                 Bounces -= 1;
+                if (Bounces <= 0)
+                {
+                    target.immune[projectile.owner] = 20;
+                    if (projectile.ai[1] == 0)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.5f, ProjectileID.WoodenArrowFriendly, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 1)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.5f, ProjectileID.FireArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 2)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.5f, ProjectileID.CursedArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    else if (projectile.ai[1] == 3)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity * 0.5f, ProjectileID.FrostburnArrow, projectile.damage, 0, projectile.owner);
+                    }
+                    projectile.Kill();
+                }
             }
         }
 
@@ -151,34 +192,6 @@ namespace Desiccation.ModProjectiles.Slime
             {
                 Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.PinkSlime, 0f, 0f, 100);
                 num = i;
-            }
-            if (!Washed)
-            {
-                if (projectile.ai[1] == 0 && Main.rand.Next(3) == 0)
-                {
-                    Item.NewItem(projectile.getRect(), ItemID.WoodenArrow);
-                }
-                else if (projectile.ai[1] == 1 && Main.rand.Next(3) == 0)
-                {
-                    if (Main.rand.Next(3) == 0)
-                        Item.NewItem(projectile.getRect(), ItemID.FlamingArrow);
-                    else
-                        Item.NewItem(projectile.getRect(), ItemID.WoodenArrow);
-                }
-                else if (projectile.ai[1] == 2 && Main.rand.Next(3) == 0)
-                {
-                    if (Main.rand.Next(3) == 0)
-                        Item.NewItem(projectile.getRect(), ItemID.CursedArrow);
-                    else
-                        Item.NewItem(projectile.getRect(), ItemID.WoodenArrow);
-                }
-                else if (projectile.ai[1] == 3 && Main.rand.Next(3) == 0)
-                {
-                    if (Main.rand.Next(3) == 0)
-                        Item.NewItem(projectile.getRect(), ItemID.FrostburnArrow);
-                    else
-                        Item.NewItem(projectile.getRect(), ItemID.WoodenArrow);
-                }
             }
         }
     }
